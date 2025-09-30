@@ -1,7 +1,9 @@
 const listaMacro=[]
 let listaFiltrada= listaMacro
+let jugadores=[]
+let idUnico=0
 
-function agregarJugador(nombre,pais,liga,activo){
+function agregarFutbolista(nombre,pais,liga,activo){
     let jugador = {
         nombre: nombre,
         pais: pais,
@@ -42,4 +44,13 @@ function filtrarPorActivo(activo){
 function reiniciarFiltrado(){
     listaFiltrada= listaMacro
 }
+
+function crearJugador(nombre){
+    let jugador={
+        id: idUnico++,
+        nombre: nombre,
+    }
+    jugadores.push(jugador)
+}
+
 
