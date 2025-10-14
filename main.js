@@ -1,91 +1,65 @@
-/* ===========================
-   Estado y estructuras base
-   =========================== */
-let listaMacro = []
 
-function cargarListaMacro() {
-  const guardada = localStorage.getItem("listaMacro")
-  if (guardada) {
-    try {
-      listaMacro = JSON.parse(guardada)
-      console.log("[v0] listaMacro cargada desde localStorage:", listaMacro.length, "jugadores")
-    } catch (e) {
-      console.log("[v0] Error al cargar listaMacro, usando datos por defecto")
-      listaMacro = obtenerListaMacroDefault()
-    }
-  } else {
-    listaMacro = obtenerListaMacroDefault()
-  }
-}
-
-function obtenerListaMacroDefault() {
-  return [
-    { nombre: "Lionel Messi", pais: "Argentina", liga: "Estados Unidos", activo: true },
-    { nombre: "Ángel Di María", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Gonzalo Montiel", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Enzo Pérez", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Lucas Martínez Quarta", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Tomás Molina", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Adrián Martínez", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Andrés Vombergar", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Franco Echeverri", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Franco Mastantuono", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Sebastián Driussi", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Lucas Zelarayán", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Matías Rojas", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Ander Herrera", pais: "España", liga: "Argentina", activo: true },
-    { nombre: "Keylor Navas", pais: "Costa Rica", liga: "Argentina", activo: true },
-    { nombre: "Diego Maradona", pais: "Argentina", liga: "Argentina", activo: false },
-    { nombre: "Juan Román Riquelme", pais: "Argentina", liga: "Argentina", activo: false },
-    { nombre: "Gabriel Batistuta", pais: "Argentina", liga: "Italia", activo: false },
-    { nombre: "Cristiano Ronaldo", pais: "Portugal", liga: "Arabia Saudita", activo: true },
-    { nombre: "Kylian Mbappé", pais: "Francia", liga: "España", activo: true },
-    { nombre: "Jude Bellingham", pais: "Inglaterra", liga: "España", activo: true },
-    { nombre: "Erling Haaland", pais: "Noruega", liga: "Inglaterra", activo: true },
-    { nombre: "Mohamed Salah", pais: "Egipto", liga: "Inglaterra", activo: true },
-    { nombre: "Vinícius Júnior", pais: "Brasil", liga: "España", activo: true },
-    { nombre: "Lamine Yamal", pais: "España", liga: "España", activo: true },
-    { nombre: "Ousmane Dembélé", pais: "Francia", liga: "Francia", activo: true },
-    { nombre: "Harry Kane", pais: "Inglaterra", liga: "Alemania", activo: true },
-    { nombre: "Lautaro Martínez", pais: "Argentina", liga: "Italia", activo: true },
-    { nombre: "Julián Álvarez", pais: "Argentina", liga: "España", activo: true },
-    { nombre: "Alexis Mac Allister", pais: "Argentina", liga: "Inglaterra", activo: true },
-    { nombre: "Neymar", pais: "Brasil", liga: "Arabia Saudita", activo: true },
-    { nombre: "Kevin De Bruyne", pais: "Bélgica", liga: "Inglaterra", activo: true },
-    { nombre: "Virgil van Dijk", pais: "Países Bajos", liga: "Inglaterra", activo: true },
-    { nombre: "Rodri", pais: "España", liga: "Inglaterra", activo: true },
-    { nombre: "Luis Suárez", pais: "Uruguay", liga: "Estados Unidos", activo: true },
-    { nombre: "Robert Lewandowski", pais: "Polonia", liga: "España", activo: true },
-    { nombre: "Pelé", pais: "Brasil", liga: "Brasil", activo: false },
-    { nombre: "Diego Godín", pais: "Uruguay", liga: "Uruguay", activo: false },
-    { nombre: "Marcelo", pais: "Brasil", liga: "Brasil", activo: false },
-    { nombre: "Pepe Reina", pais: "España", liga: "España", activo: false },
-    { nombre: "Simon Kjær", pais: "Dinamarca", liga: "Dinamarca", activo: false },
-    { nombre: "Toby Alderweireld", pais: "Bélgica", liga: "Bélgica", activo: false },
-    { nombre: "Jonny Evans", pais: "Irlanda del Norte", liga: "Inglaterra", activo: false },
-    { nombre: "Thiago Alcântara", pais: "España", liga: "España", activo: false },
-    { nombre: "Ángel Correa", pais: "Argentina", liga: "España", activo: true },
-    { nombre: "Chimy Ávila", pais: "Argentina", liga: "España", activo: true },
-    { nombre: "Santiago Sosa", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Rodrigo Villagra", pais: "Argentina", liga: "Argentina", activo: true },
-    { nombre: "Zlatan Ibrahimović", pais: "Suecia", liga: "Suecia", activo: false },
-    { nombre: "Luka Modrić", pais: "Croacia", liga: "Croacia", activo: true },
-    { nombre: "Sergio Ramos", pais: "España", liga: "México", activo: true },
-    { nombre: "Karim Benzema", pais: "Francia", liga: "Arabia Saudita", activo: true },
-    { nombre: "Eden Hazard", pais: "Bélgica", liga: "Bélgica", activo: false },
-    { nombre: "Antoine Griezmann", pais: "Francia", liga: "Francia", activo: true },
-    { nombre: "Bruno Fernandes", pais: "Portugal", liga: "Inglaterra", activo: true },
-    { nombre: "Jamal Musiala", pais: "Alemania", liga: "Alemania", activo: true },
-  ]
-}
-
-function guardarListaMacro() {
-  localStorage.setItem("listaMacro", JSON.stringify(listaMacro))
-  console.log("[v0] listaMacro guardada en localStorage:", listaMacro.length, "jugadores")
-}
+const listaMacro = [
+  { nombre: "Lionel Messi", pais: "Argentina", liga: "Estados Unidos", activo: true },
+  { nombre: "Ángel Di María", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Gonzalo Montiel", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Enzo Pérez", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Lucas Martínez Quarta", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Tomás Molina", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Adrián Martínez", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Andrés Vombergar", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Franco Echeverri", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Franco Mastantuono", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Sebastián Driussi", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Lucas Zelarayán", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Matías Rojas", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Ander Herrera", pais: "España", liga: "Argentina", activo: true },
+  { nombre: "Keylor Navas", pais: "Costa Rica", liga: "Argentina", activo: true },
+  { nombre: "Diego Maradona", pais: "Argentina", liga: "Argentina", activo: false },
+  { nombre: "Juan Román Riquelme", pais: "Argentina", liga: "Argentina", activo: false },
+  { nombre: "Gabriel Batistuta", pais: "Argentina", liga: "Italia", activo: false },
+  { nombre: "Cristiano Ronaldo", pais: "Portugal", liga: "Arabia Saudita", activo: true },
+  { nombre: "Kylian Mbappé", pais: "Francia", liga: "España", activo: true },
+  { nombre: "Jude Bellingham", pais: "Inglaterra", liga: "España", activo: true },
+  { nombre: "Erling Haaland", pais: "Noruega", liga: "Inglaterra", activo: true },
+  { nombre: "Mohamed Salah", pais: "Egipto", liga: "Inglaterra", activo: true },
+  { nombre: "Vinícius Júnior", pais: "Brasil", liga: "España", activo: true },
+  { nombre: "Lamine Yamal", pais: "España", liga: "España", activo: true },
+  { nombre: "Ousmane Dembélé", pais: "Francia", liga: "Francia", activo: true },
+  { nombre: "Harry Kane", pais: "Inglaterra", liga: "Alemania", activo: true },
+  { nombre: "Lautaro Martínez", pais: "Argentina", liga: "Italia", activo: true },
+  { nombre: "Julián Álvarez", pais: "Argentina", liga: "España", activo: true },
+  { nombre: "Alexis Mac Allister", pais: "Argentina", liga: "Inglaterra", activo: true },
+  { nombre: "Neymar", pais: "Brasil", liga: "Arabia Saudita", activo: true },
+  { nombre: "Kevin De Bruyne", pais: "Bélgica", liga: "Inglaterra", activo: true },
+  { nombre: "Virgil van Dijk", pais: "Países Bajos", liga: "Inglaterra", activo: true },
+  { nombre: "Rodri", pais: "España", liga: "Inglaterra", activo: true },
+  { nombre: "Luis Suárez", pais: "Uruguay", liga: "Estados Unidos", activo: true },
+  { nombre: "Robert Lewandowski", pais: "Polonia", liga: "España", activo: true },
+  { nombre: "Pelé", pais: "Brasil", liga: "Brasil", activo: false },
+  { nombre: "Diego Godín", pais: "Uruguay", liga: "Uruguay", activo: false },
+  { nombre: "Marcelo", pais: "Brasil", liga: "Brasil", activo: false },
+  { nombre: "Pepe Reina", pais: "España", liga: "España", activo: false },
+  { nombre: "Simon Kjær", pais: "Dinamarca", liga: "Dinamarca", activo: false },
+  { nombre: "Toby Alderweireld", pais: "Bélgica", liga: "Bélgica", activo: false },
+  { nombre: "Jonny Evans", pais: "Irlanda del Norte", liga: "Inglaterra", activo: false },
+  { nombre: "Thiago Alcântara", pais: "España", liga: "España", activo: false },
+  { nombre: "Ángel Correa", pais: "Argentina", liga: "España", activo: true },
+  { nombre: "Chimy Ávila", pais: "Argentina", liga: "España", activo: true },
+  { nombre: "Santiago Sosa", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Rodrigo Villagra", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Zlatan Ibrahimović", pais: "Suecia", liga: "Suecia", activo: false },
+  { nombre: "Luka Modrić", pais: "Croacia", liga: "Croacia", activo: true },
+  { nombre: "Sergio Ramos", pais: "España", liga: "México", activo: true },
+  { nombre: "Karim Benzema", pais: "Francia", liga: "Arabia Saudita", activo: true },
+  { nombre: "Eden Hazard", pais: "Bélgica", liga: "Bélgica", activo: false },
+  { nombre: "Antoine Griezmann", pais: "Francia", liga: "Francia", activo: true },
+  { nombre: "Bruno Fernandes", pais: "Portugal", liga: "Inglaterra", activo: true },
+  { nombre: "Jamal Musiala", pais: "Alemania", liga: "Alemania", activo: true },
+]
 
 let listaRondas = []
-let listaFiltrada = []
+let listaFiltrada = [...listaMacro]
 let jugadores = []
 let idUnico = 0
 let cantidadRondasConfig = 3
@@ -126,15 +100,41 @@ function limpiarEstado() {
   sessionStorage.removeItem("estadoJuego")
 }
 
-/* ===========================
-   Funciones base
-   =========================== */
-
 function boolToInt(b) {
   return b ? "1" : "0"
 }
 function intToBool(s) {
   return s === "1"
+}
+
+function cargarJugadoresAgregados() {
+  const jugadoresStr = localStorage.getItem("jugadoresAgregados")
+  if (jugadoresStr) {
+    try {
+      const jugadoresAgregados = JSON.parse(jugadoresStr)
+      for (let i = 0; i < jugadoresAgregados.length; i++) {
+        listaMacro.push(jugadoresAgregados[i])
+      }
+      console.log("[v0] Jugadores agregados cargados desde localStorage:", jugadoresAgregados.length)
+    } catch (e) {
+      console.log("[v0] Error al cargar jugadores agregados:", e)
+    }
+  }
+}
+
+function guardarJugadorEnLocalStorage(jugador) {
+  let jugadoresAgregados = []
+  const jugadoresStr = localStorage.getItem("jugadoresAgregados")
+  if (jugadoresStr) {
+    try {
+      jugadoresAgregados = JSON.parse(jugadoresStr)
+    } catch (e) {
+      console.log("[v0] Error al parsear jugadores agregados:", e)
+    }
+  }
+  jugadoresAgregados.push(jugador)
+  localStorage.setItem("jugadoresAgregados", JSON.stringify(jugadoresAgregados))
+  console.log("[v0] Jugador guardado en localStorage:", jugador.nombre)
 }
 
 function agregarFutbolista(nombre, pais, liga, activo) {
@@ -145,7 +145,7 @@ function agregarFutbolista(nombre, pais, liga, activo) {
     activo: activo,
   }
   listaMacro.push(jugador)
-  guardarListaMacro()
+  guardarJugadorEnLocalStorage(jugador)
 }
 
 function filtrarPorPais(pais) {
@@ -239,9 +239,6 @@ function filtrarLiga(liga) {
   }
 }
 
-/* ===========================
-   Nuevas funciones para el flujo del juego
-   =========================== */
 
 function leerNumeroDeInput(el) {
   if (!el) {
@@ -388,9 +385,7 @@ function reiniciarYVolverInicio() {
   irA("index.html")
 }
 
-/* ===========================
-   Utilidad para mostrar alertas de Bootstrap
-   =========================== */
+
 function mostrarAlerta(mensaje, contenedorId = "alertContainer") {
   window.scrollTo({ top: 0, behavior: "smooth" })
 
@@ -455,13 +450,11 @@ function mostrarAlertaInfo(mensaje, contenedorId = "alertContainer") {
   }, 4000)
 }
 
-/* ===========================
-   Inicializadores por página
-   =========================== */
+
 
 function initMenu() {
-  cargarListaMacro()
   restaurarEstado()
+  cargarJugadoresAgregados()
   listaFiltrada = [...listaMacro]
 }
 
@@ -823,9 +816,7 @@ function initFinal() {
   })
 }
 
-// ===========================
-// Exponer funciones init*
-// ===========================
+
 window.initMenu = initMenu
 window.initPaso1 = initPaso1
 window.initNombres = initNombres
