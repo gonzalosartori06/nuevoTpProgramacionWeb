@@ -31,7 +31,6 @@ const listaMacro = [
   { nombre: "Julián Álvarez", pais: "Argentina", liga: "España", activo: true },
   { nombre: "Alexis Mac Allister", pais: "Argentina", liga: "Inglaterra", activo: true },
   { nombre: "Neymar", pais: "Brasil", liga: "Arabia Saudita", activo: true },
-  { nombre: "Kylian Mbappé", pais: "Francia", liga: "España", activo: true },
   { nombre: "Kevin De Bruyne", pais: "Bélgica", liga: "Inglaterra", activo: true },
   { nombre: "Virgil van Dijk", pais: "Países Bajos", liga: "Inglaterra", activo: true },
   { nombre: "Rodri", pais: "España", liga: "Inglaterra", activo: true },
@@ -56,12 +55,50 @@ const listaMacro = [
   { nombre: "Eden Hazard", pais: "Bélgica", liga: "Bélgica", activo: false },
   { nombre: "Antoine Griezmann", pais: "Francia", liga: "Francia", activo: true },
   { nombre: "Bruno Fernandes", pais: "Portugal", liga: "Inglaterra", activo: true },
-  { nombre: "Jamal Musiala", pais: "Alemania", liga: "Alemania", activo: true }
-];
-let listaRondas = [] 
-let listaFiltrada = listaMacro
-let jugadores = [] 
+  { nombre: "Jamal Musiala", pais: "Alemania", liga: "Alemania", activo: true },
+]
+
+let listaRondas = []
+let listaFiltrada = [...listaMacro]
+let jugadores = []
 let idUnico = 0
+let cantidadRondasConfig = 3
+let cantidadJugadoresConfig = 4
+let rondaActual = 0
+let turnoRelativo = 0
+
+function guardarEstado() {
+  const estado = {
+    jugadores: jugadores,
+    idUnico: idUnico,
+    cantidadRondasConfig: cantidadRondasConfig,
+    cantidadJugadoresConfig: cantidadJugadoresConfig,
+    listaRondas: listaRondas,
+    rondaActual: rondaActual,
+    turnoRelativo: turnoRelativo,
+    listaFiltrada: listaFiltrada,
+  }
+  sessionStorage.setItem("estadoJuego", JSON.stringify(estado))
+}
+
+function restaurarEstado() {
+  const estadoStr = sessionStorage.getItem("estadoJuego")
+  if (estadoStr) {
+    const estado = JSON.parse(estadoStr)
+    jugadores = estado.jugadores || []
+    idUnico = estado.idUnico || 0
+    cantidadRondasConfig = estado.cantidadRondasConfig || 3
+    cantidadJugadoresConfig = estado.cantidadJugadoresConfig || 4
+    listaRondas = estado.listaRondas || []
+    rondaActual = estado.rondaActual || 0
+    turnoRelativo = estado.turnoRelativo || 0
+    listaFiltrada = estado.listaFiltrada || listaMacro
+  }
+}
+
+function limpiarEstado() {
+  sessionStorage.removeItem("estadoJuego")
+}
 
 
 
@@ -71,120 +108,6 @@ function boolToInt(b) {
 function intToBool(s) {
   return s === "1"
 }
-
-
-function guardarJugadores() {
-  const partes = []
-  for (let i = 0; i < jugadores.length; i++) {
-    const j = jugadores[i]
-    partes.push(j.id + "|" + j.nombre + "|" + (j.puntos || 0))
-  }
-  localStorage.setItem("jugadores_txt", partes.join(";;"))
-  localStorage.setItem("idUnico_txt", String(idUnico))
-}
-
-function cargarJugadores() {
-  jugadores = []
-  const txt = localStorage.getItem("jugadores_txt")
-  const idtxt = localStorage.getItem("idUnico_txt")
-  if (idtxt !== null) {
-    idUnico = Number.parseInt(idtxt, 10)
-    if (isNaN(idUnico)) {
-      idUnico = 0
-    }
-  }
-  if (!txt || txt.trim() === "") {
-    return
-  }
-  const filas = txt.split(";;")
-  for (let i = 0; i < filas.length; i++) {
-    const parte = filas[i].split("|")
-    if (parte.length >= 3) {
-      const id = Number.parseInt(parte[0], 10)
-      const nombre = parte[1]
-      let puntos = Number.parseInt(parte[2], 10)
-      if (isNaN(puntos)) {
-        puntos = 0
-      }
-      jugadores.push({ id: id, nombre: nombre, puntos: puntos })
-    }
-  }
-}
-
-
-function guardarListaMacro() {
-  const partes = []
-  for (let i = 0; i < listaMacro.length; i++) {
-    const f = listaMacro[i]
-    partes.push(f.nombre + "|" + f.pais + "|" + f.liga + "|" + boolToInt(!!f.activo))
-  }
-  localStorage.setItem("listaMacro_txt", partes.join(";;"))
-}
-
-function cargarListaMacro() {
-  const txt = localStorage.getItem("listaMacro_txt")
-  if (!txt || txt.trim() === "") {
-    return
-  }
-  const filas = txt.split(";;")
-  for (let i = 0; i < filas.length; i++) {
-    const parte = filas[i].split("|")
-    if (parte.length >= 4) {
-      const nombre = parte[0]
-      const pais = parte[1]
-      const liga = parte[2]
-      const activo = intToBool(parte[3])
-      listaMacro.push({ nombre: nombre, pais: pais, liga: liga, activo: activo })
-    }
-  }
-  listaFiltrada = listaMacro 
-}
-
-
-function guardarRondas() {
-  const rondasTxt = []
-  for (let r = 0; r < listaRondas.length; r++) {
-    const jugadoresR = listaRondas[r]
-    const lineas = []
-    for (let j = 0; j < jugadoresR.length; j++) {
-      const x = jugadoresR[j]
-      const esImp = x.futbolista === "Impostor" ? "1" : "0"
-      lineas.push(x.id + "|" + x.nombre + "|" + (x.futbolista || "") + "|" + esImp)
-    }
-    rondasTxt.push(lineas.join(";;"))
-  }
-  localStorage.setItem("listaRondas_txt", rondasTxt.join("§"))
-}
-
-function cargarRondas() {
-  listaRondas = []
-  const txt = localStorage.getItem("listaRondas_txt")
-  if (!txt || txt.trim() === "") {
-    return
-  }
-  const rondas = txt.split("§")
-  for (let i = 0; i < rondas.length; i++) {
-    const rondaTxt = rondas[i]
-    const jugTxt = rondaTxt.split(";;")
-    const rondaJugadores = []
-    for (let k = 0; k < jugTxt.length; k++) {
-      const campos = jugTxt[k].split("|")
-      if (campos.length >= 4) {
-        const id = Number.parseInt(campos[0], 10)
-        const nombre = campos[1]
-        let futbolista = campos[2]
-        const esImp = intToBool(campos[3])
-        if (esImp) {
-          futbolista = "Impostor"
-        }
-        rondaJugadores.push({ id: id, nombre: nombre, futbolista: futbolista })
-      }
-    }
-    listaRondas.push(rondaJugadores)
-  }
-}
-
-
 
 function agregarFutbolista(nombre, pais, liga, activo) {
   const jugador = {
@@ -288,7 +211,6 @@ function filtrarLiga(liga) {
 }
 
 
-
 function leerNumeroDeInput(el) {
   if (!el) {
     return 0
@@ -301,9 +223,8 @@ function leerNumeroDeInput(el) {
 }
 
 function creacionJugadores(cantidad) {
-  if (jugadores.length > 0) {
-    return
-  }
+  jugadores = []
+  idUnico = 0
   let numero = 1
   for (let i = 0; i < cantidad; i++) {
     const jugador = { id: idUnico++, nombre: "Jugador " + numero, puntos: 0 }
@@ -346,7 +267,6 @@ function generarRondas(cantRondas) {
     }
     listaRondas.push(rondaJugadores)
   }
-  guardarRondas()
 }
 
 function calcularTurnoInicial(rondaIndex) {
@@ -381,7 +301,6 @@ function puntuarImpostorSiGano(rondaIndex, gano) {
       jugadores[j].puntos = jugadores[j].puntos + 1
     }
   }
-  guardarJugadores()
 }
 
 function calcularGanadores() {
@@ -403,6 +322,7 @@ function calcularGanadores() {
 }
 
 function irA(url) {
+  guardarEstado()
   window.location.href = url
 }
 
@@ -417,19 +337,61 @@ function reiniciarYVolverInicio() {
     selects[i].selectedIndex = 0
   }
 
-
   const checkboxes = document.querySelectorAll('input[type="checkbox"]')
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = false
   }
 
+  jugadores = []
+  listaRondas = []
+  idUnico = 0
+  rondaActual = 0
+  turnoRelativo = 0
+  cantidadRondasConfig = 3
+  cantidadJugadoresConfig = 4
   reiniciarFiltrado()
+
+  limpiarEstado()
 
   irA("index.html")
 }
 
 
 function mostrarAlerta(mensaje, contenedorId = "alertContainer") {
+  window.scrollTo({ top: 0, behavior: "smooth" })
+
+  const contenedor = document.getElementById(contenedorId)
+  if (!contenedor) {
+    alert(mensaje)
+    return
+  }
+
+  const alertHTML = `
+    <div class="alert alert-secondary alert-dismissible fade show d-flex align-items-center" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill me-2" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+      </svg>
+      <div>${mensaje}</div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  `
+
+  contenedor.innerHTML = alertHTML
+
+  setTimeout(() => {
+    const alertElement = contenedor.querySelector(".alert")
+    if (alertElement) {
+      alertElement.classList.remove("show")
+      setTimeout(() => {
+        contenedor.innerHTML = ""
+      }, 150)
+    }
+  }, 4000)
+}
+
+function mostrarAlertaInfo(mensaje, contenedorId = "alertContainer") {
+  window.scrollTo({ top: 0, behavior: "smooth" })
+
   const contenedor = document.getElementById(contenedorId)
   if (!contenedor) {
     alert(mensaje)
@@ -462,31 +424,13 @@ function mostrarAlerta(mensaje, contenedorId = "alertContainer") {
 
 
 function initMenu() {
-  cargarJugadores()
-  cargarListaMacro()
-  if (listaMacro.length === 0) {
-    agregarFutbolista("Lionel Messi", "Argentina", "MLS", true)
-    agregarFutbolista("Cristiano Ronaldo", "Portugal", "Saudi Pro League", true)
-    agregarFutbolista("Kylian Mbappé", "Francia", "La Liga", true)
-    agregarFutbolista("Erling Haaland", "Noruega", "Premier League", true)
-    agregarFutbolista("Kevin De Bruyne", "Bélgica", "Premier League", true)
-    agregarFutbolista("Ángel Di María", "Argentina", "Liga Profesional", true)
-    agregarFutbolista("Neymar Jr", "Brasil", "Saudi Pro League", true)
-    agregarFutbolista("Luka Modrić", "Croacia", "La Liga", true)
-    agregarFutbolista("Mohamed Salah", "Egipto", "Premier League", true)
-    agregarFutbolista("Robert Lewandowski", "Polonia", "La Liga", true)
-    agregarFutbolista("Vinícius Jr", "Brasil", "La Liga", true)
-    agregarFutbolista("Jude Bellingham", "Inglaterra", "La Liga", true)
-    agregarFutbolista("Harry Kane", "Inglaterra", "Bundesliga", true)
-    agregarFutbolista("Pedri", "España", "La Liga", true)
-    agregarFutbolista("Gavi", "España", "La Liga", true)
-    guardarListaMacro()
-  }
+  restaurarEstado()
+  listaFiltrada = [...listaMacro]
 }
 
 function initPaso1() {
-  cargarJugadores()
-  cargarListaMacro()
+  restaurarEstado()
+
   const btn = document.getElementById("siguentePaso")
   const inpR = document.getElementById("cantidadRondas")
   const inpJ = document.getElementById("cantidadJugadores")
@@ -507,39 +451,72 @@ function initPaso1() {
       cantJ = 10
     }
 
+    cantidadRondasConfig = cantR
+    cantidadJugadoresConfig = cantJ
     creacionJugadores(cantJ)
-    guardarJugadores()
-    localStorage.setItem("cantidadRondas_txt", String(cantR))
+
+    console.log("[v0] Configuración guardada - Rondas:", cantidadRondasConfig, "Jugadores:", cantidadJugadoresConfig)
+    console.log("[v0] Jugadores creados:", jugadores.length)
+
     irA("nombres.html")
   })
 }
 
 function initNombres() {
-  cargarJugadores()
-  const cont = document.getElementById("listaNombres")
-  let html = ""
+  restaurarEstado()
 
-  for (let i = 0; i < jugadores.length; i++) {
-    const j = jugadores[i]
-    html += '<div class="mb-0">'
-    html += '<label class="form-label">Jugador ' + (i + 1) + "</label>"
-    html += '<input type="text" class="form-control" data-id="' + j.id + '" value="' + j.nombre + '">'
-    html += "</div>"
+  const listaIzquierda = document.getElementById("listaNombresIzquierda")
+  const selectorJugador = document.getElementById("selectorJugador")
+  const inputNombre = document.getElementById("inputNombreJugador")
+
+  if (jugadores.length === 0) {
+    console.log("[v0] No hay jugadores, redirigiendo a paso1")
+    irA("paso1.html")
+    return
   }
-  cont.innerHTML = html
+
+  function actualizarListaIzquierda() {
+    let html = ""
+    for (let i = 0; i < jugadores.length; i++) {
+      html += `<div class="mb-2"><strong>Jugador ${i + 1}:</strong> ${jugadores[i].nombre}</div>`
+    }
+    listaIzquierda.innerHTML = html
+  }
+
+  let opcionesHTML = ""
+  for (let i = 0; i < jugadores.length; i++) {
+    opcionesHTML += `<option value="${i}">Jugador ${i + 1}</option>`
+  }
+  selectorJugador.innerHTML = opcionesHTML
+
+  selectorJugador.addEventListener("change", () => {
+    const idx = Number.parseInt(selectorJugador.value, 10)
+    if (idx >= 0 && idx < jugadores.length) {
+      inputNombre.placeholder = jugadores[idx].nombre
+      inputNombre.value = ""
+    }
+  })
+
+  inputNombre.addEventListener("input", () => {
+    const idx = Number.parseInt(selectorJugador.value, 10)
+    if (idx >= 0 && idx < jugadores.length) {
+      if (inputNombre.value.trim() !== "") {
+        jugadores[idx].nombre = inputNombre.value
+        actualizarListaIzquierda()
+      }
+    }
+  })
+
+  if (jugadores.length > 0) {
+    inputNombre.placeholder = jugadores[0].nombre
+    inputNombre.value = ""
+  }
+
+  actualizarListaIzquierda()
 
   const btnS = document.getElementById("seguirAFiltros")
   btnS.addEventListener("click", () => {
-    const inputs = cont.getElementsByTagName("input")
-    for (let i = 0; i < inputs.length; i++) {
-      const el = inputs[i]
-      const id = Number.parseInt(el.getAttribute("data-id"), 10)
-      const nuevoNombre = el.value.trim()
-      if (nuevoNombre !== "") {
-        cambiarNombreJugador(id, nuevoNombre)
-      }
-    }
-    guardarJugadores()
+    console.log("[v0] Guardando nombres y yendo a filtros. Jugadores:", jugadores)
     irA("filtros.html")
   })
 
@@ -550,8 +527,18 @@ function initNombres() {
 }
 
 function initFiltros() {
-  cargarListaMacro()
+  restaurarEstado()
+
   reiniciarFiltrado()
+
+  if (jugadores.length === 0) {
+    console.log("[v0] No hay jugadores en filtros, redirigiendo a paso1")
+    mostrarAlerta("Primero debes configurar los jugadores", "alertContainer")
+    setTimeout(() => {
+      irA("paso1.html")
+    }, 2000)
+    return
+  }
 
   const selPais = document.getElementById("selPais")
   const selLiga = document.getElementById("selLiga")
@@ -575,41 +562,28 @@ function initFiltros() {
     if (a === "0") {
       filtrarPorActivo(false)
     }
-    const nombres = []
-    for (let i = 0; i < listaFiltrada.length; i++) {
-      nombres.push(listaFiltrada[i].nombre)
-    }
-    localStorage.setItem("filtradosNombres_txt", nombres.join(";;"))
-    mostrarAlerta("Filtros aplicados. Futbolistas disponibles: " + nombres.length, "alertContainer")
+    mostrarAlerta("Filtros aplicados. Futbolistas disponibles: " + listaFiltrada.length, "alertContainer")
+  })
+
+  document.getElementById("borrarFiltros").addEventListener("click", () => {
+    selPais.selectedIndex = 0
+    selLiga.selectedIndex = 0
+    selActivo.selectedIndex = 0
+    reiniciarFiltrado()
+    mostrarAlerta("Filtros borrados", "alertContainer")
   })
 
   document.getElementById("comenzarJuego").addEventListener("click", () => {
-    const txt = localStorage.getItem("filtradosNombres_txt")
-    if (txt && txt.trim() !== "") {
-      const nombres = txt.split(";;")
-      const temp = []
-      for (let i = 0; i < listaMacro.length; i++) {
-        const nm = listaMacro[i].nombre
-        let ok = false
-        for (let k = 0; k < nombres.length; k++) {
-          if (nombres[k] === nm) {
-            ok = true
-          }
-        }
-        if (ok) {
-          temp.push(listaMacro[i])
-        }
-      }
-      if (temp.length > 0) {
-        listaFiltrada = temp
-      }
+    if (jugadores.length === 0) {
+      mostrarAlerta("No hay jugadores configurados", "alertContainer")
+      return
     }
-    cargarJugadores()
-    let cantR = Number.parseInt(localStorage.getItem("cantidadRondas_txt") || "1", 10)
-    if (isNaN(cantR) || cantR < 1) {
-      cantR = 1
-    }
-    generarRondas(cantR)
+
+    console.log("[v0] Generando rondas con:", cantidadRondasConfig, "rondas y", jugadores.length, "jugadores")
+    generarRondas(cantidadRondasConfig)
+    rondaActual = 0
+    turnoRelativo = 0
+    console.log("[v0] Rondas generadas:", listaRondas.length)
     irA("juego.html")
   })
 
@@ -623,7 +597,8 @@ function initFiltros() {
     const nombre = (inpNombre.value || "").trim()
     const pais = (inpPais.value || "").trim()
     const liga = (inpLiga.value || "").trim()
-    const activo = !!chkActivo.checked
+    const activoSelect = chkActivo
+    const activo = activoSelect.value === "1"
 
     if (nombre === "" || pais === "" || liga === "") {
       mostrarAlerta("Completá Nombre, País y Liga.", "alertContainer")
@@ -631,34 +606,33 @@ function initFiltros() {
     }
 
     agregarFutbolista(nombre, pais, liga, activo)
-    guardarListaMacro()
 
     inpNombre.value = ""
     inpPais.value = ""
     inpLiga.value = ""
-    chkActivo.checked = true
+    activoSelect.selectedIndex = 0
 
     _reconstruirSelects(selPais, selLiga)
-    mostrarAlerta("Futbolista agregado correctamente.", "alertContainer")
+    mostrarAlertaInfo("Futbolista agregado correctamente.", "alertContainer")
   })
 }
 
 function initJuego() {
-  cargarJugadores()
-  cargarRondas()
+  restaurarEstado()
+
   if (listaRondas.length === 0) {
+    console.log("[v0] No hay rondas generadas, redirigiendo a filtros")
     irA("filtros.html")
     return
   }
-  let rondaActual = Number.parseInt(localStorage.getItem("rondaActual_idx") || "0", 10)
-  if (isNaN(rondaActual)) {
-    rondaActual = 0
+
+  if (jugadores.length === 0) {
+    console.log("[v0] No hay jugadores en juego, redirigiendo a paso1")
+    irA("paso1.html")
+    return
   }
+
   const turnoInicial = calcularTurnoInicial(rondaActual)
-  let turnoRelativo = Number.parseInt(localStorage.getItem("turnoRelativo_idx") || "0", 10)
-  if (isNaN(turnoRelativo)) {
-    turnoRelativo = 0
-  }
 
   function jugadorIndexEnOrden() {
     const total = jugadores.length
@@ -718,7 +692,6 @@ function initJuego() {
 
     document.getElementById("btnContinuarTurno").addEventListener("click", () => {
       turnoRelativo = turnoRelativo + 1
-      localStorage.setItem("turnoRelativo_idx", String(turnoRelativo))
       if (turnoRelativo >= jugadores.length) {
         mostrarPantallaResultadoRonda()
       } else {
@@ -759,14 +732,17 @@ function initJuego() {
       puntuarImpostorSiGano(rondaActual, gano)
 
       rondaActual = rondaActual + 1
-      localStorage.setItem("rondaActual_idx", String(rondaActual))
       turnoRelativo = 0
-      localStorage.setItem("turnoRelativo_idx", "0")
+
+      console.log("[v0] Ronda actual:", rondaActual, "Total rondas:", listaRondas.length)
 
       if (rondaActual >= listaRondas.length) {
+        console.log("[v0] Juego terminado, yendo a final")
         irA("final.html")
       } else {
-        initJuego()
+        console.log("[v0] Continuando con ronda", rondaActual + 1)
+        guardarEstado()
+        mostrarPantallaListo()
       }
     })
   }
@@ -775,7 +751,8 @@ function initJuego() {
 }
 
 function initFinal() {
-  cargarJugadores()
+  restaurarEstado()
+
   const cont = document.getElementById("resultadoFinal")
   const ganadores = calcularGanadores()
   const maxP = ganadores.length > 0 ? ganadores[0].puntos : 0
@@ -795,23 +772,20 @@ function initFinal() {
   cont.innerHTML = html
 
   document.getElementById("btnVolverMenu").addEventListener("click", () => {
-    localStorage.removeItem("rondaActual_idx")
-    localStorage.removeItem("turnoRelativo_idx")
-    localStorage.removeItem("listaRondas_txt")
-    localStorage.removeItem("cantidadRondas_txt")
-    localStorage.removeItem("filtradosNombres_txt")
-    irA("index.html")
+    reiniciarYVolverInicio()
   })
 
   document.getElementById("btnRejugarFiltros").addEventListener("click", () => {
-    localStorage.removeItem("rondaActual_idx")
-    localStorage.removeItem("turnoRelativo_idx")
-    localStorage.removeItem("listaRondas_txt")
-    localStorage.removeItem("cantidadRondas_txt")
-    localStorage.removeItem("filtradosNombres_txt")
+    rondaActual = 0
+    turnoRelativo = 0
+    listaRondas = []
+    for (let i = 0; i < jugadores.length; i++) {
+      jugadores[i].puntos = 0
+    }
     irA("filtros.html")
   })
 }
+
 
 window.initMenu = initMenu
 window.initPaso1 = initPaso1
@@ -826,21 +800,68 @@ window.irA = irA
 window.reiniciarYVolverInicio = reiniciarYVolverInicio
 
 window.mostrarAlerta = mostrarAlerta
-
+window.mostrarAlertaInfo = mostrarAlertaInfo
 
 function _reconstruirSelects(selPais, selLiga) {
+  const paisEmojis = {
+    Argentina: "🇦🇷",
+    Brasil: "🇧🇷",
+    Portugal: "🇵🇹",
+    Francia: "🇫🇷",
+    Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    España: "🇪🇸",
+    Alemania: "🇩🇪",
+    Italia: "🇮🇹",
+    "Países Bajos": "🇳🇱",
+    Bélgica: "🇧🇪",
+    Uruguay: "🇺🇾",
+    Croacia: "🇭🇷",
+    Polonia: "🇵🇱",
+    Egipto: "🇪🇬",
+    Noruega: "🇳🇴",
+    "Costa Rica": "🇨🇷",
+    Dinamarca: "🇩🇰",
+    "Irlanda del Norte": "🇬🇧",
+    Suecia: "🇸🇪",
+    "Estados Unidos": "🇺🇸",
+    "Arabia Saudita": "🇸🇦",
+    México: "🇲🇽",
+  }
+
+  const ligaEmojis = {
+    Argentina: "🇦🇷",
+    Brasil: "🇧🇷",
+    España: "🇪🇸",
+    Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    Italia: "🇮🇹",
+    Alemania: "🇩🇪",
+    Francia: "🇫🇷",
+    "Estados Unidos": "🇺🇸",
+    "Arabia Saudita": "🇸🇦",
+    México: "🇲🇽",
+    Uruguay: "🇺🇾",
+    Croacia: "🇭🇷",
+    Bélgica: "🇧🇪",
+    Dinamarca: "🇩🇰",
+    Suecia: "🇸🇪",
+  }
+
   const paises = {}
   const ligas = {}
   for (let i = 0; i < listaMacro.length; i++) {
     paises[listaMacro[i].pais] = true
     ligas[listaMacro[i].liga] = true
   }
-  selPais.innerHTML = '<option value="">(cualquiera)</option>'
+
+  selPais.innerHTML = '<option value="">Seleccionar país</option>'
   for (const p in paises) {
-    selPais.innerHTML += '<option value="' + p + '">' + p + "</option>"
+    const emoji = paisEmojis[p] || "🌍"
+    selPais.innerHTML += `<option value="${p}">${emoji} ${p}</option>`
   }
-  selLiga.innerHTML = '<option value="">(cualquiera)</option>'
+
+  selLiga.innerHTML = '<option value="">Seleccionar liga</option>'
   for (const l in ligas) {
-    selLiga.innerHTML += '<option value="' + l + '">' + l + "</option>"
+    const emoji = ligaEmojis[l] || "⚽"
+    selLiga.innerHTML += `<option value="${l}">${emoji} ${l}</option>`
   }
 }

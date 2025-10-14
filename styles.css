@@ -21,6 +21,8 @@ body {
 .header-custom {
   background-color: #ffffff;
   border-bottom: 1px solid #000000;
+  position: relative;
+  z-index: 10;
 }
 
 .brand {
@@ -35,7 +37,7 @@ body {
 }
 
 .brand img {
-  height: 50px;
+  height: 48px;
   width: auto;
 }
 
@@ -73,12 +75,12 @@ main {
   font-size: 2.5rem;
   font-weight: 400;
   line-height: 1.2;
-  color: #000000
+  color: #ff6b7a;
   letter-spacing: -0.01em;
 }
 
 .texto-destacado {
-  color: rgb(60 217 179);
+  color: #ff6b7a;
 }
 
 .footer-custom {
@@ -86,6 +88,8 @@ main {
   color: #ffffff;
   margin-top: auto;
   border-top: 1px solid #000000;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-custom a {
@@ -103,6 +107,130 @@ main {
   background-color: #ffffff;
   padding: 48px;
   margin-bottom: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.container-bordered-split {
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  display: flex;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.container-bordered-title {
+  border: 1px solid #000000;
+  border-bottom: none;
+  background-color: #ffffff;
+  padding: 24px;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.container-bordered-grid {
+  border: 1px solid #000000;
+  border-top: none;
+  border-bottom: none;
+  background-color: #ffffff;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.container-bordered-buttons {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.container-bordered-button-single {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.split-section {
+  flex: 1;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split-divider {
+  width: 1px;
+  background-color: #000000;
+}
+
+.filter-column {
+  border-right: 1px solid #000000;
+}
+
+.filter-column:last-child {
+  border-right: none;
+}
+
+.filter-column-full {
+  border-right: 1px solid #000000;
+  position: relative;
+}
+
+.filter-column-full::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #000000;
+  z-index: 1;
+}
+
+.filter-column-full:last-child {
+  border-right: none;
+}
+
+.filter-column-full:last-child::after {
+  display: none;
+}
+
+.filtros-grid .filter-column-full:last-child {
+  border-right: none;
+}
+
+.filter-box {
+  padding: 24px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.filter-label {
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
 }
 
 .form-label {
@@ -159,6 +287,24 @@ main {
 .btn-outline-dark:hover {
   background-color: #000000;
   color: #ffffff;
+}
+
+.btn-trash {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.btn-trash:hover {
+  opacity: 0.7;
+}
+
+.trash-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
 }
 
 .pantalla-centro {
@@ -246,6 +392,29 @@ main {
   flex-shrink: 0;
 }
 
+.button-box {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nombres-container .nombres-left {
+  border-right: 1px solid #000000;
+  position: relative;
+}
+
+.nombres-container .nombres-left::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #000000;
+  z-index: 1;
+}
+
 @media (max-width: 768px) {
   .titulo-principal {
     font-size: 2.5rem;
@@ -259,6 +428,24 @@ main {
     padding: 24px;
   }
 
+  .container-bordered-split {
+    flex-direction: column;
+  }
+
+  .split-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .filter-column {
+    border-right: none;
+    border-bottom: 1px solid #000000;
+  }
+
+  .filter-column:last-child {
+    border-bottom: none;
+  }
+
   .btn-lg {
     width: 100%;
     margin-bottom: 12px !important;
@@ -266,5 +453,9 @@ main {
 
   .nav-custom {
     gap: 16px;
+  }
+
+  .brand img {
+    height: 36px;
   }
 }

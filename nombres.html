@@ -24,15 +24,34 @@
 
   <main class="py-5">
     <div class="container">
-      <div class="container-bordered">
-        <h1 class="titulo-principal text-center mb-5">Editar nombres</h1>
-
-        <div id="listaNombres"></div>
-
-        <div class="text-center mt-5">
-          <button id="omitirNombres" class="btn btn-outline-dark btn-lg me-3">Omitir</button>
-          <button id="seguirAFiltros" class="btn btn-dark btn-lg">Siguiente</button>
+      <h2 class="titulo-secundario text-center mb-4">Jugadores</h2>
+      
+      <div class="container-bordered mb-0 nombres-container">
+        <div class="row g-0">
+          <div class="col-md-6 nombres-left">
+            <div class="p-4">
+              <h3 class="mb-3" style="font-weight: 600;">Jugadores:</h3>
+              <div id="listaNombresIzquierda"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-4">
+              <div class="mb-3">
+                <label class="form-label">Editar:</label>
+                <select id="selectorJugador" class="form-select mb-3"></select>
+              </div>
+              <div>
+                <label class="form-label">Nombre:</label>
+                <input type="text" id="inputNombreJugador" class="form-control" placeholder="Nombre: ">
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button id="omitirNombres" class="btn btn-outline-dark btn-lg me-3">Omitir</button>
+        <button id="seguirAFiltros" class="btn btn-dark btn-lg">Siguiente</button>
       </div>
     </div>
   </main>
@@ -60,5 +79,4 @@
   </script>
 </body>
 </html>
-
 

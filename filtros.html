@@ -24,61 +24,93 @@
 
   <main class="py-5">
     <div class="container">
-      <div class="container-bordered">
-        <h1 class="titulo-principal text-center mb-5">Filtros de futbolistas</h1>
+      <div id="alertContainer"></div>
 
-        <div id="alertContainer"></div>
+      <div class="container-bordered-title mb-0">
+        <h2 class="titulo-secundario text-center mb-0">filtrar jugadores</h2>
+      </div>
 
-        <div class="mb-0">
-          <label for="selPais" class="form-label">País</label>
-          <select id="selPais" class="form-select"></select>
-        </div>
-
-        <div class="mb-0">
-          <label for="selLiga" class="form-label">Liga</label>
-          <select id="selLiga" class="form-select"></select>
-        </div>
-
-        <div class="mb-0">
-          <label for="selActivo" class="form-label">Estado</label>
-          <select id="selActivo" class="form-select">
-            <option value="">(cualquiera)</option>
-            <option value="1">Activos</option>
-            <option value="0">No activos</option>
-          </select>
-        </div>
-
-        <div class="text-center mt-5">
-          <button id="aplicarFiltros" class="btn btn-outline-dark btn-lg me-3">Aplicar filtros</button>
-          <button id="comenzarJuego" class="btn btn-dark btn-lg">Comenzar juego</button>
-        </div>
-
-        <h2 class="titulo-secundario text-center mt-5 mb-4">Agregar nuevo futbolista</h2>
-        
-        <div class="mb-0">
-          <label for="nuevoNombre" class="form-label">Nombre</label>
-          <input type="text" id="nuevoNombre" class="form-control" placeholder="Ej: Paulo Dybala">
-        </div>
-
-        <div class="mb-0">
-          <label for="nuevoPais" class="form-label">País</label>
-          <input type="text" id="nuevoPais" class="form-control" placeholder="Ej: Argentina">
-        </div>
-
-        <div class="mb-0">
-          <label for="nuevoLiga" class="form-label">Liga</label>
-          <input type="text" id="nuevoLiga" class="form-control" placeholder="Ej: Serie A">
-        </div>
-
-        <div class="mb-0">
-          <div class="form-check mt-3">
-            <input type="checkbox" id="nuevoActivo" class="form-check-input" checked>
-            <label for="nuevoActivo" class="form-check-label">Está activo</label>
+      <div class="container-bordered-grid mb-0 filtros-grid">
+        <div class="row g-0">
+          <div class="col-md-3 filter-column-full">
+            <div class="filter-box">
+              <select id="selPais" class="form-select"></select>
+            </div>
+          </div>
+          <div class="col-md-3 filter-column-full">
+            <div class="filter-box">
+              <select id="selLiga" class="form-select"></select>
+            </div>
+          </div>
+          <div class="col-md-3 filter-column-full">
+            <div class="filter-box">
+              <select id="selActivo" class="form-select">
+                <option value="">Activo</option>
+                <option value="1">✅ Activos</option>
+                <option value="0">❌ No activos</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="filter-box d-flex align-items-center justify-content-center">
+              <button id="borrarFiltros" class="btn-trash">
+                <img src="media/basura.png" alt="Borrar filtros" class="trash-icon">
+              </button>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="text-center mt-5">
-          <button id="btnAgregarFutbolista" class="btn btn-dark btn-lg">Agregar futbolista</button>
+      <div class="container-bordered-buttons mb-0">
+        <div class="row g-0">
+          <div class="col-md-6 border-end border-dark">
+            <div class="button-box">
+              <button id="aplicarFiltros" class="btn btn-outline-dark btn-lg">aplicar filtros</button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="button-box">
+              <button id="comenzarJuego" class="btn btn-dark btn-lg">comenzar juego</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-bordered-title mb-0 mt-0">
+        <h2 class="titulo-secundario text-center mb-0">Agregar Futbolista</h2>
+      </div>
+
+      <div class="container-bordered-grid mb-0 filtros-grid">
+        <div class="row g-0">
+          <div class="col-md-3 filter-column-full">
+            <div class="filter-box">
+              <input type="text" id="nuevoNombre" class="form-control" placeholder="Nombre">
+            </div>
+          </div>
+          <div class="col-md-3 filter-column-full">
+            <div class="filter-box">
+              <input type="text" id="nuevoPais" class="form-control" placeholder="País">
+            </div>
+          </div>
+          <div class="col-md-3 filter-column-full">
+            <div class="filter-box">
+              <input type="text" id="nuevoLiga" class="form-control" placeholder="Liga">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="filter-box">
+              <select id="nuevoActivo" class="form-select">
+                <option value="1">✅ Activo</option>
+                <option value="0">❌ No activo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-bordered-button-single mb-0">
+        <div class="text-center py-4">
+          <button id="btnAgregarFutbolista" class="btn btn-dark btn-lg">añadir jugador</button>
         </div>
       </div>
     </div>
