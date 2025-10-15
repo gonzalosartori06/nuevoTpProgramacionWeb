@@ -15,7 +15,6 @@
           <img src="media/logo.png" alt="Logo">
         </a>
         <nav class="nav-custom">
-          <!-- Reemplazado "Inicio" por "Futbolistas" -->
           <a href="futbolistas.html">Futbolistas</a>
           <a href="tutorial.html">Tutorial</a>
         </nav>
@@ -26,28 +25,31 @@
   <main class="py-5">
     <div class="container">
       <div id="alertContainer"></div>
-
       <div class="container-bordered-title mb-0">
-        <h2 class="titulo-secundario text-center mb-0">filtrar jugadores</h2>
+        <h2 class="titulo-secundario text-center mb-0">Filtrar Futbolistas</h2>
       </div>
 
       <div class="container-bordered-grid mb-0 filtros-grid">
         <div class="row g-0">
           <div class="col-md-3 filter-column-full">
             <div class="filter-box">
-              <select id="selPais" class="form-select"></select>
+              <select id="selPais" class="form-select">
+                <option value="" disabled selected hidden>Seleccionar país</option>
+              </select>
             </div>
           </div>
           <div class="col-md-3 filter-column-full">
             <div class="filter-box">
-              <select id="selLiga" class="form-select"></select>
+              <select id="selLiga" class="form-select">
+                <option value="" disabled selected hidden>Seleccionar liga</option>
+              </select>
             </div>
           </div>
           <div class="col-md-3 filter-column-full">
             <div class="filter-box">
               <select id="selActivo" class="form-select">
-                <option value="">Seleccionar estado</option>
-                <option value="todos" selected>Todos</option>
+                <option value="" disabled selected hidden>Seleccionar estado</option>
+                <option value="todos">Todos</option>
                 <option value="1">✅ Activos</option>
                 <option value="0">❌ No activos</option>
               </select>
@@ -62,11 +64,9 @@
           </div>
         </div>
       </div>
-
-      <!-- Línea horizontal visible para dividir container de botones -->
       <div class="container-bordered-buttons">
         <div class="text-center py-4">
-          <button id="agregarJugador" class="btn btn-outline-dark btn-lg me-3">Agregar jugador</button>
+          <button id="agregarJugador" class="btn btn-outline-dark btn-lg me-3">Agregar Futbolista</button>
           <button id="comenzarJuego" class="btn btn-dark btn-lg">comenzar juego</button>
         </div>
       </div>
@@ -88,6 +88,10 @@
     document.getElementById('brandLink').addEventListener('click', (e) => {
       e.preventDefault()
       reiniciarYVolverInicio()
+    })
+    
+    document.getElementById('agregarJugador').addEventListener('click', () => {
+      window.location.href = 'futbolistas.html#agregar-futbolista'
     })
   </script>
 </body>

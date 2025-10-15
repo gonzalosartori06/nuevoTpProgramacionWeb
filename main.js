@@ -1,6 +1,3 @@
-/* ===========================
-   Estado y estructuras base
-   =========================== */
 const listaMacro = [
   { nombre: "Lionel Messi", pais: "Argentina", liga: "Estados Unidos", activo: true },
   { nombre: "Ángel Di María", pais: "Argentina", liga: "Argentina", activo: true },
@@ -69,6 +66,7 @@ let cantidadJugadoresConfig = 4
 let rondaActual = 0
 let turnoRelativo = 0
 let futbolistasUsados = []
+let ordenJugadoresPorRonda = []
 
 function guardarEstado() {
   const estado = {
@@ -81,6 +79,7 @@ function guardarEstado() {
     turnoRelativo: turnoRelativo,
     listaFiltrada: listaFiltrada,
     futbolistasUsados: futbolistasUsados,
+    ordenJugadoresPorRonda: ordenJugadoresPorRonda,
   }
   sessionStorage.setItem("estadoJuego", JSON.stringify(estado))
 }
@@ -98,17 +97,15 @@ function restaurarEstado() {
     turnoRelativo = estado.turnoRelativo || 0
     listaFiltrada = estado.listaFiltrada || listaMacro
     futbolistasUsados = estado.futbolistasUsados || []
+    ordenJugadoresPorRonda = estado.ordenJugadoresPorRonda || []
   }
 }
 
 function limpiarEstado() {
   sessionStorage.removeItem("estadoJuego")
   futbolistasUsados = []
+  ordenJugadoresPorRonda = []
 }
-
-/* ===========================
-   Funciones base
-   =========================== */
 
 function boolToInt(b) {
   return b ? "1" : "0"
@@ -249,9 +246,6 @@ function filtrarLiga(liga) {
   }
 }
 
-/* ===========================
-   Nuevas funciones para el flujo del juego
-   =========================== */
 
 function leerNumeroDeInput(el) {
   if (!el) {
@@ -332,6 +326,8 @@ function generarRondas(cantRondas) {
     }
     listaRondas.push(rondaJugadores)
   }
+
+  prepararOrdenJugadoresPorRonda()
 }
 
 function calcularTurnoInicial(rondaIndex) {
@@ -415,6 +411,7 @@ function reiniciarYVolverInicio() {
   cantidadRondasConfig = 3
   cantidadJugadoresConfig = 4
   futbolistasUsados = []
+  ordenJugadoresPorRonda = []
   reiniciarFiltrado()
 
   limpiarEstado()
@@ -422,9 +419,6 @@ function reiniciarYVolverInicio() {
   irA("index.html")
 }
 
-/* ===========================
-   Utilidad para mostrar alertas de Bootstrap
-   =========================== */
 function mostrarAlerta(mensaje, contenedorId = "alertContainer") {
   window.scrollTo({ top: 0, behavior: "smooth" })
 
@@ -489,9 +483,6 @@ function mostrarAlertaInfo(mensaje, contenedorId = "alertContainer") {
   }, 4000)
 }
 
-/* ===========================
-   Inicializadores por página
-   =========================== */
 
 function initMenu() {
   restaurarEstado()
@@ -660,7 +651,6 @@ function initFiltros() {
   reiniciarFiltrado()
 
   if (jugadores.length === 0) {
-    console.log("[v0] No hay jugadores en filtros, redirigiendo a paso1")
     mostrarAlerta("Primero debes configurar los jugadores", "alertContainer")
     setTimeout(() => {
       irA("paso1.html")
@@ -689,7 +679,6 @@ function initFiltros() {
     } else if (a === "0") {
       filtrarPorActivo(false)
     }
-    console.log("[v0] Filtros aplicados automáticamente. Futbolistas disponibles:", listaFiltrada.length)
   }
 
   selPais.addEventListener("change", aplicarFiltrosAutomatico)
@@ -727,22 +716,20 @@ function initJuego() {
   restaurarEstado()
 
   if (listaRondas.length === 0) {
-    console.log("[v0] No hay rondas generadas, redirigiendo a filtros")
     irA("filtros.html")
     return
   }
 
   if (jugadores.length === 0) {
-    console.log("[v0] No hay jugadores en juego, redirigiendo a paso1")
     irA("paso1.html")
     return
   }
 
-  const turnoInicial = calcularTurnoInicial(rondaActual)
-
   function jugadorIndexEnOrden() {
-    const total = jugadores.length
-    return (turnoInicial + turnoRelativo) % total
+    if (ordenJugadoresPorRonda.length > rondaActual && ordenJugadoresPorRonda[rondaActual].length > turnoRelativo) {
+      return ordenJugadoresPorRonda[rondaActual][turnoRelativo]
+    }
+    return turnoRelativo % jugadores.length
   }
 
   const tituloRonda = document.querySelector(".titulo-principal")
@@ -753,7 +740,6 @@ function initJuego() {
   function mostrarPantallaListo() {
     const idx = jugadorIndexEnOrden()
     if (idx < 0 || idx >= jugadores.length) {
-      console.log("[v0] Error: índice de jugador inválido", idx)
       return
     }
     const j = jugadores[idx]
@@ -776,7 +762,6 @@ function initJuego() {
   function mostrarPantallaRevelar() {
     const idx = jugadorIndexEnOrden()
     if (idx < 0 || idx >= jugadores.length) {
-      console.log("[v0] Error: índice de jugador inválido en revelar", idx)
       return
     }
     const j = jugadores[idx]
@@ -849,13 +834,9 @@ function initJuego() {
       rondaActual = rondaActual + 1
       turnoRelativo = 0
 
-      console.log("[v0] Ronda actual:", rondaActual, "Total rondas:", listaRondas.length)
-
       if (rondaActual >= listaRondas.length) {
-        console.log("[v0] Juego terminado, yendo a final")
         irA("final.html")
       } else {
-        console.log("[v0] Continuando con ronda", rondaActual + 1)
         guardarEstado()
         mostrarPantallaListo()
       }
@@ -901,9 +882,7 @@ function initFinal() {
   })
 }
 
-// ===========================
-// Exponer funciones init*
-// ===========================
+
 window.initMenu = initMenu
 window.initPaso1 = initPaso1
 window.initNombres = initNombres
@@ -963,15 +942,37 @@ function _reconstruirSelects(selPais, selLiga) {
     ligas[listaMacro[i].liga] = true
   }
 
-  selPais.innerHTML = '<option value="">Seleccionar país</option>'
+  selPais.innerHTML = '<option value="" disabled selected>Seleccionar país</option>'
   for (const p in paises) {
     const emoji = paisEmojis[p] || "🌍"
     selPais.innerHTML += `<option value="${p}">${emoji} ${p}</option>`
   }
 
-  selLiga.innerHTML = '<option value="">Seleccionar liga</option>'
+  selLiga.innerHTML = '<option value="" disabled selected>Seleccionar liga</option>'
   for (const l in ligas) {
     const emoji = ligaEmojis[l] || "⚽"
     selLiga.innerHTML += `<option value="${l}">${emoji} ${l}</option>`
+  }
+}
+
+function prepararOrdenJugadoresPorRonda() {
+  ordenJugadoresPorRonda = []
+
+  if (jugadores.length === 0) {
+    return
+  }
+
+  const ordenInicial = []
+  for (let i = 0; i < jugadores.length; i++) {
+    ordenInicial.push(i)
+  }
+
+  for (let r = 0; r < listaRondas.length; r++) {
+    const ordenRonda = []
+    for (let j = 0; j < ordenInicial.length; j++) {
+      const indiceRotado = (ordenInicial[j] + r) % jugadores.length
+      ordenRonda.push(indiceRotado)
+    }
+    ordenJugadoresPorRonda.push(ordenRonda)
   }
 }
