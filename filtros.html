@@ -31,12 +31,10 @@
         <h2 class="titulo-secundario text-center mb-0">filtrar jugadores</h2>
       </div>
 
-      <!-- Eliminado cuadro de agregar futbolista, solo filtros -->
-      <div class="container-bordered-grid mb-4 filtros-grid">
+      <div class="container-bordered-grid mb-0 filtros-grid">
         <div class="row g-0">
           <div class="col-md-3 filter-column-full">
             <div class="filter-box">
-              <!-- Agregado "Seleccionar estado" como placeholder -->
               <select id="selPais" class="form-select"></select>
             </div>
           </div>
@@ -47,10 +45,9 @@
           </div>
           <div class="col-md-3 filter-column-full">
             <div class="filter-box">
-              <!-- Agregado "Todos" como opción predeterminada -->
               <select id="selActivo" class="form-select">
                 <option value="">Seleccionar estado</option>
-                <option value="todos">Todos</option>
+                <option value="todos" selected>Todos</option>
                 <option value="1">✅ Activos</option>
                 <option value="0">❌ No activos</option>
               </select>
@@ -66,10 +63,12 @@
         </div>
       </div>
 
-      <!-- Botones fuera del container de filtros -->
-      <div class="text-center mb-4">
-        <button id="agregarJugador" class="btn btn-outline-dark btn-lg me-3">Agregar jugador</button>
-        <button id="comenzarJuego" class="btn btn-dark btn-lg">comenzar juego</button>
+      <!-- Línea horizontal visible para dividir container de botones -->
+      <div class="container-bordered-buttons">
+        <div class="text-center py-4">
+          <button id="agregarJugador" class="btn btn-outline-dark btn-lg me-3">Agregar jugador</button>
+          <button id="comenzarJuego" class="btn btn-dark btn-lg">comenzar juego</button>
+        </div>
       </div>
     </div>
   </main>

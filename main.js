@@ -1,3 +1,6 @@
+/* ===========================
+   Estado y estructuras base
+   =========================== */
 const listaMacro = [
   { nombre: "Lionel Messi", pais: "Argentina", liga: "Estados Unidos", activo: true },
   { nombre: "Ángel Di María", pais: "Argentina", liga: "Argentina", activo: true },
@@ -65,6 +68,7 @@ let cantidadRondasConfig = 3
 let cantidadJugadoresConfig = 4
 let rondaActual = 0
 let turnoRelativo = 0
+let futbolistasUsados = []
 
 function guardarEstado() {
   const estado = {
@@ -76,6 +80,7 @@ function guardarEstado() {
     rondaActual: rondaActual,
     turnoRelativo: turnoRelativo,
     listaFiltrada: listaFiltrada,
+    futbolistasUsados: futbolistasUsados,
   }
   sessionStorage.setItem("estadoJuego", JSON.stringify(estado))
 }
@@ -92,13 +97,18 @@ function restaurarEstado() {
     rondaActual = estado.rondaActual || 0
     turnoRelativo = estado.turnoRelativo || 0
     listaFiltrada = estado.listaFiltrada || listaMacro
+    futbolistasUsados = estado.futbolistasUsados || []
   }
 }
 
 function limpiarEstado() {
   sessionStorage.removeItem("estadoJuego")
+  futbolistasUsados = []
 }
 
+/* ===========================
+   Funciones base
+   =========================== */
 
 function boolToInt(b) {
   return b ? "1" : "0"
@@ -239,6 +249,10 @@ function filtrarLiga(liga) {
   }
 }
 
+/* ===========================
+   Nuevas funciones para el flujo del juego
+   =========================== */
+
 function leerNumeroDeInput(el) {
   if (!el) {
     return 0
@@ -274,6 +288,9 @@ function generarRondas(cantRondas) {
       }
     }
   }
+
+  futbolistasUsados = []
+
   for (let r = 0; r < cantRondas; r++) {
     const rondaJugadores = []
     for (let j = 0; j < jugadores.length; j++) {
@@ -281,13 +298,33 @@ function generarRondas(cantRondas) {
     }
     const impostorIndex = Math.floor(Math.random() * rondaJugadores.length)
     rondaJugadores[impostorIndex].futbolista = "Impostor"
+
+    const futbolistasDisponibles = []
+    for (let i = 0; i < listaFiltrada.length; i++) {
+      let yaUsado = false
+      for (let u = 0; u < futbolistasUsados.length; u++) {
+        if (listaFiltrada[i].nombre === futbolistasUsados[u]) {
+          yaUsado = true
+          break
+        }
+      }
+      if (!yaUsado) {
+        futbolistasDisponibles.push(listaFiltrada[i])
+      }
+    }
+
     let elegido = null
-    if (listaFiltrada.length > 0) {
+    if (futbolistasDisponibles.length > 0) {
+      const idx = Math.floor(Math.random() * futbolistasDisponibles.length)
+      elegido = futbolistasDisponibles[idx].nombre
+      futbolistasUsados.push(elegido)
+    } else if (listaFiltrada.length > 0) {
       const idx = Math.floor(Math.random() * listaFiltrada.length)
       elegido = listaFiltrada[idx].nombre
     } else {
       elegido = "Futbolista X"
     }
+
     for (let j = 0; j < rondaJugadores.length; j++) {
       if (j !== impostorIndex) {
         rondaJugadores[j].futbolista = elegido
@@ -377,6 +414,7 @@ function reiniciarYVolverInicio() {
   turnoRelativo = 0
   cantidadRondasConfig = 3
   cantidadJugadoresConfig = 4
+  futbolistasUsados = []
   reiniciarFiltrado()
 
   limpiarEstado()
@@ -384,6 +422,9 @@ function reiniciarYVolverInicio() {
   irA("index.html")
 }
 
+/* ===========================
+   Utilidad para mostrar alertas de Bootstrap
+   =========================== */
 function mostrarAlerta(mensaje, contenedorId = "alertContainer") {
   window.scrollTo({ top: 0, behavior: "smooth" })
 
@@ -448,6 +489,9 @@ function mostrarAlertaInfo(mensaje, contenedorId = "alertContainer") {
   }, 4000)
 }
 
+/* ===========================
+   Inicializadores por página
+   =========================== */
 
 function initMenu() {
   restaurarEstado()
@@ -694,7 +738,7 @@ function initJuego() {
     return
   }
 
-  const turnoInicial = rondaActual % jugadores.length
+  const turnoInicial = calcularTurnoInicial(rondaActual)
 
   function jugadorIndexEnOrden() {
     const total = jugadores.length
@@ -755,7 +799,7 @@ function initJuego() {
     } else {
       html += '<div class="tag-palabra">' + asignacion + "</div>"
     }
-    html += '<button id="btnContinuarTurno" class="btn btn-dark btn-lg mt-4">✔</button>'
+    html += '<div class="mt-4"><button id="btnContinuarTurno" class="btn btn-dark btn-lg">✔</button></div>'
     html += "</div>"
     cont.innerHTML = html
 
@@ -857,7 +901,9 @@ function initFinal() {
   })
 }
 
-
+// ===========================
+// Exponer funciones init*
+// ===========================
 window.initMenu = initMenu
 window.initPaso1 = initPaso1
 window.initNombres = initNombres

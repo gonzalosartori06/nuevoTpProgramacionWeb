@@ -26,7 +26,7 @@
     <div class="container">
       <div id="alertContainer"></div>
 
-      <h2 class="titulo-secundario text-center mb-4">Los convocados de ImpostBall</h2>
+      <!-- Eliminado título "Los convocados de ImpostBall" del top -->
 
       <div class="container-bordered-title mb-0">
         <h2 class="titulo-secundario text-center mb-0">Agregar Futbolista</h2>
@@ -60,14 +60,17 @@
         </div>
       </div>
 
-      <div class="container-bordered-button-single mb-4">
-        <div class="text-center py-4">
-          <button id="btnAgregarFutbolista" class="btn btn-dark btn-lg">añadir jugador</button>
-        </div>
+      <!-- Botón "añadir jugador" sacado del cuadro y puesto fuera -->
+      <div class="text-center mt-4 mb-4">
+        <button id="btnAgregarFutbolista" class="btn btn-dark btn-lg">añadir jugador</button>
       </div>
 
+      <!-- Título cambiado a "Los convocados de ImpostBall" a la izquierda, imagen lista.png a la derecha -->
       <div class="container-bordered">
-        <h3 class="mb-4">Todos los futbolistas</h3>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="mb-0">Los convocados de ImpostBall</h3>
+          <img src="media/lista.png" alt="Lista" style="height: 48px; width: auto;">
+        </div>
         <div id="listaFutbolistas"></div>
       </div>
     </div>
