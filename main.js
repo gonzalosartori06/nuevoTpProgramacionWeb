@@ -1,4 +1,3 @@
-
 const listaMacro = [
   { nombre: "Lionel Messi", pais: "Argentina", liga: "Estados Unidos", activo: true },
   { nombre: "Ángel Di María", pais: "Argentina", liga: "Argentina", activo: true },
@@ -99,6 +98,7 @@ function restaurarEstado() {
 function limpiarEstado() {
   sessionStorage.removeItem("estadoJuego")
 }
+
 
 function boolToInt(b) {
   return b ? "1" : "0"
@@ -238,7 +238,6 @@ function filtrarLiga(liga) {
     }
   }
 }
-
 
 function leerNumeroDeInput(el) {
   if (!el) {
@@ -385,7 +384,6 @@ function reiniciarYVolverInicio() {
   irA("index.html")
 }
 
-
 function mostrarAlerta(mensaje, contenedorId = "alertContainer") {
   window.scrollTo({ top: 0, behavior: "smooth" })
 
@@ -449,7 +447,6 @@ function mostrarAlertaInfo(mensaje, contenedorId = "alertContainer") {
     }
   }, 4000)
 }
-
 
 
 function initMenu() {
@@ -556,66 +553,9 @@ function initNombres() {
   })
 }
 
-function initFiltros() {
+function initFutbolistas() {
   restaurarEstado()
-
-  reiniciarFiltrado()
-
-  if (jugadores.length === 0) {
-    console.log("[v0] No hay jugadores en filtros, redirigiendo a paso1")
-    mostrarAlerta("Primero debes configurar los jugadores", "alertContainer")
-    setTimeout(() => {
-      irA("paso1.html")
-    }, 2000)
-    return
-  }
-
-  const selPais = document.getElementById("selPais")
-  const selLiga = document.getElementById("selLiga")
-  const selActivo = document.getElementById("selActivo")
-  _reconstruirSelects(selPais, selLiga)
-
-  document.getElementById("aplicarFiltros").addEventListener("click", () => {
-    reiniciarFiltrado()
-    const p = selPais.value
-    const l = selLiga.value
-    const a = selActivo.value
-    if (p && p !== "") {
-      filtrarPorPais(p)
-    }
-    if (l && l !== "") {
-      filtrarPorLiga(l)
-    }
-    if (a === "1") {
-      filtrarPorActivo(true)
-    }
-    if (a === "0") {
-      filtrarPorActivo(false)
-    }
-    mostrarAlerta("Filtros aplicados. Futbolistas disponibles: " + listaFiltrada.length, "alertContainer")
-  })
-
-  document.getElementById("borrarFiltros").addEventListener("click", () => {
-    selPais.selectedIndex = 0
-    selLiga.selectedIndex = 0
-    selActivo.selectedIndex = 0
-    reiniciarFiltrado()
-    mostrarAlerta("Filtros borrados", "alertContainer")
-  })
-
-  document.getElementById("comenzarJuego").addEventListener("click", () => {
-    if (jugadores.length === 0) {
-      mostrarAlerta("No hay jugadores configurados", "alertContainer")
-      return
-    }
-
-    console.log("[v0] Generando rondas con:", cantidadRondasConfig, "rondas y", jugadores.length, "jugadores")
-    generarRondas(cantidadRondasConfig)
-    rondaActual = 0
-    turnoRelativo = 0
-    console.log("[v0] Rondas generadas:", listaRondas.length)
-    irA("juego.html")
-  })
+  cargarJugadoresAgregados()
 
   const inpNombre = document.getElementById("nuevoNombre")
   const inpPais = document.getElementById("nuevoPais")
@@ -642,8 +582,100 @@ function initFiltros() {
     inpLiga.value = ""
     activoSelect.selectedIndex = 0
 
-    _reconstruirSelects(selPais, selLiga)
     mostrarAlertaInfo("Futbolista agregado correctamente.", "alertContainer")
+    mostrarListaFutbolistas()
+  })
+
+  mostrarListaFutbolistas()
+}
+
+function mostrarListaFutbolistas() {
+  const lista = document.getElementById("listaFutbolistas")
+  if (!lista) return
+
+  let html = '<div class="row">'
+  for (let i = 0; i < listaMacro.length; i++) {
+    const f = listaMacro[i]
+    const estadoIcon = f.activo ? "✅" : "❌"
+    html += `
+      <div class="col-md-6 mb-3">
+        <div class="p-3 border border-dark">
+          <strong>${f.nombre}</strong><br>
+          <small>País: ${f.pais} | Liga: ${f.liga} | ${estadoIcon}</small>
+        </div>
+      </div>
+    `
+  }
+  html += "</div>"
+  lista.innerHTML = html
+}
+
+function initFiltros() {
+  restaurarEstado()
+
+  reiniciarFiltrado()
+
+  if (jugadores.length === 0) {
+    console.log("[v0] No hay jugadores en filtros, redirigiendo a paso1")
+    mostrarAlerta("Primero debes configurar los jugadores", "alertContainer")
+    setTimeout(() => {
+      irA("paso1.html")
+    }, 2000)
+    return
+  }
+
+  const selPais = document.getElementById("selPais")
+  const selLiga = document.getElementById("selLiga")
+  const selActivo = document.getElementById("selActivo")
+  _reconstruirSelects(selPais, selLiga)
+
+  function aplicarFiltrosAutomatico() {
+    reiniciarFiltrado()
+    const p = selPais.value
+    const l = selLiga.value
+    const a = selActivo.value
+    if (p && p !== "") {
+      filtrarPorPais(p)
+    }
+    if (l && l !== "") {
+      filtrarPorLiga(l)
+    }
+    if (a === "1") {
+      filtrarPorActivo(true)
+    } else if (a === "0") {
+      filtrarPorActivo(false)
+    }
+    console.log("[v0] Filtros aplicados automáticamente. Futbolistas disponibles:", listaFiltrada.length)
+  }
+
+  selPais.addEventListener("change", aplicarFiltrosAutomatico)
+  selLiga.addEventListener("change", aplicarFiltrosAutomatico)
+  selActivo.addEventListener("change", aplicarFiltrosAutomatico)
+
+  document.getElementById("borrarFiltros").addEventListener("click", () => {
+    selPais.selectedIndex = 0
+    selLiga.selectedIndex = 0
+    selActivo.selectedIndex = 0
+    reiniciarFiltrado()
+    mostrarAlerta("Filtros borrados", "alertContainer")
+  })
+
+  document.getElementById("agregarJugador").addEventListener("click", () => {
+    irA("futbolistas.html")
+  })
+
+  document.getElementById("comenzarJuego").addEventListener("click", () => {
+    if (jugadores.length === 0) {
+      mostrarAlerta("No hay jugadores configurados", "alertContainer")
+      return
+    }
+
+    console.log("[v0] Generando rondas con:", cantidadRondasConfig, "rondas y", jugadores.length, "jugadores")
+    generarRondas(cantidadRondasConfig)
+    rondaActual = 0
+    turnoRelativo = 0
+    console.log("[v0] Rondas generadas:", listaRondas.length)
+    irA("juego.html")
   })
 }
 
@@ -662,11 +694,16 @@ function initJuego() {
     return
   }
 
-  const turnoInicial = calcularTurnoInicial(rondaActual)
+  const turnoInicial = rondaActual % jugadores.length
 
   function jugadorIndexEnOrden() {
     const total = jugadores.length
     return (turnoInicial + turnoRelativo) % total
+  }
+
+  const tituloRonda = document.querySelector(".titulo-principal")
+  if (tituloRonda) {
+    tituloRonda.textContent = `Ronda ${rondaActual + 1} en curso`
   }
 
   function mostrarPantallaListo() {
@@ -680,9 +717,10 @@ function initJuego() {
     cont.innerHTML = ""
     let html = ""
     html += '<div class="pantalla-centro">'
-    html += "<h1>" + j.nombre + "</h1>"
+    html += `<h1 class="titulo-principal mb-5">Ronda ${rondaActual + 1} en curso</h1>`
+    html += "<h2>" + j.nombre + "</h2>"
     html += "<p>¿Listo para comenzar?</p>"
-    html += '<button id="btnTickListo" class="btn btn-dark btn-lg">✔</button>'
+    html += '<button id="btnTickListo" class="btn btn-dark btn-lg mt-4">✔</button>'
     html += "</div>"
     cont.innerHTML = html
 
@@ -710,13 +748,14 @@ function initJuego() {
     cont.innerHTML = ""
     let html = ""
     html += '<div class="pantalla-centro">'
+    html += `<h1 class="titulo-principal mb-5">Ronda ${rondaActual + 1} en curso</h1>`
     html += "<h2>Tu palabra:</h2>"
     if (asignacion === "Impostor") {
-      html += '<div class="tag tag-alert">IMPOSTOR</div>'
+      html += '<div class="tag-palabra impostor">IMPOSTOR</div>'
     } else {
-      html += '<div class="tag">' + asignacion + "</div>"
+      html += '<div class="tag-palabra">' + asignacion + "</div>"
     }
-    html += '<button id="btnContinuarTurno" class="btn btn-dark btn-lg">✔</button>'
+    html += '<button id="btnContinuarTurno" class="btn btn-dark btn-lg mt-4">✔</button>'
     html += "</div>"
     cont.innerHTML = html
 
@@ -725,6 +764,7 @@ function initJuego() {
       if (turnoRelativo >= jugadores.length) {
         mostrarPantallaResultadoRonda()
       } else {
+        guardarEstado()
         mostrarPantallaListo()
       }
     })
@@ -735,6 +775,7 @@ function initJuego() {
     cont.innerHTML = ""
     let html = ""
     html += '<div class="pantalla-centro">'
+    html += `<h1 class="titulo-principal mb-5">Ronda ${rondaActual + 1} en curso</h1>`
     html += "<h2>Resultado de la ronda " + (rondaActual + 1) + "</h2>"
     html += '<div class="checkboxes">'
     html += '  <label><input type="checkbox" id="impGano"> ¿El impostor ganó?</label>'
@@ -823,14 +864,7 @@ window.initNombres = initNombres
 window.initFiltros = initFiltros
 window.initJuego = initJuego
 window.initFinal = initFinal
-
-window.agregarFutbolista = agregarFutbolista
-window.crearJugador = crearJugador
-window.irA = irA
-window.reiniciarYVolverInicio = reiniciarYVolverInicio
-
-window.mostrarAlerta = mostrarAlerta
-window.mostrarAlertaInfo = mostrarAlertaInfo
+window.initFutbolistas = initFutbolistas
 
 function _reconstruirSelects(selPais, selLiga) {
   const paisEmojis = {

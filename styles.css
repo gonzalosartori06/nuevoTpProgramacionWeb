@@ -136,7 +136,6 @@ main {
 
 .container-bordered-grid {
   border: 1px solid #000000;
-  border-top: none;
   border-bottom: none;
   background-color: #ffffff;
   margin-bottom: 0;
@@ -194,23 +193,8 @@ main {
   position: relative;
 }
 
-.filter-column-full::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: #000000;
-  z-index: 1;
-}
-
 .filter-column-full:last-child {
   border-right: none;
-}
-
-.filter-column-full:last-child::after {
-  display: none;
 }
 
 .filtros-grid .filter-column-full:last-child {
@@ -315,10 +299,15 @@ main {
 .pantalla-centro h1,
 .pantalla-centro h2 {
   font-family: "Crimson Text", Georgia, serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 400;
   margin-bottom: 32px;
   color: #000000;
+}
+
+.pantalla-centro h1.titulo-principal {
+  font-size: 3rem;
+  margin-bottom: 48px;
 }
 
 .tag {
@@ -336,6 +325,27 @@ main {
   background-color: #ff6b7a;
   color: #ffffff;
   border-color: #ff6b7a;
+}
+
+.tag-palabra {
+  display: inline-block;
+  padding: 32px 64px;
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 32px 0;
+  color: #000000;
+  min-width: 300px;
+  text-align: center;
+}
+
+.tag-palabra.impostor {
+  color: #ff6b7a;
+  font-weight: 700;
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  display: inline-block;
 }
 
 .checkboxes {
@@ -402,17 +412,11 @@ main {
 .nombres-container .nombres-left {
   border-right: 1px solid #000000;
   position: relative;
+  min-height: 400px;
 }
 
 .nombres-container .nombres-left::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: #000000;
-  z-index: 1;
+  display: none;
 }
 
 @media (max-width: 768px) {
