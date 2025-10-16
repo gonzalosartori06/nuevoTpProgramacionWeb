@@ -25,8 +25,9 @@
   <main class="py-5">
     <div class="container">
       <div id="alertContainer"></div>
+
       <div class="container-bordered-title mb-0">
-        <h2 class="titulo-secundario text-center mb-0">Filtrar Futbolistas</h2>
+        <h2 class="titulo-secundario text-center mb-0" style="color: rgb(60, 217, 179);">Filtrar Futbolistas</h2>
       </div>
 
       <div class="container-bordered-grid mb-0 filtros-grid">
@@ -64,10 +65,14 @@
           </div>
         </div>
       </div>
-      <div class="container-bordered-buttons">
-        <div class="text-center py-4">
-          <button id="agregarJugador" class="btn btn-outline-dark btn-lg me-3">Agregar Futbolista</button>
-          <button id="comenzarJuego" class="btn btn-dark btn-lg">comenzar juego</button>
+
+      <div class="filtros-buttons-container">
+        <div class="filtros-button-left">
+          <button id="agregarJugador" class="btn btn-outline-dark btn-lg">Agregar Futbolista</button>
+        </div>
+        <div class="filtros-button-divider"></div>
+        <div class="filtros-button-right">
+          <button id="comenzarJuego" class="btn btn-dark btn-lg">Comenzar Juego</button>
         </div>
       </div>
     </div>

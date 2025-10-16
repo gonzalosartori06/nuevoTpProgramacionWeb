@@ -1,17 +1,18 @@
+
 const listaMacro = [
   { nombre: "Lionel Messi", pais: "Argentina", liga: "Estados Unidos", activo: true },
   { nombre: "Ángel Di María", pais: "Argentina", liga: "Argentina", activo: true },
   { nombre: "Gonzalo Montiel", pais: "Argentina", liga: "Argentina", activo: true },
   { nombre: "Enzo Pérez", pais: "Argentina", liga: "Argentina", activo: true },
   { nombre: "Lucas Martínez Quarta", pais: "Argentina", liga: "Argentina", activo: true },
-  { nombre: "Tomás Molina", pais: "Argentina", liga: "Argentina", activo: true },
-  { nombre: "Adrián Martínez", pais: "Argentina", liga: "Argentina", activo: true },
-  { nombre: "Andrés Vombergar", pais: "Argentina", liga: "Argentina", activo: true },
-  { nombre: "Franco Echeverri", pais: "Argentina", liga: "Argentina", activo: true },
-  { nombre: "Franco Mastantuono", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Sebastian Villa", pais: "Colombia", liga: "Argentina", activo: true },
+  { nombre: "Adrián 'maravilla' Martínez", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Frank Fabra", pais: "Colombia", liga: "Argentina", activo: true },
+  { nombre: "Claudio 'Diablito' Echeverri", pais: "Argentina", liga: "Inglaterra", activo: true },
+  { nombre: "Franco Mastantuono", pais: "Argentina", liga: "España", activo: true },
   { nombre: "Sebastián Driussi", pais: "Argentina", liga: "Argentina", activo: true },
-  { nombre: "Lucas Zelarayán", pais: "Argentina", liga: "Argentina", activo: true },
-  { nombre: "Matías Rojas", pais: "Argentina", liga: "Argentina", activo: true },
+  { nombre: "Ronaldo Nazario", pais: "Brasil", liga: "Italia", activo: false },
+  { nombre: "Maximiliano Salas", pais: "Argentina", liga: "Argentina", activo: true },
   { nombre: "Ander Herrera", pais: "España", liga: "Argentina", activo: true },
   { nombre: "Keylor Navas", pais: "Costa Rica", liga: "Argentina", activo: true },
   { nombre: "Diego Maradona", pais: "Argentina", liga: "Argentina", activo: false },
@@ -106,6 +107,7 @@ function limpiarEstado() {
   futbolistasUsados = []
   ordenJugadoresPorRonda = []
 }
+
 
 function boolToInt(b) {
   return b ? "1" : "0"
@@ -245,7 +247,6 @@ function filtrarLiga(liga) {
     }
   }
 }
-
 
 function leerNumeroDeInput(el) {
   if (!el) {
@@ -482,7 +483,6 @@ function mostrarAlertaInfo(mensaje, contenedorId = "alertContainer") {
     }
   }, 4000)
 }
-
 
 function initMenu() {
   restaurarEstado()
@@ -881,7 +881,6 @@ function initFinal() {
     irA("filtros.html")
   })
 }
-
 
 window.initMenu = initMenu
 window.initPaso1 = initPaso1

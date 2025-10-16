@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;500;600&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&f[]=zodiak@400,500,600,700&display=swap");
 
 * {
   margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Clash Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #000000;
@@ -16,13 +16,17 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: 80px;
 }
 
 .header-custom {
   background-color: #ffffff;
   border-bottom: 1px solid #000000;
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .brand {
@@ -37,7 +41,7 @@ body {
 }
 
 .brand img {
-  height: 64px;
+  height: 48px;
   width: auto;
 }
 
@@ -62,7 +66,7 @@ main {
 }
 
 .titulo-principal {
-  font-family: "Crimson Text", Georgia, serif;
+  font-family: "Zodiak", Georgia, serif;
   font-size: 4rem;
   font-weight: 400;
   line-height: 1.1;
@@ -71,7 +75,7 @@ main {
 }
 
 .titulo-secundario {
-  font-family: "Crimson Text", Georgia, serif;
+  font-family: "Zodiak", Georgia, serif;
   font-size: 2.5rem;
   font-weight: 400;
   line-height: 1.2;
@@ -80,11 +84,11 @@ main {
 }
 
 .titulo-lista-futbolistas {
-  font-family: "Crimson Text", Georgia, serif;
+  font-family: "Zodiak", Georgia, serif;
   font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
-  color: #5dade2;
+  color: rgb(60, 217, 179);
   letter-spacing: -0.01em;
 }
 
@@ -112,85 +116,103 @@ main {
 }
 
 .container-bordered {
-  border: 1px solid #000000;
-  background-color: #ffffff;
-  padding: 48px;
+  border: 0.5px solid #000000;
+  background-color: transparent;
+  padding: 16px;
   margin-bottom: 0;
   position: relative;
   z-index: 5;
   overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: auto;
 }
 
 .container-bordered-split {
-  border: 1px solid #000000;
-  background-color: #ffffff;
+  border: 0.5px solid #000000;
+  background-color: transparent;
   display: flex;
   margin-top: 0;
   position: relative;
   z-index: 5;
   overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container-bordered-title {
-  border: 1px solid #000000;
-  border-bottom: none;
-  background-color: #ffffff;
+  border: 0.5px solid #000000;
+  background-color: transparent;
   padding: 24px;
   margin-bottom: 0;
   margin-top: 0;
   position: relative;
   z-index: 5;
   overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container-bordered-grid {
-  border: 1px solid #000000;
-  border-bottom: none;
-  background-color: #ffffff;
+  border: 0.5px solid #000000;
+  border-top: none;
+  background-color: transparent;
   margin-bottom: 0;
   margin-top: 0;
   position: relative;
   z-index: 5;
   overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container-bordered-buttons {
-  border: 1px solid #000000;
-  border-top: 1px solid #000000; 
-  background-color: #ffffff;
+  border: 0.5px solid #000000;
+  border-top: none;
+  background-color: transparent;
   margin-bottom: 0;
   margin-top: 0;
   position: relative;
   z-index: 5;
   overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container-bordered-button-single {
-  border: 1px solid #000000;
-  border-top: 1px solid #000000; 
-  background-color: #ffffff;
+  border: 0.5px solid #000000;
+  border-top: none;
+  background-color: transparent;
   margin-bottom: 0;
   margin-top: 0;
   position: relative;
   z-index: 5;
   overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .split-section {
   flex: 1;
-  padding: 48px;
+  padding: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .split-divider {
-  width: 1px;
+  width: 0.5px;
   background-color: #000000;
 }
 
 .filter-column {
-  border-right: 1px solid #000000;
+  border-right: 0.5px solid #000000;
 }
 
 .filter-column:last-child {
@@ -198,7 +220,7 @@ main {
 }
 
 .filter-column-full {
-  border-right: 1px solid #000000;
+  border-right: 0.5px solid #000000;
   position: relative;
 }
 
@@ -211,8 +233,8 @@ main {
 }
 
 .filter-box {
-  padding: 24px;
-  min-height: 150px;
+  padding: 16px;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -302,31 +324,31 @@ main {
 
 .pantalla-centro {
   text-align: center;
-  padding: 60px 20px;
+  padding: 24px 20px;
 }
 
 .pantalla-centro h1,
 .pantalla-centro h2 {
-  font-family: "Crimson Text", Georgia, serif;
+  font-family: "Zodiak", Georgia, serif;
   font-size: 2.5rem;
   font-weight: 400;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   color: #000000;
 }
 
 .pantalla-centro h1.titulo-principal {
   font-size: 3rem;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 
 .tag {
   display: inline-block;
   padding: 20px 40px;
   background-color: #f5f5f5;
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
   font-size: 1.8rem;
   font-weight: 600;
-  margin: 32px 0;
+  margin: 16px 0;
   color: #000000;
 }
 
@@ -338,14 +360,14 @@ main {
 
 .tag-palabra {
   display: inline-block;
-  padding: 32px 64px;
+  padding: 20px 40px;
   background-color: #ffffff;
   border: 2px solid #000000;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin: 32px 0;
+  margin: 16px 0;
   color: #000000;
-  min-width: 300px;
+  max-width: 500px;
   text-align: center;
 }
 
@@ -387,7 +409,7 @@ main {
 
 .lista-simple li {
   padding: 16px 0;
-  border-bottom: 1px solid #000000;
+  border-bottom: 0.5px solid #000000;
   font-size: 18px;
 }
 
@@ -419,9 +441,9 @@ main {
 }
 
 .nombres-container .nombres-left {
-  border-right: 1px solid #000000; 
+  border-right: 0.5px solid #000000;
   position: relative;
-  min-height: 400px;
+  min-height: 300px;
 }
 
 .nombres-container .nombres-left::after {
@@ -429,11 +451,192 @@ main {
 }
 
 .lista-icon-large {
-  height: 80px;
+  height: 240px;
   width: auto;
 }
 
+.futbolistas-split-container {
+  display: none;
+}
+
+.futbolistas-header-container {
+  border: 0.5px solid #000000;
+  background-color: transparent;
+  display: flex;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 250px;
+}
+
+.futbolistas-header-left {
+  flex: 1;
+  padding: 32px;
+  border-right: 0.5px solid #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.futbolistas-header-right {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.futbolistas-lista-container {
+  border: 0.5px solid #000000;
+  border-top: none;
+  background-color: transparent;
+  padding: 32px;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.futbolistas-titulo-principal {
+  font-family: "Zodiak", Georgia, serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(60, 217, 179);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.futbolistas-titulo-secundario {
+  font-family: "Zodiak", Georgia, serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(60, 217, 179);
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
+}
+
+.lista-icon-extra-large {
+  height: 320px;
+  width: auto;
+}
+
+.index-top-container {
+  border: 0.5px solid #000000;
+  background-color: transparent;
+  display: flex;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 300px;
+}
+
+.index-top-left {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.index-top-right {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.index-bottom-container {
+  border: 0.5px solid #000000;
+  border-top: none;
+  background-color: transparent;
+  display: flex;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 150px;
+}
+
+.index-bottom-left {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 0.5px solid #000000;
+}
+
+.index-bottom-divider {
+  display: none;
+}
+
+.index-bottom-right {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtros-buttons-container {
+  border: 0.5px solid #000000;
+  border-top: none;
+  background-color: transparent;
+  display: flex;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 120px;
+}
+
+.filtros-button-left {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 0.5px solid #000000;
+}
+
+.filtros-button-divider {
+  display: none;
+}
+
+.filtros-button-right {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
+  .brand img {
+    height: 48px;
+  }
+
   .titulo-principal {
     font-size: 2.5rem;
   }
@@ -447,7 +650,7 @@ main {
   }
 
   .lista-icon-large {
-    height: 60px;
+    height: 120px;
   }
 
   .container-bordered {
@@ -460,12 +663,12 @@ main {
 
   .split-divider {
     width: 100%;
-    height: 1px;
+    height: 0.5px;
   }
 
   .filter-column {
     border-right: none;
-    border-bottom: 1px solid #000000;
+    border-bottom: 0.5px solid #000000;
   }
 
   .filter-column:last-child {
@@ -481,7 +684,99 @@ main {
     gap: 16px;
   }
 
+  body {
+    padding-top: 70px;
+  }
+
+  .futbolistas-header-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .futbolistas-header-left {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+    padding: 32px;
+  }
+
+  .futbolistas-header-right {
+    padding: 32px;
+  }
+
+  .futbolistas-titulo-principal {
+    font-size: 2rem;
+  }
+
+  .futbolistas-titulo-secundario {
+    font-size: 2rem;
+  }
+
+  .lista-icon-extra-large {
+    height: 180px;
+  }
+
+  .futbolistas-lista-container {
+    padding: 32px;
+  }
+
+  .index-top-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .index-top-left {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+    padding: 32px;
+  }
+
+  .index-top-right {
+    padding: 32px;
+  }
+
+  .index-bottom-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .index-bottom-left {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+    padding: 32px;
+  }
+
+  .index-bottom-divider {
+    width: 100%;
+    height: 0.5px;
+  }
+
+  .index-bottom-right {
+    padding: 32px;
+  }
+
+  .filtros-buttons-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .filtros-button-left {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+    padding: 24px;
+  }
+
+  .filtros-button-divider {
+    width: 100%;
+    height: 0.5px;
+  }
+
+  .filtros-button-right {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 769px) {
   .brand img {
-    height: 48px;
+    height: 40px;
   }
 }
