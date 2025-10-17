@@ -1,4 +1,3 @@
-
 const listaMacro = [
   { nombre: "Lionel Messi", pais: "Argentina", liga: "Estados Unidos", activo: true },
   { nombre: "Ángel Di María", pais: "Argentina", liga: "Argentina", activo: true },
@@ -107,7 +106,6 @@ function limpiarEstado() {
   futbolistasUsados = []
   ordenJugadoresPorRonda = []
 }
-
 
 function boolToInt(b) {
   return b ? "1" : "0"
@@ -540,7 +538,7 @@ function initNombres() {
   function actualizarListaIzquierda() {
     let html = ""
     for (let i = 0; i < jugadores.length; i++) {
-      html += `<div class="mb-2"><strong>Jugador ${i + 1}:</strong> ${jugadores[i].nombre}</div>`
+      html += `<div class="mb-2">Jugador ${i + 1}: ${jugadores[i].nombre}</div>`
     }
     listaIzquierda.innerHTML = html
   }
@@ -635,7 +633,7 @@ function mostrarListaFutbolistas() {
     html += `
       <div class="col-md-6 mb-3">
         <div class="p-3 border border-dark">
-          <strong>${f.nombre}</strong><br>
+          ${f.nombre}<br>
           <small>País: ${f.pais} | Liga: ${f.liga} | ${estadoIcon}</small>
         </div>
       </div>
@@ -749,7 +747,7 @@ function initJuego() {
     html += '<div class="pantalla-centro">'
     html += `<h1 class="titulo-principal mb-5">Ronda ${rondaActual + 1} en curso</h1>`
     html += "<h2>" + j.nombre + "</h2>"
-    html += "<p>¿Listo para comenzar?</p>"
+    html += "<p class='texto-listo'>¿Listo para comenzar?</p>"
     html += '<button id="btnTickListo" class="btn btn-dark btn-lg mt-4">✔</button>'
     html += "</div>"
     cont.innerHTML = html
@@ -807,8 +805,10 @@ function initJuego() {
     html += `<h1 class="titulo-principal mb-5">Ronda ${rondaActual + 1} en curso</h1>`
     html += "<h2>Resultado de la ronda " + (rondaActual + 1) + "</h2>"
     html += '<div class="checkboxes">'
-    html += '  <label><input type="checkbox" id="impGano"> ¿El impostor ganó?</label>'
-    html += '  <label><input type="checkbox" id="impPerdio"> ¿El impostor perdió?</label>'
+    html +=
+      '  <label style="font-family: \'Clash Grotesk\', \'Inter\', system-ui, sans-serif;"><input type="checkbox" id="impGano"> ¿El impostor ganó?</label>'
+    html +=
+      '  <label style="font-family: \'Clash Grotesk\', \'Inter\', system-ui, sans-serif;"><input type="checkbox" id="impPerdio"> ¿El impostor perdió?</label>'
     html += "</div>"
     html += '<button id="btnSiguienteRonda" class="btn btn-dark btn-lg">Siguiente</button>'
     html += "</div>"

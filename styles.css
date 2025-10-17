@@ -1,4 +1,10 @@
-@import url("https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&f[]=zodiak@400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap");
+
+@import url("https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap");
+
+@import url("https://api.fontshare.com/v2/css?f[]=gambarino@400,500,600,700&display=swap");
+
+@import url("https://api.fontshare.com/v2/css?f[]=jetbrains-mono@400,500,600,700&display=swap");
 
 * {
   margin: 0;
@@ -7,7 +13,8 @@
 }
 
 body {
-  font-family: "Clash Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue",
+    Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #000000;
@@ -17,6 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: 80px;
+  font-weight: 400;
 }
 
 .header-custom {
@@ -33,6 +41,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-weight: 600;
   font-size: 18px;
   color: #000000;
@@ -51,6 +60,7 @@ body {
 }
 
 .nav-custom a {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   color: #000000;
   text-decoration: none;
   font-weight: 500;
@@ -66,7 +76,7 @@ main {
 }
 
 .titulo-principal {
-  font-family: "Zodiak", Georgia, serif;
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 4rem;
   font-weight: 400;
   line-height: 1.1;
@@ -75,7 +85,7 @@ main {
 }
 
 .titulo-secundario {
-  font-family: "Zodiak", Georgia, serif;
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 2.5rem;
   font-weight: 400;
   line-height: 1.2;
@@ -84,7 +94,7 @@ main {
 }
 
 .titulo-lista-futbolistas {
-  font-family: "Zodiak", Georgia, serif;
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
@@ -94,6 +104,8 @@ main {
 
 .texto-destacado {
   color: #ff6b7a;
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 500;
 }
 
 .footer-custom {
@@ -170,20 +182,7 @@ main {
   margin-right: auto;
 }
 
-.container-bordered-buttons {
-  border: 0.5px solid #000000;
-  border-top: none;
-  background-color: transparent;
-  margin-bottom: 0;
-  margin-top: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+.container-bordered-buttons,
 .container-bordered-button-single {
   border: 0.5px solid #000000;
   border-top: none;
@@ -214,7 +213,6 @@ main {
 .filter-column {
   border-right: 0.5px solid #000000;
 }
-
 .filter-column:last-child {
   border-right: none;
 }
@@ -223,11 +221,9 @@ main {
   border-right: 0.5px solid #000000;
   position: relative;
 }
-
 .filter-column-full:last-child {
   border-right: none;
 }
-
 .filtros-grid .filter-column-full:last-child {
   border-right: none;
 }
@@ -241,6 +237,7 @@ main {
 }
 
 .filter-label {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-weight: 500;
   margin-bottom: 12px;
   color: #000000;
@@ -249,6 +246,7 @@ main {
 }
 
 .form-label {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-weight: 500;
   margin-bottom: 8px;
   margin-top: 24px;
@@ -273,6 +271,7 @@ main {
 }
 
 .btn {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   border-radius: 0;
   padding: 14px 36px;
   font-weight: 500;
@@ -298,7 +297,6 @@ main {
   color: #000000;
   border: 1px solid #000000;
 }
-
 .btn-outline-dark:hover {
   background-color: #000000;
   color: #ffffff;
@@ -311,7 +309,6 @@ main {
   padding: 0;
   transition: opacity 0.2s;
 }
-
 .btn-trash:hover {
   opacity: 0.7;
 }
@@ -329,9 +326,9 @@ main {
 
 .pantalla-centro h1,
 .pantalla-centro h2 {
-  font-family: "Zodiak", Georgia, serif;
-  font-size: 2.5rem;
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-weight: 400;
+  font-size: 2.5rem;
   margin-bottom: 16px;
   color: #000000;
 }
@@ -393,6 +390,8 @@ main {
   gap: 12px;
   font-size: 18px;
   cursor: pointer;
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 500;
 }
 
 .checkboxes input[type="checkbox"] {
@@ -505,7 +504,7 @@ main {
 }
 
 .futbolistas-titulo-principal {
-  font-family: "Zodiak", Georgia, serif;
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.2;
@@ -515,7 +514,7 @@ main {
 }
 
 .futbolistas-titulo-secundario {
-  font-family: "Zodiak", Georgia, serif;
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.2;
@@ -557,6 +556,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-right: 0.5px solid #000000;
 }
 
 .index-bottom-container {
@@ -632,6 +632,48 @@ main {
   justify-content: center;
 }
 
+.titulo-jetbrains {
+  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
+  font-weight: 600;
+}
+
+.titulo-jugadores {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: #ff6b7a;
+  letter-spacing: -0.01em;
+}
+
+.titulo-principal-jetbrains {
+  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+}
+
+.titulo-clash {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.texto-listo {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.titulo-secundario-jetbrains {
+  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
 @media (max-width: 768px) {
   .brand img {
     height: 48px;
@@ -640,11 +682,9 @@ main {
   .titulo-principal {
     font-size: 2.5rem;
   }
-
   .titulo-secundario {
     font-size: 1.8rem;
   }
-
   .titulo-lista-futbolistas {
     font-size: 1.5rem;
   }
@@ -652,15 +692,12 @@ main {
   .lista-icon-large {
     height: 120px;
   }
-
   .container-bordered {
     padding: 24px;
   }
-
   .container-bordered-split {
     flex-direction: column;
   }
-
   .split-divider {
     width: 100%;
     height: 0.5px;
@@ -670,7 +707,6 @@ main {
     border-right: none;
     border-bottom: 0.5px solid #000000;
   }
-
   .filter-column:last-child {
     border-bottom: none;
   }
@@ -679,11 +715,9 @@ main {
     width: 100%;
     margin-bottom: 12px !important;
   }
-
   .nav-custom {
     gap: 16px;
   }
-
   body {
     padding-top: 70px;
   }
@@ -692,29 +726,23 @@ main {
     flex-direction: column;
     min-height: auto;
   }
-
   .futbolistas-header-left {
     border-right: none;
     border-bottom: 0.5px solid #000000;
     padding: 32px;
   }
-
   .futbolistas-header-right {
     padding: 32px;
   }
-
   .futbolistas-titulo-principal {
     font-size: 2rem;
   }
-
   .futbolistas-titulo-secundario {
     font-size: 2rem;
   }
-
   .lista-icon-extra-large {
     height: 180px;
   }
-
   .futbolistas-lista-container {
     padding: 32px;
   }
@@ -723,13 +751,11 @@ main {
     flex-direction: column;
     min-height: auto;
   }
-
   .index-top-left {
     border-right: none;
     border-bottom: 0.5px solid #000000;
     padding: 32px;
   }
-
   .index-top-right {
     padding: 32px;
   }
@@ -738,18 +764,15 @@ main {
     flex-direction: column;
     min-height: auto;
   }
-
   .index-bottom-left {
     border-right: none;
     border-bottom: 0.5px solid #000000;
     padding: 32px;
   }
-
   .index-bottom-divider {
     width: 100%;
     height: 0.5px;
   }
-
   .index-bottom-right {
     padding: 32px;
   }
@@ -758,18 +781,15 @@ main {
     flex-direction: column;
     min-height: auto;
   }
-
   .filtros-button-left {
     border-right: none;
     border-bottom: 0.5px solid #000000;
     padding: 24px;
   }
-
   .filtros-button-divider {
     width: 100%;
     height: 0.5px;
   }
-
   .filtros-button-right {
     padding: 24px;
   }
