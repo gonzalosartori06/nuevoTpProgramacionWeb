@@ -73,6 +73,7 @@ body {
 
 main {
   flex: 1;
+  margin-bottom: 100px;
 }
 
 .titulo-principal {
@@ -115,6 +116,7 @@ main {
   border-top: 1px solid #000000;
   position: relative;
   z-index: 10;
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
 }
 
 .footer-custom a {
@@ -125,6 +127,226 @@ main {
 
 .footer-custom a:hover {
   opacity: 0.7;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 48px 0 48px 0; 
+  padding-top: 56px; 
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-contacto-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-contacto-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.footer-contacto-text {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  height: 60px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .brand img {
+    height: 48px;
+  }
+
+  .titulo-principal {
+    font-size: 2.5rem;
+  }
+  .titulo-secundario {
+    font-size: 1.8rem;
+  }
+  .titulo-lista-futbolistas {
+    font-size: 1.5rem;
+  }
+
+  .lista-icon-large {
+    height: 120px;
+  }
+  .container-bordered {
+    padding: 24px;
+  }
+  .container-bordered-split {
+    flex-direction: column;
+  }
+  .split-divider {
+    width: 100%;
+    height: 0.5px;
+  }
+
+  .filter-column {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+  }
+  .filter-column:last-child {
+    border-bottom: none;
+  }
+
+  .btn-lg {
+    width: 100%;
+    margin-bottom: 12px !important;
+  }
+  .nav-custom {
+    gap: 16px;
+  }
+  body {
+    padding-top: 70px;
+  }
+
+  .futbolistas-header-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .futbolistas-header-left {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+    padding: 32px;
+  }
+  .futbolistas-header-right {
+    padding: 32px;
+  }
+  .futbolistas-titulo-principal {
+    font-size: 2rem;
+  }
+  .futbolistas-titulo-secundario {
+    font-size: 2rem;
+  }
+  .lista-icon-extra-large {
+    height: 180px;
+  }
+  .futbolistas-lista-container {
+    padding: 32px;
+  }
+
+  .index-top-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .index-top-left {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+    padding: 32px;
+  }
+  .index-top-right {
+    padding: 32px;
+  }
+  .index-bottom-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .index-bottom-left {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+    padding: 32px;
+  }
+  .index-bottom-divider {
+    width: 100%;
+    height: 0.5px;
+  }
+  .index-bottom-right {
+    padding: 32px;
+  }
+
+  .filtros-buttons-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .filtros-button-left {
+    border-right: none;
+    border-bottom: 0.5px solid #000000;
+    padding: 24px;
+  }
+  .filtros-button-divider {
+    width: 100%;
+    height: 0.5px;
+  }
+  .filtros-button-right {
+    padding: 24px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .footer-right {
+    align-self: flex-end;
+  }
+}
+
+@media (min-width: 769px) {
+  .brand img {
+    height: 40px;
+  }
+}
+
+.titulo-jetbrains {
+  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
+  font-weight: 600;
+}
+
+.titulo-jugadores {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: #ff6b7a;
+  letter-spacing: -0.01em;
+}
+
+.titulo-principal-jetbrains {
+  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+}
+
+.titulo-clash {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.texto-listo {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.titulo-secundario-jetbrains {
+  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .container-bordered {
@@ -321,7 +543,7 @@ main {
 
 .pantalla-centro {
   text-align: center;
-  padding: 24px 20px;
+  padding: 40px 20px;
 }
 
 .pantalla-centro h1,
@@ -632,171 +854,124 @@ main {
   justify-content: center;
 }
 
-.titulo-jetbrains {
-  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
-  font-weight: 600;
+.filtros-images-container {
+  border: 0.5px solid #000000;
+  border-top: none;
+  background-color: transparent;
+  display: flex;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 150px;
 }
 
-.titulo-jugadores {
-  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 2.5rem;
-  line-height: 1.2;
-  color: #ff6b7a;
-  letter-spacing: -0.01em;
+.filtros-image-column {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 0.5px solid #000000;
 }
 
-.titulo-principal-jetbrains {
-  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
-  font-weight: 600;
-  font-size: 2.5rem;
-  line-height: 1.2;
-  color: #000000;
-  letter-spacing: -0.01em;
+.filtros-image-column:last-child {
+  border-right: none;
 }
 
-.titulo-clash {
-  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
-  font-weight: 600;
-}
-
-.texto-listo {
-  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 1.2rem;
-}
-
-.titulo-secundario-jetbrains {
-  font-family: "JetBrains Mono", "Clash Grotesk", monospace;
-  font-weight: 600;
-  font-size: 2.5rem;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+.filtros-image {
+  max-width: 100%;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 @media (max-width: 768px) {
-  .brand img {
-    height: 48px;
-  }
-
-  .titulo-principal {
-    font-size: 2.5rem;
-  }
-  .titulo-secundario {
-    font-size: 1.8rem;
-  }
-  .titulo-lista-futbolistas {
-    font-size: 1.5rem;
-  }
-
-  .lista-icon-large {
-    height: 120px;
-  }
-  .container-bordered {
-    padding: 24px;
-  }
-  .container-bordered-split {
+  .filtros-images-container {
     flex-direction: column;
-  }
-  .split-divider {
-    width: 100%;
-    height: 0.5px;
+    min-height: auto;
   }
 
-  .filter-column {
+  .filtros-image-column {
     border-right: none;
     border-bottom: 0.5px solid #000000;
+    padding: 32px;
   }
-  .filter-column:last-child {
+
+  .filtros-image-column:last-child {
     border-bottom: none;
-  }
-
-  .btn-lg {
-    width: 100%;
-    margin-bottom: 12px !important;
-  }
-  .nav-custom {
-    gap: 16px;
-  }
-  body {
-    padding-top: 70px;
-  }
-
-  .futbolistas-header-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .futbolistas-header-left {
-    border-right: none;
-    border-bottom: 0.5px solid #000000;
-    padding: 32px;
-  }
-  .futbolistas-header-right {
-    padding: 32px;
-  }
-  .futbolistas-titulo-principal {
-    font-size: 2rem;
-  }
-  .futbolistas-titulo-secundario {
-    font-size: 2rem;
-  }
-  .lista-icon-extra-large {
-    height: 180px;
-  }
-  .futbolistas-lista-container {
-    padding: 32px;
-  }
-
-  .index-top-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .index-top-left {
-    border-right: none;
-    border-bottom: 0.5px solid #000000;
-    padding: 32px;
-  }
-  .index-top-right {
-    padding: 32px;
-  }
-
-  .index-bottom-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .index-bottom-left {
-    border-right: none;
-    border-bottom: 0.5px solid #000000;
-    padding: 32px;
-  }
-  .index-bottom-divider {
-    width: 100%;
-    height: 0.5px;
-  }
-  .index-bottom-right {
-    padding: 32px;
-  }
-
-  .filtros-buttons-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .filtros-button-left {
-    border-right: none;
-    border-bottom: 0.5px solid #000000;
-    padding: 24px;
-  }
-  .filtros-button-divider {
-    width: 100%;
-    height: 0.5px;
-  }
-  .filtros-button-right {
-    padding: 24px;
   }
 }
 
-@media (min-width: 769px) {
-  .brand img {
-    height: 40px;
+.futbolista-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.futbolista-card {
+  border: 0.5px solid #000000;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.futbolista-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.futbolista-card-nombre {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.futbolista-card-info {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.futbolista-card-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 0.5px solid #000000;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.futbolista-card-badge.activo {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.futbolista-card-badge.inactivo {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+@media (max-width: 768px) {
+  .futbolista-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }

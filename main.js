@@ -68,80 +68,11 @@ let turnoRelativo = 0
 let futbolistasUsados = []
 let ordenJugadoresPorRonda = []
 
-function guardarEstado() {
-  const estado = {
-    jugadores: jugadores,
-    idUnico: idUnico,
-    cantidadRondasConfig: cantidadRondasConfig,
-    cantidadJugadoresConfig: cantidadJugadoresConfig,
-    listaRondas: listaRondas,
-    rondaActual: rondaActual,
-    turnoRelativo: turnoRelativo,
-    listaFiltrada: listaFiltrada,
-    futbolistasUsados: futbolistasUsados,
-    ordenJugadoresPorRonda: ordenJugadoresPorRonda,
-  }
-  sessionStorage.setItem("estadoJuego", JSON.stringify(estado))
-}
-
-function restaurarEstado() {
-  const estadoStr = sessionStorage.getItem("estadoJuego")
-  if (estadoStr) {
-    const estado = JSON.parse(estadoStr)
-    jugadores = estado.jugadores || []
-    idUnico = estado.idUnico || 0
-    cantidadRondasConfig = estado.cantidadRondasConfig || 3
-    cantidadJugadoresConfig = estado.cantidadJugadoresConfig || 4
-    listaRondas = estado.listaRondas || []
-    rondaActual = estado.rondaActual || 0
-    turnoRelativo = estado.turnoRelativo || 0
-    listaFiltrada = estado.listaFiltrada || listaMacro
-    futbolistasUsados = estado.futbolistasUsados || []
-    ordenJugadoresPorRonda = estado.ordenJugadoresPorRonda || []
-  }
-}
-
-function limpiarEstado() {
-  sessionStorage.removeItem("estadoJuego")
-  futbolistasUsados = []
-  ordenJugadoresPorRonda = []
-}
-
 function boolToInt(b) {
   return b ? "1" : "0"
 }
 function intToBool(s) {
   return s === "1"
-}
-
-function cargarJugadoresAgregados() {
-  const jugadoresStr = localStorage.getItem("jugadoresAgregados")
-  if (jugadoresStr) {
-    try {
-      const jugadoresAgregados = JSON.parse(jugadoresStr)
-      for (let i = 0; i < jugadoresAgregados.length; i++) {
-        listaMacro.push(jugadoresAgregados[i])
-      }
-      console.log("[v0] Jugadores agregados cargados desde localStorage:", jugadoresAgregados.length)
-    } catch (e) {
-      console.log("[v0] Error al cargar jugadores agregados:", e)
-    }
-  }
-}
-
-function guardarJugadorEnLocalStorage(jugador) {
-  let jugadoresAgregados = []
-  const jugadoresStr = localStorage.getItem("jugadoresAgregados")
-  if (jugadoresStr) {
-    try {
-      jugadoresAgregados = JSON.parse(jugadoresStr)
-    } catch (e) {
-      console.log("[v0] Error al parsear jugadores agregados:", e)
-    }
-  }
-  jugadoresAgregados.push(jugador)
-  localStorage.setItem("jugadoresAgregados", JSON.stringify(jugadoresAgregados))
-  console.log("[v0] Jugador guardado en localStorage:", jugador.nombre)
 }
 
 function agregarFutbolista(nombre, pais, liga, activo) {
@@ -382,7 +313,6 @@ function calcularGanadores() {
 }
 
 function irA(url) {
-  guardarEstado()
   window.location.href = url
 }
 
@@ -412,8 +342,6 @@ function reiniciarYVolverInicio() {
   futbolistasUsados = []
   ordenJugadoresPorRonda = []
   reiniciarFiltrado()
-
-  limpiarEstado()
 
   irA("index.html")
 }
@@ -483,13 +411,13 @@ function mostrarAlertaInfo(mensaje, contenedorId = "alertContainer") {
 }
 
 function initMenu() {
-  restaurarEstado()
-  cargarJugadoresAgregados()
   listaFiltrada = [...listaMacro]
+  cargarJugadoresAgregados()
 }
 
 function initPaso1() {
-  restaurarEstado()
+  restaurarEstadoSimple()
+  cargarJugadoresAgregados()
 
   const btn = document.getElementById("siguentePaso")
   const inpR = document.getElementById("cantidadRondas")
@@ -515,22 +443,20 @@ function initPaso1() {
     cantidadJugadoresConfig = cantJ
     creacionJugadores(cantJ)
 
-    console.log("[v0] Configuración guardada - Rondas:", cantidadRondasConfig, "Jugadores:", cantidadJugadoresConfig)
-    console.log("[v0] Jugadores creados:", jugadores.length)
-
+    guardarEstadoSimple()
     irA("nombres.html")
   })
 }
 
 function initNombres() {
-  restaurarEstado()
+  restaurarEstadoSimple()
+  cargarJugadoresAgregados()
 
   const listaIzquierda = document.getElementById("listaNombresIzquierda")
   const selectorJugador = document.getElementById("selectorJugador")
   const inputNombre = document.getElementById("inputNombreJugador")
 
   if (jugadores.length === 0) {
-    console.log("[v0] No hay jugadores, redirigiendo a paso1")
     irA("paso1.html")
     return
   }
@@ -563,6 +489,7 @@ function initNombres() {
       if (inputNombre.value.trim() !== "") {
         jugadores[idx].nombre = inputNombre.value
         actualizarListaIzquierda()
+        guardarEstadoSimple()
       }
     }
   })
@@ -576,18 +503,18 @@ function initNombres() {
 
   const btnS = document.getElementById("seguirAFiltros")
   btnS.addEventListener("click", () => {
-    console.log("[v0] Guardando nombres y yendo a filtros. Jugadores:", jugadores)
+    guardarEstadoSimple()
     irA("filtros.html")
   })
 
   const btnSkip = document.getElementById("omitirNombres")
   btnSkip.addEventListener("click", () => {
+    guardarEstadoSimple()
     irA("filtros.html")
   })
 }
 
 function initFutbolistas() {
-  restaurarEstado()
   cargarJugadoresAgregados()
 
   const inpNombre = document.getElementById("nuevoNombre")
@@ -622,29 +549,9 @@ function initFutbolistas() {
   mostrarListaFutbolistas()
 }
 
-function mostrarListaFutbolistas() {
-  const lista = document.getElementById("listaFutbolistas")
-  if (!lista) return
-
-  let html = '<div class="row">'
-  for (let i = 0; i < listaMacro.length; i++) {
-    const f = listaMacro[i]
-    const estadoIcon = f.activo ? "✅" : "❌"
-    html += `
-      <div class="col-md-6 mb-3">
-        <div class="p-3 border border-dark">
-          ${f.nombre}<br>
-          <small>País: ${f.pais} | Liga: ${f.liga} | ${estadoIcon}</small>
-        </div>
-      </div>
-    `
-  }
-  html += "</div>"
-  lista.innerHTML = html
-}
-
 function initFiltros() {
-  restaurarEstado()
+  restaurarEstadoSimple()
+  cargarJugadoresAgregados()
 
   reiniciarFiltrado()
 
@@ -701,17 +608,17 @@ function initFiltros() {
       return
     }
 
-    console.log("[v0] Generando rondas con:", cantidadRondasConfig, "rondas y", jugadores.length, "jugadores")
     generarRondas(cantidadRondasConfig)
     rondaActual = 0
     turnoRelativo = 0
-    console.log("[v0] Rondas generadas:", listaRondas.length)
+    guardarEstadoSimple()
     irA("juego.html")
   })
 }
 
 function initJuego() {
-  restaurarEstado()
+  restaurarEstadoSimple()
+  cargarJugadoresAgregados()
 
   if (listaRondas.length === 0) {
     irA("filtros.html")
@@ -788,10 +695,10 @@ function initJuego() {
 
     document.getElementById("btnContinuarTurno").addEventListener("click", () => {
       turnoRelativo = turnoRelativo + 1
+      guardarEstadoSimple()
       if (turnoRelativo >= jugadores.length) {
         mostrarPantallaResultadoRonda()
       } else {
-        guardarEstado()
         mostrarPantallaListo()
       }
     })
@@ -834,10 +741,11 @@ function initJuego() {
       rondaActual = rondaActual + 1
       turnoRelativo = 0
 
+      guardarEstadoSimple()
+
       if (rondaActual >= listaRondas.length) {
         irA("final.html")
       } else {
-        guardarEstado()
         mostrarPantallaListo()
       }
     })
@@ -847,7 +755,7 @@ function initJuego() {
 }
 
 function initFinal() {
-  restaurarEstado()
+  restaurarEstadoSimple()
 
   const cont = document.getElementById("resultadoFinal")
   const ganadores = calcularGanadores()
@@ -868,6 +776,7 @@ function initFinal() {
   cont.innerHTML = html
 
   document.getElementById("btnVolverMenu").addEventListener("click", () => {
+    limpiarEstadoSimple()
     reiniciarYVolverInicio()
   })
 
@@ -878,6 +787,7 @@ function initFinal() {
     for (let i = 0; i < jugadores.length; i++) {
       jugadores[i].puntos = 0
     }
+    guardarEstadoSimple()
     irA("filtros.html")
   })
 }
@@ -888,7 +798,6 @@ window.initNombres = initNombres
 window.initFiltros = initFiltros
 window.initJuego = initJuego
 window.initFinal = initFinal
-window.initFutbolistas = initFutbolistas
 
 function _reconstruirSelects(selPais, selLiga) {
   const paisEmojis = {
@@ -914,19 +823,21 @@ function _reconstruirSelects(selPais, selLiga) {
     "Estados Unidos": "🇺🇸",
     "Arabia Saudita": "🇸🇦",
     México: "🇲🇽",
+    Colombia: "🇨🇴",
+    Serbia: "🇷🇸",
+    Paraguay: "🇵🇾",
   }
 
   const ligaEmojis = {
-    Argentina: "🇦🇷",
-    Brasil: "🇧🇷",
-    España: "🇪🇸",
-    Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    Italia: "🇮🇹",
-    Alemania: "🇩🇪",
-    Francia: "🇫🇷",
     "Estados Unidos": "🇺🇸",
+    Argentina: "🇦🇷",
+    Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    España: "🇪🇸",
+    Italia: "🇮🇹",
+    Brasil: "🇧🇷",
     "Arabia Saudita": "🇸🇦",
-    México: "🇲🇽",
+    Francia: "🇫🇷",
+    Alemania: "🇩🇪",
     Uruguay: "🇺🇾",
     Croacia: "🇭🇷",
     Bélgica: "🇧🇪",
@@ -974,4 +885,212 @@ function prepararOrdenJugadoresPorRonda() {
     }
     ordenJugadoresPorRonda.push(ordenRonda)
   }
+}
+
+function guardarEstadoSimple() {
+  sessionStorage.setItem("cantidadRondas", cantidadRondasConfig.toString())
+  sessionStorage.setItem("cantidadJugadores", cantidadJugadoresConfig.toString())
+  sessionStorage.setItem("rondaActual", rondaActual.toString())
+  sessionStorage.setItem("turnoRelativo", turnoRelativo.toString())
+
+  let jugadoresStr = ""
+  for (let i = 0; i < jugadores.length; i++) {
+    if (i > 0) jugadoresStr += ","
+    jugadoresStr += jugadores[i].id + "|" + jugadores[i].nombre + "|" + (jugadores[i].puntos || 0)
+  }
+  sessionStorage.setItem("jugadores", jugadoresStr)
+
+  let rondasStr = ""
+  for (let r = 0; r < listaRondas.length; r++) {
+    if (r > 0) rondasStr += ";"
+    const ronda = listaRondas[r]
+    for (let j = 0; j < ronda.length; j++) {
+      if (j > 0) rondasStr += ","
+      rondasStr += ronda[j].id + "|" + ronda[j].nombre + "|" + ronda[j].futbolista
+    }
+  }
+  sessionStorage.setItem("listaRondas", rondasStr)
+
+  sessionStorage.setItem("futbolistasUsados", futbolistasUsados.join(","))
+}
+
+function restaurarEstadoSimple() {
+  const cantR = sessionStorage.getItem("cantidadRondas")
+  const cantJ = sessionStorage.getItem("cantidadJugadores")
+  const ronda = sessionStorage.getItem("rondaActual")
+  const turno = sessionStorage.getItem("turnoRelativo")
+
+  if (cantR) cantidadRondasConfig = Number.parseInt(cantR, 10)
+  if (cantJ) cantidadJugadoresConfig = Number.parseInt(cantJ, 10)
+  if (ronda) rondaActual = Number.parseInt(ronda, 10)
+  if (turno) turnoRelativo = Number.parseInt(turno, 10)
+
+  const jugadoresStr = sessionStorage.getItem("jugadores")
+  if (jugadoresStr && jugadoresStr !== "") {
+    jugadores = []
+    const jugadoresArr = jugadoresStr.split(",")
+    for (let i = 0; i < jugadoresArr.length; i++) {
+      const partes = jugadoresArr[i].split("|")
+      if (partes.length >= 3) {
+        jugadores.push({
+          id: Number.parseInt(partes[0], 10),
+          nombre: partes[1],
+          puntos: Number.parseInt(partes[2], 10),
+        })
+      }
+    }
+    if (jugadores.length > 0) {
+      idUnico = Math.max(...jugadores.map((j) => j.id)) + 1
+    }
+  }
+
+  const rondasStr = sessionStorage.getItem("listaRondas")
+  if (rondasStr && rondasStr !== "") {
+    listaRondas = []
+    const rondasArr = rondasStr.split(";")
+    for (let r = 0; r < rondasArr.length; r++) {
+      const rondaStr = rondasArr[r]
+      if (rondaStr === "") continue
+      const ronda = []
+      const jugadoresRonda = rondaStr.split(",")
+      for (let j = 0; j < jugadoresRonda.length; j++) {
+        const partes = jugadoresRonda[j].split("|")
+        if (partes.length >= 3) {
+          ronda.push({
+            id: Number.parseInt(partes[0], 10),
+            nombre: partes[1],
+            futbolista: partes[2],
+          })
+        }
+      }
+      listaRondas.push(ronda)
+    }
+  }
+
+  const futUsados = sessionStorage.getItem("futbolistasUsados")
+  if (futUsados && futUsados !== "") {
+    futbolistasUsados = futUsados.split(",")
+  }
+}
+
+function limpiarEstadoSimple() {
+  sessionStorage.removeItem("cantidadRondas")
+  sessionStorage.removeItem("cantidadJugadores")
+  sessionStorage.removeItem("rondaActual")
+  sessionStorage.removeItem("turnoRelativo")
+  sessionStorage.removeItem("jugadores")
+  sessionStorage.removeItem("listaRondas")
+  sessionStorage.removeItem("futbolistasUsados")
+}
+
+function guardarJugadorEnLocalStorage(jugador) {
+  const count = localStorage.getItem("listaMacroCount") || "0"
+  const index = Number.parseInt(count, 10)
+
+  localStorage.setItem("jugador_" + index + "_nombre", jugador.nombre)
+  localStorage.setItem("jugador_" + index + "_pais", jugador.pais)
+  localStorage.setItem("jugador_" + index + "_liga", jugador.liga)
+  localStorage.setItem("jugador_" + index + "_activo", jugador.activo ? "1" : "0")
+
+  localStorage.setItem("listaMacroCount", (index + 1).toString())
+}
+
+function cargarJugadoresAgregados() {
+  const count = localStorage.getItem("listaMacroCount")
+  if (!count) return
+
+  const total = Number.parseInt(count, 10)
+  for (let i = 0; i < total; i++) {
+    const nombre = localStorage.getItem("jugador_" + i + "_nombre")
+    const pais = localStorage.getItem("jugador_" + i + "_pais")
+    const liga = localStorage.getItem("jugador_" + i + "_liga")
+    const activoStr = localStorage.getItem("jugador_" + i + "_activo")
+
+    if (nombre && pais && liga) {
+      const activo = activoStr === "1"
+      listaMacro.push({ nombre, pais, liga, activo })
+    }
+  }
+}
+
+function mostrarListaFutbolistas() {
+  const listaFutbolistas = document.getElementById("listaFutbolistas")
+  if (!listaFutbolistas) {
+    return
+  }
+  let html = '<div class="futbolista-grid">'
+  for (let i = 0; i < listaMacro.length; i++) {
+    const jugador = listaMacro[i]
+    const estadoBadge = jugador.activo
+      ? '<span class="futbolista-card-badge activo">✅ Activo</span>'
+      : '<span class="futbolista-card-badge inactivo">❌ No activo</span>'
+
+    const banderaEmoji = obtenerEmojiBandera(jugador.pais)
+    const ligaEmoji = obtenerEmojiLiga(jugador.liga)
+
+    html += `
+      <div class="futbolista-card">
+        <div class="futbolista-card-nombre">${jugador.nombre}</div>
+        <div class="futbolista-card-info">
+          <div>${banderaEmoji} ${jugador.pais}</div>
+          <div>${ligaEmoji} ${jugador.liga}</div>
+        </div>
+        ${estadoBadge}
+      </div>
+    `
+  }
+  html += "</div>"
+  listaFutbolistas.innerHTML = html
+}
+
+function obtenerEmojiBandera(pais) {
+  const paisEmojis = {
+    Argentina: "🇦🇷",
+    Brasil: "🇧🇷",
+    Portugal: "🇵🇹",
+    Francia: "🇫🇷",
+    Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    España: "🇪🇸",
+    Alemania: "🇩🇪",
+    Italia: "🇮🇹",
+    "Países Bajos": "🇳🇱",
+    Bélgica: "🇧🇪",
+    Uruguay: "🇺🇾",
+    Croacia: "🇭🇷",
+    Polonia: "🇵🇱",
+    Egipto: "🇪🇬",
+    Noruega: "🇳🇴",
+    "Costa Rica": "🇨🇷",
+    Dinamarca: "🇩🇰",
+    "Irlanda del Norte": "🇬🇧",
+    Suecia: "🇸🇪",
+    "Estados Unidos": "🇺🇸",
+    "Arabia Saudita": "🇸🇦",
+    México: "🇲🇽",
+    Colombia: "🇨🇴",
+    Serbia: "🇷🇸",
+    Paraguay: "🇵🇾",
+  }
+  return paisEmojis[pais] || "🌍"
+}
+
+function obtenerEmojiLiga(liga) {
+  const ligaEmojis = {
+    "Estados Unidos": "🇺🇸",
+    Argentina: "🇦🇷",
+    Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    España: "🇪🇸",
+    Italia: "🇮🇹",
+    Brasil: "🇧🇷",
+    "Arabia Saudita": "🇸🇦",
+    Francia: "🇫🇷",
+    Alemania: "🇩🇪",
+    Uruguay: "🇺🇾",
+    Croacia: "🇭🇷",
+    Bélgica: "🇧🇪",
+    Dinamarca: "🇩🇰",
+    Suecia: "🇸🇪",
+    México: "🇲🇽",
+  }
+  return ligaEmojis[liga] || "⚽"
 }
