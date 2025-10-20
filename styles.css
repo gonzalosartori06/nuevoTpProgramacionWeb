@@ -201,10 +201,18 @@ main {
   }
 
   .filter-column {
-    border-right: none;
+    border-right: none !important;
     border-bottom: 0.5px solid #000000;
   }
   .filter-column:last-child {
+    border-bottom: none;
+  }
+
+  .filter-column-full {
+    border-right: none !important;
+    border-bottom: 0.5px solid #000000;
+  }
+  .filter-column-full:last-child {
     border-bottom: none;
   }
 
@@ -224,8 +232,7 @@ main {
     min-height: auto;
   }
   .futbolistas-header-left {
-    border-right: none;
-    border-bottom: 0.5px solid #000000;
+    border-right: none !important;
     padding: 32px;
   }
   .futbolistas-header-right {
@@ -249,11 +256,12 @@ main {
     min-height: auto;
   }
   .index-top-left {
-    border-right: none;
-    border-bottom: 0.5px solid #000000;
+    border-right: none !important;
+    border-bottom: none !important;
     padding: 32px;
   }
   .index-top-right {
+    border-right: none !important;
     padding: 32px;
   }
   .index-bottom-container {
@@ -261,7 +269,6 @@ main {
     min-height: auto;
   }
   .index-bottom-left {
-    border-right: none;
     border-bottom: 0.5px solid #000000;
     padding: 32px;
   }
@@ -278,7 +285,7 @@ main {
     min-height: auto;
   }
   .filtros-button-left {
-    border-right: none;
+    border-right: none !important;
     border-bottom: 0.5px solid #000000;
     padding: 24px;
   }
@@ -291,13 +298,39 @@ main {
   }
 
   .footer-content {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 24px;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .footer-right {
-    align-self: flex-end;
+    align-self: center;
+  }
+
+  .filtros-images-container {
+    display: none;
+  }
+
+  .nombres-container .row {
+    flex-direction: column-reverse !important;
+  }
+
+  .nombres-container .nombres-left {
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+
+  #omitirNombres {
+    display: none;
+  }
+
+  .futbolista-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .filtros-image-column {
+    border-right: none !important;
   }
 }
 
@@ -444,9 +477,6 @@ main {
   position: relative;
 }
 .filter-column-full:last-child {
-  border-right: none;
-}
-.filtros-grid .filter-column-full:last-child {
   border-right: none;
 }
 
@@ -891,23 +921,6 @@ main {
   object-fit: contain;
 }
 
-@media (max-width: 768px) {
-  .filtros-images-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .filtros-image-column {
-    border-right: none;
-    border-bottom: 0.5px solid #000000;
-    padding: 32px;
-  }
-
-  .filtros-image-column:last-child {
-    border-bottom: none;
-  }
-}
-
 .futbolista-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -967,11 +980,4 @@ main {
   background-color: #f8d7da;
   border-color: #dc3545;
   color: #721c24;
-}
-
-@media (max-width: 768px) {
-  .futbolista-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
 }
