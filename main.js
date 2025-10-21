@@ -168,7 +168,7 @@ const listaMacro = [
   { nombre: "Alexis Mac Allister", pais: "Argentina", liga: "Inglaterra", activo: true },
   { nombre: "Enzo Fernández", pais: "Argentina", liga: "Inglaterra", activo: true },
   { nombre: "Thiago Almada", pais: "Argentina", liga: "Estados Unidos", activo: true },
-  { nombre: "Valentín Barco", pais: "Argentina", liga: "Inglaterra", activo: true },
+  { nombre: "Valentín Barco", pais: "Argentina", liga: "Francia", activo: true },
   { nombre: "Fernando Gago", pais: "Argentina", liga: "España", activo: false },
   { nombre: "Darío Benedetto", pais: "Argentina", liga: "Argentina", activo: true },
   { nombre: "Milton Casco", pais: "Argentina", liga: "Argentina", activo: true },
@@ -231,6 +231,61 @@ const listaMacro = [
   { nombre: "Thibaut Courtois", pais: "Bélgica", liga: "España", activo: true },
   { nombre: "Ngolo Kanté", pais: "Francia", liga: "Arabia Saudita", activo: true },
   { nombre: "Son Heung-min", pais: "Corea del Sur", liga: "Inglaterra", activo: true },
+  { nombre: "Ariel 'Burrito' Ortega", pais: "Argentina", liga: "Argentina", activo: false },
+  { nombre: "Gonzalo Higuaín", pais: "Argentina", liga: "Italia", activo: false },
+  { nombre: "Ezequiel Lavezzi", pais: "Argentina", liga: "Francia", activo: false },
+  { nombre: "Alejandro “Papu” Gómez", pais: "Argentina", liga: "Italia", activo: false},
+  { nombre: "Roberto Carlos", pais: "Brasil", liga: "España", activo: false },
+  { nombre: "Casemiro", pais: "Brasil", liga: "Inglaterra", activo: true },
+  { nombre: "Alisson Becker", pais: "Brasil", liga: "Inglaterra", activo: true },
+  { nombre: "Richarlison", pais: "Brasil", liga: "Inglaterra", activo: true },
+  { nombre: "Raphinha", pais: "Brasil", liga: "España", activo: true },
+  { nombre: "Marquinhos", pais: "Brasil", liga: "Francia", activo: true },
+  { nombre: "Adriano “El Emperador”", pais: "Brasil", liga: "Brasil", activo: false },
+  { nombre: "Sergio Busquets", pais: "España", liga: "Estados Unidos", activo: true },
+  { nombre: "Jordi Alba", pais: "España", liga: "Estados Unidos", activo: true },
+  { nombre: "Carles Puyol", pais: "España", liga: "España", activo: false},
+  { nombre: "Álvaro Morata", pais: "España", liga: "España", activo: true },
+  { nombre: "Giroud", pais: "Francia", liga: "Francia", activo: true },
+  { nombre: "Manuel Neuer", pais: "Alemania", liga: "Alemania", activo: true },
+  { nombre: "Joshua Kimmich", pais: "Alemania", liga: "Alemania", activo: true },
+  { nombre: "Mats Hummels", pais: "Alemania", liga: "Alemania", activo: true },
+  { nombre: "Mario Götze", pais: "Alemania", liga: "Alemania", activo: true },
+  { nombre: "Marco Reus", pais: "Alemania", liga: "Estados Unidos", activo: true },
+  { nombre: "Declan Rice", pais: "Inglaterra", liga: "Inglaterra", activo: true },
+  { nombre: "Bukayo Saka", pais: "Inglaterra", liga: "Inglaterra", activo: true },
+  { nombre: "Harry Maguire", pais: "Inglaterra", liga: "Inglaterra", activo: true },
+  { nombre: "Kyle Walker", pais: "Inglaterra", liga: "Inglaterra", activo: true },
+  { nombre: "Leonardo Bonucci", pais: "Italia", liga: "Italia", activo: false },
+  { nombre: "Giorgio Chiellini", pais: "Italia", liga: "Italia", activo: false },
+  { nombre: "Federico Chiesa", pais: "Italia", liga: "Inglaterra", activo: true },
+  { nombre: "Ciro Immobile", pais: "Italia", liga: "Italia", activo: true },
+  { nombre: "Nicolo Barella", pais: "Italia", liga: "Italia", activo: true},
+  { nombre: "Marco Verratti", pais: "Italia", liga: "Francia", activo: true },
+  { nombre: "Daniele De Rossi", pais: "Italia", liga: "Italia", activo: false },
+  { nombre: "Achraf Hakimi", pais: "Marruecos", liga: "Francia", activo: true },
+  { nombre: "Khvicha Kvaratskhelia", pais: "Georgia", liga: "Francia", activo: true },
+  { nombre: "Pep Guardiola", pais: "España", liga: "España", activo: false },
+  { nombre: "Michel Platini", pais: "Francia", liga: "Italia", activo: false },
+  { nombre: "Thierry Henry", pais: "Francia", liga: "Inglaterra", activo: false },
+  { nombre: "Lothar Matthäus", pais: "Alemania", liga: "Alenania", activo: false },
+  { nombre: "Roberto Baggio", pais: "Italia", liga: "Italia", activo: false },
+  { nombre: "Luis Figo", pais: "Portugal", liga: "España", activo: false },
+  { nombre: "Ruud Gullit", pais: "Países Bajos", liga: "Italia", activo: false },
+  { nombre: "Marco van Basten", pais: "Países Bajos", liga: "Italia", activo: false },
+  { nombre: "Frank Rijkaard", pais: "Países Bajos", liga: "Italia", activo: false },
+  { nombre: "Ronald Koeman", pais: "Países Bajos", liga: "España", activo: false },
+  { nombre: "Dennis Bergkamp", pais: "Países Bajos", liga: "Inglaterra", activo: false },
+  { nombre: "Frank Lampard", pais: "Inglaterra", liga: "Inglaterra", activo: false },
+  { nombre: "Sergio Agüero", pais: "Argentina", liga: "Inglaterra", activo: false },
+  { nombre: "Ryan Giggs", pais: "Gales", liga: "Inglaterra", activo: false },
+  { nombre: "Marek Hamšík", pais: "Serbia", liga: "Italia", activo: false },
+  { nombre: "Ángel Labruna", pais: "Argentina", liga: "Argentina", activo: false },
+  { nombre: "Norberto “Beto” Alonso", pais: "Argentina", liga: "Argentina", activo: false },
+  { nombre: "José Sanfilippo", pais: "Argentina", liga: "Argentina", activo: false },
+  { nombre: "Sebastián Battaglia", pais: "Argentina", liga: "Argentina", activo: false },
+  { nombre: "José Luis Chilavert", pais: "Paraguay", liga: "Argentina", activo: false },
+  { nombre: "Carlos Bilardo", pais: "Argentina", liga: "Argentina", activo: false },
 ]
 
 let listaRondas = []
@@ -243,6 +298,51 @@ let rondaActual = 0
 let turnoRelativo = 0
 let futbolistasUsados = []
 let ordenJugadoresPorRonda = []
+
+const EMOJIS_MAPA = {
+  Argentina: "🇦🇷",
+  Brasil: "🇧🇷",
+  Portugal: "🇵🇹",
+  Francia: "🇫🇷",
+  Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  España: "🇪🇸",
+  Alemania: "🇩🇪",
+  Italia: "🇮🇹",
+  "Países Bajos": "🇳🇱",
+  Bélgica: "🇧🇪",
+  Uruguay: "🇺🇾",
+  Croacia: "🇭🇷",
+  Polonia: "🇵🇱",
+  Egipto: "🇪🇬",
+  Noruega: "🇳🇴",
+  "Costa Rica": "🇨🇷",
+  Dinamarca: "🇩🇰",
+  "Irlanda del Norte": "🇬🇧",
+  Suecia: "🇸🇪",
+  "Estados Unidos": "🇺🇸",
+  "Arabia Saudita": "🇸🇦",
+  México: "🇲🇽",
+  Colombia: "🇨🇴",
+  Serbia: "🇷🇸",
+  Paraguay: "🇵🇾",
+  Chile: "🇨🇱",
+  Hungría: "🇭🇺",
+  Rusia: "🇷🇺",
+  Gales: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+  "Costa de Marfil": "🇨🇮",
+  Camerún: "🇨🇲",
+  Senegal: "🇸🇳",
+  Gabón: "🇬🇦",
+  Ucrania: "🇺🇦",
+  "República Checa": "🇨🇿",
+  Perú: "🇵🇪",
+  "Corea del Sur": "🇰🇷",
+  "Emiratos Árabes Unidos": "🇦🇪",
+}
+
+function obtenerEmoji(nombre) {
+  return EMOJIS_MAPA[nombre] || "🌍"
+}
 
 function agregarFutbolista(nombre, pais, liga, activo) {
   const jugador = {
@@ -948,82 +1048,6 @@ window.initJuego = initJuego
 window.initFinal = initFinal
 
 function _reconstruirSelects(selPais, selLiga) {
-  const paisEmojis = {
-    Argentina: "🇦🇷",
-    Brasil: "🇧🇷",
-    Portugal: "🇵🇹",
-    Francia: "🇫🇷",
-    Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    España: "🇪🇸",
-    Alemania: "🇩🇪",
-    Italia: "🇮🇹",
-    "Países Bajos": "🇳🇱",
-    Bélgica: "🇧🇪",
-    Uruguay: "🇺🇾",
-    Croacia: "🇭🇷",
-    Polonia: "🇵🇱",
-    Egipto: "🇪🇬",
-    Noruega: "🇳🇴",
-    "Costa Rica": "🇨🇷",
-    Dinamarca: "🇩🇰",
-    "Irlanda del Norte": "🇬🇧",
-    Suecia: "🇸🇪",
-    "Estados Unidos": "🇺🇸",
-    "Arabia Saudita": "🇸🇦",
-    México: "🇲🇽",
-    Colombia: "🇨🇴",
-    Serbia: "🇷🇸",
-    Paraguay: "🇵🇾",
-    Chile: "🇨🇱",
-    Hungría: "🇭🇺",
-    Rusia: "🇷🇺",
-    Gales: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
-    "Costa de Marfil": "🇨🇮",
-    Camerún: "🇨🇲",
-    Senegal: "🇸🇳",
-    Gabón: "🇬🇦",
-    Ucrania: "🇺🇦",
-    "República Checa": "🇨🇿",
-    Perú: "🇵🇪",
-    "Corea del Sur": "🇰🇷",
-    "Emiratos Árabes Unidos": "🇦🇪",
-  }
-
-  const ligaEmojis = {
-    "Estados Unidos": "🇺🇸",
-    Argentina: "🇦🇷",
-    Inglaterra: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    España: "🇪🇸",
-    Italia: "🇮🇹",
-    Brasil: "🇧🇷",
-    "Arabia Saudita": "🇸🇦",
-    Francia: "🇫🇷",
-    Alemania: "🇩🇪",
-    Uruguay: "🇺🇾",
-    Croacia: "🇭🇷",
-    Bélgica: "🇧🇪",
-    Dinamarca: "🇩🇰",
-    Suecia: "🇸🇪",
-    México: "🇲🇽",
-    Colombia: "🇨🇴",
-    Chile: "🇨🇱",
-    Hungría: "🇭🇺",
-    Rusia: "🇷🇺",
-    Gales: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
-    "Costa de Marfil": "🇨🇮",
-    Camerún: "🇨🇲",
-    Senegal: "🇸🇳",
-    Gabón: "🇬🇦",
-    Ucrania: "🇺🇦",
-    "República Checa": "🇨🇿",
-    Perú: "🇵🇪",
-    "Corea del Sur": "🇰🇷",
-    "Emiratos Árabes Unidos": "🇦🇪",
-    Portugal: "🇵🇹",
-    "Países Bajos": "🇳🇱",
-    Polonia: "🇵🇱",
-  }
-
   const conteoPaises = contarPorPais()
   const conteoLigas = contarPorLiga()
 
@@ -1037,7 +1061,7 @@ function _reconstruirSelects(selPais, selLiga) {
   selPais.innerHTML = '<option value="" disabled selected>Seleccionar país</option>'
   for (const p in paises) {
     if (conteoPaises[p] >= 15) {
-      const emoji = paisEmojis[p] || "🌍"
+      const emoji = obtenerEmoji(p)
       selPais.innerHTML += `<option value="${p}">${emoji} ${p}</option>`
     }
   }
@@ -1045,7 +1069,7 @@ function _reconstruirSelects(selPais, selLiga) {
   selLiga.innerHTML = '<option value="" disabled selected>Seleccionar liga</option>'
   for (const l in ligas) {
     if (conteoLigas[l] >= 15) {
-      const emoji = ligaEmojis[l] || "⚽"
+      const emoji = obtenerEmoji(l)
       selLiga.innerHTML += `<option value="${l}">${emoji} ${l}</option>`
     }
   }
@@ -1072,6 +1096,7 @@ function prepararOrdenJugadoresPorRonda() {
     ordenJugadoresPorRonda.push(ordenRonda)
   }
 }
+
 
 function guardarEstadoSimple() {
   sessionStorage.setItem("cantidadRondas", cantidadRondasConfig.toString())
@@ -1118,7 +1143,6 @@ function restaurarEstadoSimple() {
   if (ronda) rondaActual = Number.parseInt(ronda, 10)
   if (turno) turnoRelativo = Number.parseInt(turno, 10)
 
-  // Restaurar jugadores
   const jugadoresStr = sessionStorage.getItem("jugadores")
   if (jugadoresStr && jugadoresStr !== "") {
     jugadores = []
@@ -1138,7 +1162,6 @@ function restaurarEstadoSimple() {
     }
   }
 
-  // Restaurar rondas
   const rondasStr = sessionStorage.getItem("listaRondas")
   if (rondasStr && rondasStr !== "") {
     listaRondas = []
@@ -1162,7 +1185,6 @@ function restaurarEstadoSimple() {
     }
   }
 
-  // Restaurar futbolistas usados
   const futUsados = sessionStorage.getItem("futbolistasUsados")
   if (futUsados && futUsados !== "") {
     futbolistasUsados = futUsados.split(",")
@@ -1233,8 +1255,8 @@ function mostrarListaFutbolistas() {
       ? '<span class="futbolista-card-badge activo">✅ Activo</span>'
       : '<span class="futbolista-card-badge inactivo">❌ No activo</span>'
 
-    const banderaEmoji = obtenerEmojiBandera(jugador.pais)
-    const ligaEmoji = obtenerEmojiLiga(jugador.liga)
+    const banderaEmoji = obtenerEmoji(jugador.pais)
+    const ligaEmoji = obtenerEmoji(jugador.liga)
 
     html += `
       <div class="futbolista-card">
@@ -1340,7 +1362,7 @@ function eliminarFutbolista(buscador) {
       listaMacro.splice(i, 1)
 
       reconstruirLocalStorage()
-
+      mostrarListaFutbolistas()
       return true
     }
   }
@@ -1348,7 +1370,6 @@ function eliminarFutbolista(buscador) {
 }
 
 function reconstruirLocalStorage() {
-  
   const count = localStorage.getItem("listaMacroCount")
   if (count) {
     const total = Number.parseInt(count, 10)
@@ -1361,7 +1382,7 @@ function reconstruirLocalStorage() {
   }
 
   localStorage.setItem("listaMacroCount", "0")
-
+  const initialSize = 237 
   for (let i = initialSize; i < listaMacro.length; i++) {
     guardarJugadorEnLocalStorage(listaMacro[i])
   }
