@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap");
-
 @import url("https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap");
-
 @import url("https://api.fontshare.com/v2/css?f[]=gambarino@400,500,600,700&display=swap");
-
 @import url("https://api.fontshare.com/v2/css?f[]=jetbrains-mono@400,500,600,700&display=swap");
 
 * {
@@ -90,7 +87,7 @@ main {
   font-size: 2.5rem;
   font-weight: 400;
   line-height: 1.2;
-  color: #ff6b7a;
+  color: rgb(255, 106, 123);
   letter-spacing: -0.01em;
 }
 
@@ -104,240 +101,9 @@ main {
 }
 
 .texto-destacado {
-  color: #ff6b7a;
+  color: rgb(255, 106, 123);
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-weight: 500;
-}
-
-.footer-custom {
-  background-color: #000000;
-  color: #ffffff;
-  margin-top: auto;
-  border-top: 1px solid #000000;
-  position: relative;
-  z-index: 10;
-  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
-}
-
-.footer-custom a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-.footer-custom a:hover {
-  opacity: 0.7;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 48px 0 48px 0; 
-  padding-top: 56px; 
-}
-
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.footer-contacto-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.footer-contacto-icon {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.footer-contacto-text {
-  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-}
-
-.footer-right {
-  display: flex;
-  align-items: center;
-}
-
-.footer-logo {
-  height: 60px;
-  width: auto;
-}
-
-@media (max-width: 768px) {
-  .brand img {
-    height: 48px;
-  }
-
-  .titulo-principal {
-    font-size: 2.5rem;
-  }
-  .titulo-secundario {
-    font-size: 1.8rem;
-  }
-  .titulo-lista-futbolistas {
-    font-size: 1.5rem;
-  }
-
-  .lista-icon-large {
-    height: 120px;
-  }
-  .container-bordered {
-    padding: 24px;
-  }
-  .container-bordered-split {
-    flex-direction: column;
-  }
-  .split-divider {
-    width: 100%;
-    height: 0.5px;
-  }
-
-  .filter-column {
-    border-right: none !important;
-    border-bottom: 0.5px solid #000000;
-  }
-  .filter-column:last-child {
-    border-bottom: none;
-  }
-
-  .filter-column-full {
-    border-right: none !important;
-    border-bottom: 0.5px solid #000000;
-  }
-  .filter-column-full:last-child {
-    border-bottom: none;
-  }
-
-  .btn-lg {
-    width: 100%;
-    margin-bottom: 12px !important;
-  }
-  .nav-custom {
-    gap: 16px;
-  }
-  body {
-    padding-top: 70px;
-  }
-
-  .futbolistas-header-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .futbolistas-header-left {
-    border-right: none !important;
-    padding: 32px;
-  }
-  .futbolistas-header-right {
-    padding: 32px;
-  }
-  .futbolistas-titulo-principal {
-    font-size: 2rem;
-  }
-  .futbolistas-titulo-secundario {
-    font-size: 2rem;
-  }
-  .lista-icon-extra-large {
-    height: 180px;
-  }
-  .futbolistas-lista-container {
-    padding: 32px;
-  }
-
-  .index-top-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .index-top-left {
-    border-right: none !important;
-    border-bottom: none !important;
-    padding: 32px;
-  }
-  .index-top-right {
-    border-right: none !important;
-    padding: 32px;
-  }
-  .index-bottom-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .index-bottom-left {
-    border-bottom: 0.5px solid #000000;
-    padding: 32px;
-  }
-  .index-bottom-divider {
-    width: 100%;
-    height: 0.5px;
-  }
-  .index-bottom-right {
-    padding: 32px;
-  }
-
-  .filtros-buttons-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .filtros-button-left {
-    border-right: none !important;
-    border-bottom: 0.5px solid #000000;
-    padding: 24px;
-  }
-  .filtros-button-divider {
-    width: 100%;
-    height: 0.5px;
-  }
-  .filtros-button-right {
-    padding: 24px;
-  }
-
-  .footer-content {
-    flex-direction: column-reverse;
-    gap: 24px;
-    align-items: center;
-  }
-
-  .footer-right {
-    align-self: center;
-  }
-
-  .filtros-images-container {
-    display: none;
-  }
-
-  .nombres-container .row {
-    flex-direction: column-reverse !important;
-  }
-
-  .nombres-container .nombres-left {
-    border-right: none !important;
-    border-bottom: none !important;
-  }
-
-  #omitirNombres {
-    display: none;
-  }
-
-  .futbolista-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .filtros-image-column {
-    border-right: none !important;
-  }
-}
-
-@media (min-width: 769px) {
-  .brand img {
-    height: 40px;
-  }
 }
 
 .titulo-jetbrains {
@@ -350,7 +116,7 @@ main {
   font-weight: 600;
   font-size: 2.5rem;
   line-height: 1.2;
-  color: #ff6b7a;
+  color: rgb(255, 106, 123);
   letter-spacing: -0.01em;
 }
 
@@ -382,8 +148,12 @@ main {
   letter-spacing: -0.01em;
 }
 
-.container-bordered {
-  border: 0.5px solid #000000;
+.container-bordered,
+.container-bordered-title,
+.container-bordered-grid,
+.container-bordered-buttons,
+.container-bordered-button-single {
+  border: 1px solid #000000;
   background-color: transparent;
   padding: 16px;
   margin-bottom: 0;
@@ -396,86 +166,23 @@ main {
   min-height: auto;
 }
 
-.container-bordered-split {
-  border: 0.5px solid #000000;
-  background-color: transparent;
-  display: flex;
-  margin-top: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .container-bordered-title {
-  border: 0.5px solid #000000;
-  background-color: transparent;
   padding: 24px;
-  margin-bottom: 0;
   margin-top: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.container-bordered-grid {
-  border: 0.5px solid #000000;
-  border-top: none;
-  background-color: transparent;
-  margin-bottom: 0;
-  margin-top: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+.container-bordered-grid,
 .container-bordered-buttons,
 .container-bordered-button-single {
-  border: 0.5px solid #000000;
   border-top: none;
-  background-color: transparent;
-  margin-bottom: 0;
   margin-top: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.split-section {
-  flex: 1;
-  padding: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.split-divider {
-  width: 0.5px;
-  background-color: #000000;
-}
-
-.filter-column {
-  border-right: 0.5px solid #000000;
-}
-.filter-column:last-child {
-  border-right: none;
 }
 
 .filter-column-full {
-  border-right: 0.5px solid #000000;
+  border-right: 1px solid #000000;
   position: relative;
 }
+
 .filter-column-full:last-child {
   border-right: none;
 }
@@ -549,6 +256,7 @@ main {
   color: #000000;
   border: 1px solid #000000;
 }
+
 .btn-outline-dark:hover {
   background-color: #000000;
   color: #ffffff;
@@ -561,6 +269,7 @@ main {
   padding: 0;
   transition: opacity 0.2s;
 }
+
 .btn-trash:hover {
   opacity: 0.7;
 }
@@ -594,7 +303,7 @@ main {
   display: inline-block;
   padding: 20px 40px;
   background-color: #f5f5f5;
-  border: 0.5px solid #000000;
+  border: 1px solid #000000;
   font-size: 1.8rem;
   font-weight: 600;
   margin: 16px 0;
@@ -602,9 +311,9 @@ main {
 }
 
 .tag-alert {
-  background-color: #ff6b7a;
+  background-color: rgb(255, 106, 123);
   color: #ffffff;
-  border-color: #ff6b7a;
+  border-color: rgb(255, 106, 123);
 }
 
 .tag-palabra {
@@ -621,84 +330,17 @@ main {
 }
 
 .tag-palabra.impostor {
-  color: #ff6b7a;
+  color: rgb(255, 106, 123);
   font-weight: 700;
   background-color: #ffffff;
   border: 2px solid #000000;
   display: inline-block;
 }
 
-.checkboxes {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin: 40px 0;
-  align-items: center;
-}
-
-.checkboxes label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 18px;
-  cursor: pointer;
-  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
-  font-weight: 500;
-}
-
-.checkboxes input[type="checkbox"] {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  border: 1px solid #000000;
-}
-
-.lista-simple {
-  list-style: none;
-  padding: 0;
-}
-
-.lista-simple li {
-  padding: 16px 0;
-  border-bottom: 0.5px solid #000000;
-  font-size: 18px;
-}
-
-.lista-simple li:last-child {
-  border-bottom: none;
-}
-
-.alert-custom {
-  padding: 16px 20px;
-  margin: 20px 0;
-  border: 1px solid #0dcaf0;
-  background-color: #cff4fc;
-  color: #055160;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.alert-custom svg {
-  flex-shrink: 0;
-}
-
-.button-box {
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .nombres-container .nombres-left {
-  border-right: 0.5px solid #000000;
+  border-right: 1px solid #000000;
   position: relative;
   min-height: 300px;
-}
-
-.nombres-container .nombres-left::after {
-  display: none;
 }
 
 .lista-icon-large {
@@ -706,12 +348,8 @@ main {
   width: auto;
 }
 
-.futbolistas-split-container {
-  display: none;
-}
-
 .futbolistas-header-container {
-  border: 0.5px solid #000000;
+  border: 1px solid #000000;
   background-color: transparent;
   display: flex;
   margin-bottom: 0;
@@ -727,7 +365,7 @@ main {
 .futbolistas-header-left {
   flex: 1;
   padding: 32px;
-  border-right: 0.5px solid #000000;
+  border-right: 1px solid #000000;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -742,7 +380,7 @@ main {
 }
 
 .futbolistas-lista-container {
-  border: 0.5px solid #000000;
+  border: 1px solid #000000;
   border-top: none;
   background-color: transparent;
   padding: 32px;
@@ -755,16 +393,7 @@ main {
   margin-right: auto;
 }
 
-.futbolistas-titulo-principal {
-  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
-  font-size: 3rem;
-  font-weight: 400;
-  line-height: 1.2;
-  color: rgb(60, 217, 179);
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
-}
-
+.futbolistas-titulo-principal,
 .futbolistas-titulo-secundario {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 3rem;
@@ -772,153 +401,19 @@ main {
   line-height: 1.2;
   color: rgb(60, 217, 179);
   letter-spacing: -0.01em;
+}
+
+.futbolistas-titulo-principal {
+  margin-bottom: 8px;
+}
+
+.futbolistas-titulo-secundario {
   margin-bottom: 0;
 }
 
 .lista-icon-extra-large {
   height: 320px;
   width: auto;
-}
-
-.index-top-container {
-  border: 0.5px solid #000000;
-  background-color: transparent;
-  display: flex;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 300px;
-}
-
-.index-top-left {
-  flex: 1;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.index-top-right {
-  flex: 1;
-  padding: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 0.5px solid #000000;
-}
-
-.index-bottom-container {
-  border: 0.5px solid #000000;
-  border-top: none;
-  background-color: transparent;
-  display: flex;
-  margin-top: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 150px;
-}
-
-.index-bottom-left {
-  flex: 1;
-  padding: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 0.5px solid #000000;
-}
-
-.index-bottom-divider {
-  display: none;
-}
-
-.index-bottom-right {
-  flex: 1;
-  padding: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.filtros-buttons-container {
-  border: 0.5px solid #000000;
-  border-top: none;
-  background-color: transparent;
-  display: flex;
-  margin-bottom: 0;
-  margin-top: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 120px;
-}
-
-.filtros-button-left {
-  flex: 1;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 0.5px solid #000000;
-}
-
-.filtros-button-divider {
-  display: none;
-}
-
-.filtros-button-right {
-  flex: 1;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.filtros-images-container {
-  border: 0.5px solid #000000;
-  border-top: none;
-  background-color: transparent;
-  display: flex;
-  margin-bottom: 0;
-  margin-top: 0;
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 150px;
-}
-
-.filtros-image-column {
-  flex: 1;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 0.5px solid #000000;
-}
-
-.filtros-image-column:last-child {
-  border-right: none;
-}
-
-.filtros-image {
-  max-width: 100%;
-  max-height: 100px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
 }
 
 .futbolista-grid {
@@ -929,7 +424,7 @@ main {
 }
 
 .futbolista-card {
-  border: 0.5px solid #000000;
+  border: 1px solid #000000;
   background-color: #ffffff;
   padding: 20px;
   display: flex;
@@ -963,7 +458,7 @@ main {
 .futbolista-card-badge {
   display: inline-block;
   padding: 4px 12px;
-  border: 0.5px solid #000000;
+  border: 1px solid #000000;
   font-size: 0.85rem;
   font-weight: 500;
   margin-top: 8px;
@@ -980,4 +475,885 @@ main {
   background-color: #f8d7da;
   border-color: #dc3545;
   color: #721c24;
+}
+
+.index-top-container {
+  border: 1px solid #000000;
+  background-color: transparent;
+  display: flex;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 300px;
+}
+
+.index-top-left {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.index-top-right {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #000000;
+}
+
+.index-bottom-container {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: transparent;
+  display: flex;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 150px;
+}
+
+.index-bottom-left {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #000000;
+}
+
+.index-bottom-right {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtros-buttons-container {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: transparent;
+  display: flex;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 120px;
+}
+
+.filtros-button-left {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #000000;
+}
+
+.filtros-button-right {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtros-images-container {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: transparent;
+  display: flex;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 150px;
+}
+
+.filtros-image-column {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #000000;
+}
+
+.filtros-image-column:last-child {
+  border-right: none;
+}
+
+.filtros-image {
+  max-width: 100%;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-custom {
+  background-color: #000000;
+  color: #ffffff;
+  margin-top: auto;
+  border-top: 1px solid #000000;
+  position: relative;
+  z-index: 10;
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+}
+
+.footer-custom a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer-custom a:hover {
+  opacity: 0.7;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 48px 0 48px 0;
+  padding-top: 30px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-contacto-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-contacto-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.footer-contacto-text {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  height: 60px;
+  width: auto;
+}
+
+.tutorial-hero {
+  text-align: center;
+  padding: 80px 20px 60px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  margin-bottom: 0;
+}
+
+.tutorial-hero-title {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #000000;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.tutorial-hero-subtitle {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(255, 106, 123);
+  letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+
+.tutorial-hero-image {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  margin-top: 32px;
+}
+
+.tutorial-section-split {
+  display: flex;
+  min-height: 500px;
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  margin-bottom: 0;
+}
+
+.tutorial-split-left {
+  flex: 1;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #000000;
+}
+
+.tutorial-split-right {
+  flex: 1;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tutorial-section-title-large {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #000000;
+  letter-spacing: -0.02em;
+}
+
+.tutorial-section-title-medium {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+
+.tutorial-text-large,
+.tutorial-text-medium {
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.7;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.tutorial-text-large {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.tutorial-text-medium {
+  font-size: 1.15rem;
+}
+
+.tutorial-split-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.tutorial-image-full {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.tutorial-full-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tutorial-section-centered {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  padding: 80px 60px;
+  margin-bottom: 0;
+}
+
+.tutorial-section-title-center {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.tutorial-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.tutorial-role-card {
+  padding: 40px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+}
+
+.tutorial-role-card.tutorial-role-impostor {
+  background-color: rgba(255, 106, 123, 0.05);
+}
+
+.tutorial-role-title,
+.tutorial-role-title-pink {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.tutorial-role-title {
+  color: #000000;
+}
+
+.tutorial-role-title-pink {
+  color: rgb(255, 106, 123);
+}
+
+.tutorial-role-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 24px;
+}
+
+.tutorial-role-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+.tutorial-section-dark {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #000000;
+  padding: 80px 0;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
+}
+
+.tutorial-section-title-cyan,
+.tutorial-section-title-white {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+  padding: 0 60px;
+}
+
+.tutorial-section-title-cyan {
+  color: rgb(60, 217, 179);
+}
+
+.tutorial-section-title-white {
+  color: #ffffff;
+}
+
+.tutorial-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+  padding: 0 60px;
+}
+
+.tutorial-tip {
+  padding: 32px;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+}
+
+.tutorial-tip-title {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.tutorial-tip-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #ffffff;
+  margin: 0;
+}
+
+.tutorial-section-image {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  padding: 0 60px;
+}
+
+.tutorial-section-mobile {
+  border: 1px solid #000000;
+  background-color: rgba(255, 106, 123, 0.03);
+  padding: 80px 60px;
+  margin-bottom: 0;
+}
+
+.tutorial-section-title-pink {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: rgb(255, 106, 123);
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.tutorial-mobile-intro {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #000000;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.tutorial-mobile-step {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 60px;
+  padding: 48px;
+  background-color: #ffffff;
+  border: 2px solid rgb(255, 106, 123);
+}
+
+.tutorial-mobile-step-reverse {
+  flex-direction: row-reverse;
+}
+
+.tutorial-mobile-content {
+  flex: 1;
+}
+
+.tutorial-mobile-step-title {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(255, 106, 123);
+  margin-bottom: 24px;
+}
+
+.tutorial-mobile-text-large,
+.tutorial-mobile-text {
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.7;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+.tutorial-mobile-text-large {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.tutorial-mobile-text {
+  font-size: 1.05rem;
+}
+
+.tutorial-mobile-image {
+  flex: 1;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.tutorial-strategies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.tutorial-strategy-card {
+  text-align: center;
+}
+
+.tutorial-strategy-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 24px;
+}
+
+.tutorial-strategy-title {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+.tutorial-strategy-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #000000;
+}
+
+.tutorial-cta {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  padding: 100px 60px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.tutorial-cta-title {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+
+.tutorial-cta-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #000000;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+
+.tutorial-cta-button {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  padding: 18px 48px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tutorial-cta-button:hover {
+  background-color: #333333;
+  border-color: #333333;
+}
+
+@media (max-width: 768px) {
+  .brand img {
+    height: 48px;
+  }
+
+  .titulo-principal {
+    font-size: 2.5rem;
+  }
+
+  .titulo-secundario,
+  .titulo-lista-futbolistas {
+    font-size: 1.8rem;
+  }
+
+  .lista-icon-large {
+    height: 120px;
+  }
+
+  .container-bordered {
+    padding: 24px;
+  }
+
+  .filter-column-full,
+  .futbolistas-header-left,
+  .index-top-left,
+  .index-top-right,
+  .filtros-button-left,
+  .nombres-container .nombres-left,
+  .filtros-image-column {
+    border-right: none !important;
+  }
+
+  .filter-column-full {
+    border-bottom: 1px solid #000000;
+  }
+
+  .filter-column-full:last-child {
+    border-bottom: none;
+  }
+
+  .index-top-left,
+  .nombres-container .nombres-left {
+    border-bottom: none !important;
+  }
+
+  .filtros-button-left {
+    border-bottom: 1px solid #000000;
+  }
+
+  .btn-lg {
+    width: 100%;
+    margin-bottom: 12px !important;
+  }
+
+  .nav-custom {
+    gap: 16px;
+  }
+
+  body {
+    padding-top: 70px;
+  }
+
+  .futbolistas-header-container,
+  .index-top-container,
+  .index-bottom-container,
+  .filtros-buttons-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .futbolistas-header-left,
+  .futbolistas-header-right,
+  .index-top-left,
+  .index-top-right,
+  .index-bottom-left,
+  .index-bottom-right,
+  .filtros-button-left,
+  .filtros-button-right {
+    padding: 32px;
+  }
+
+  .index-bottom-left {
+    border-bottom: 1px solid #000000;
+  }
+
+  .futbolistas-titulo-principal,
+  .futbolistas-titulo-secundario {
+    font-size: 2rem;
+  }
+
+  .lista-icon-extra-large {
+    height: 180px;
+  }
+
+  .futbolistas-lista-container {
+    padding: 32px;
+  }
+
+  .footer-content {
+    flex-direction: column-reverse;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .footer-right {
+    align-self: center;
+  }
+
+  .filtros-images-container {
+    display: none;
+  }
+
+  .nombres-container .row {
+    flex-direction: column-reverse !important;
+  }
+
+  #omitirNombres {
+    display: none;
+  }
+
+  .futbolista-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tutorial-hero {
+    padding: 48px 20px 40px;
+  }
+
+  .tutorial-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .tutorial-hero-subtitle {
+    font-size: 2rem;
+  }
+
+  .tutorial-section-split {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .tutorial-split-left,
+  .tutorial-split-right {
+    padding: 40px 24px;
+    border-right: none;
+  }
+
+  .tutorial-split-left {
+    border-bottom: 1px solid #000000;
+  }
+
+  .tutorial-section-title-large {
+    font-size: 2.5rem;
+  }
+
+  .tutorial-section-title-medium {
+    font-size: 2rem;
+  }
+
+  .tutorial-text-large {
+    font-size: 1.1rem;
+  }
+
+  .tutorial-text-medium {
+    font-size: 1rem;
+  }
+
+  .tutorial-section-centered {
+    padding: 48px 24px;
+  }
+
+  .tutorial-section-title-center {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+
+  .tutorial-roles-grid,
+  .tutorial-tips-grid,
+  .tutorial-strategies-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .tutorial-role-card {
+    padding: 24px;
+  }
+
+  .tutorial-role-title,
+  .tutorial-role-title-pink {
+    font-size: 1.5rem;
+  }
+
+  .tutorial-section-dark {
+    padding: 48px 0;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .tutorial-section-title-cyan,
+  .tutorial-section-title-white {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    padding: 0 24px;
+  }
+
+  .tutorial-tips-grid {
+    gap: 20px;
+    padding: 0 24px;
+  }
+
+  .tutorial-section-mobile {
+    padding: 48px 24px;
+  }
+
+  .tutorial-section-title-pink {
+    font-size: 2.5rem;
+  }
+
+  .tutorial-mobile-intro {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+
+  .tutorial-mobile-step {
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 24px;
+  }
+
+  .tutorial-mobile-step-reverse {
+    flex-direction: column;
+  }
+
+  .tutorial-mobile-step-title {
+    font-size: 1.5rem;
+  }
+
+  .tutorial-mobile-text-large {
+    font-size: 1.1rem;
+  }
+
+  .tutorial-mobile-text {
+    font-size: 1rem;
+  }
+
+  .tutorial-mobile-image {
+    max-width: 100%;
+  }
+
+  .tutorial-cta {
+    padding: 60px 24px;
+  }
+
+  .tutorial-cta-title {
+    font-size: 2.5rem;
+  }
+
+  .tutorial-cta-text {
+    font-size: 1.1rem;
+  }
+
+  .tutorial-cta-button {
+    width: 100%;
+    padding: 16px 32px;
+  }
+}
+
+@media (min-width: 769px) {
+  .brand img {
+    height: 40px;
+  }
 }

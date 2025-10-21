@@ -244,13 +244,6 @@ let turnoRelativo = 0
 let futbolistasUsados = []
 let ordenJugadoresPorRonda = []
 
-function boolToInt(b) {
-  return b ? "1" : "0"
-}
-function intToBool(s) {
-  return s === "1"
-}
-
 function agregarFutbolista(nombre, pais, liga, activo) {
   const jugador = {
     nombre: nombre,
@@ -306,51 +299,6 @@ function crearJugador(nombre) {
     puntos: 0,
   }
   jugadores.push(jugador)
-}
-
-function cambiarNombreJugador(id, nuevoNombre) {
-  for (let i = 0; i < jugadores.length; i++) {
-    const pos = jugadores[i]
-    if (pos.id === id) {
-      pos.nombre = nuevoNombre
-    }
-  }
-}
-
-function filtrarActivo() {
-  let i = 0
-  while (i < listaMacro.length) {
-    const pos = listaMacro[i]
-    if (pos.activo === false) {
-      listaMacro.splice(i, 1)
-    } else {
-      i = i + 1
-    }
-  }
-}
-
-function filtrarPais(pais) {
-  let i = 0
-  while (i < listaMacro.length) {
-    const pos = listaMacro[i]
-    if (pos.pais !== pais) {
-      listaMacro.splice(i, 1)
-    } else {
-      i = i + 1
-    }
-  }
-}
-
-function filtrarLiga(liga) {
-  let i = 0
-  while (i < listaMacro.length) {
-    const pos = listaMacro[i]
-    if (pos.liga !== liga) {
-      listaMacro.splice(i, 1)
-    } else {
-      i = i + 1
-    }
-  }
 }
 
 function leerNumeroDeInput(el) {
@@ -722,6 +670,28 @@ function initFutbolistas() {
     mostrarListaFutbolistas()
   })
 
+  const inpEliminar = document.getElementById("eliminarNombre")
+  const btnEliminarFut = document.getElementById("btnEliminarFutbolista")
+
+  btnEliminarFut.addEventListener("click", () => {
+    const nombre = (inpEliminar.value || "").trim()
+
+    if (nombre === "") {
+      mostrarAlerta("Ingresá el nombre del futbolista a eliminar.", "alertContainer")
+      return
+    }
+
+    const eliminado = eliminarFutbolista(nombre)
+
+    if (eliminado) {
+      inpEliminar.value = ""
+      mostrarAlertaInfo("Futbolista eliminado correctamente.", "alertContainer")
+      mostrarListaFutbolistas()
+    } else {
+      mostrarAlerta("No se encontró un futbolista con ese nombre.", "alertContainer")
+    }
+  })
+
   mostrarListaFutbolistas()
 }
 
@@ -887,11 +857,11 @@ function initJuego() {
     html += '<div class="pantalla-centro">'
     html += `<h1 class="titulo-principal mb-5">Ronda ${rondaActual + 1} en curso</h1>`
     html += "<h2>Resultado de la ronda " + (rondaActual + 1) + "</h2>"
-    html += '<div class="checkboxes">'
+    html += '<div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin: 32px 0;">'
     html +=
-      '  <label style="font-family: \'Clash Grotesk\', \'Inter\', system-ui, sans-serif;"><input type="checkbox" id="impGano"> ¿El impostor ganó?</label>'
+      '  <label style="font-family: \'Clash Grotesk\', \'Inter\', system-ui, sans-serif; font-size: 1.1rem; cursor: pointer;"><input type="checkbox" id="impGano" style="margin-right: 8px; cursor: pointer;"> ¿El impostor ganó?</label>'
     html +=
-      '  <label style="font-family: \'Clash Grotesk\', \'Inter\', system-ui, sans-serif;"><input type="checkbox" id="impPerdio"> ¿El impostor perdió?</label>'
+      '  <label style="font-family: \'Clash Grotesk\', \'Inter\', system-ui, sans-serif; font-size: 1.1rem; cursor: pointer;"><input type="checkbox" id="impPerdio" style="margin-right: 8px; cursor: pointer;"> ¿El impostor perdió?</label>'
     html += "</div>"
     html += '<button id="btnSiguienteRonda" class="btn btn-dark btn-lg">Siguiente</button>'
     html += "</div>"
@@ -937,13 +907,15 @@ function initFinal() {
   const ganadores = calcularGanadores()
   const maxP = ganadores.length > 0 ? ganadores[0].puntos : 0
 
-  let html = '<div class="mb-0"><h2 class="titulo-secundario">Tabla de puntos</h2><ul class="lista-simple">'
+  let html =
+    '<div class="mb-0 text-center"><h2 class="titulo-secundario">Tabla de puntos</h2><ul class="lista-simple" style="list-style: none; padding: 0;">'
   for (let i = 0; i < jugadores.length; i++) {
     html += "<li>" + jugadores[i].nombre + ": " + (jugadores[i].puntos || 0) + "</li>"
   }
   html += "</ul></div>"
 
-  html += '<div class="mb-0 mt-4"><h2 class="titulo-secundario">Ganador(es)</h2><ul class="lista-simple">'
+  html +=
+    '<div class="mb-0 mt-4 text-center"><h2 class="titulo-secundario">Ganador(es)</h2><ul class="lista-simple" style="list-style: none; padding: 0;">'
   for (let k = 0; k < ganadores.length; k++) {
     html += "<li>" + ganadores[k].nombre + " (" + maxP + " puntos)</li>"
   }
@@ -1052,6 +1024,9 @@ function _reconstruirSelects(selPais, selLiga) {
     Polonia: "🇵🇱",
   }
 
+  const conteoPaises = contarPorPais()
+  const conteoLigas = contarPorLiga()
+
   const paises = {}
   const ligas = {}
   for (let i = 0; i < listaMacro.length; i++) {
@@ -1061,14 +1036,18 @@ function _reconstruirSelects(selPais, selLiga) {
 
   selPais.innerHTML = '<option value="" disabled selected>Seleccionar país</option>'
   for (const p in paises) {
-    const emoji = paisEmojis[p] || "🌍"
-    selPais.innerHTML += `<option value="${p}">${emoji} ${p}</option>`
+    if (conteoPaises[p] >= 15) {
+      const emoji = paisEmojis[p] || "🌍"
+      selPais.innerHTML += `<option value="${p}">${emoji} ${p}</option>`
+    }
   }
 
   selLiga.innerHTML = '<option value="" disabled selected>Seleccionar liga</option>'
   for (const l in ligas) {
-    const emoji = ligaEmojis[l] || "⚽"
-    selLiga.innerHTML += `<option value="${l}">${emoji} ${l}</option>`
+    if (conteoLigas[l] >= 15) {
+      const emoji = ligaEmojis[l] || "⚽"
+      selLiga.innerHTML += `<option value="${l}">${emoji} ${l}</option>`
+    }
   }
 }
 
@@ -1139,6 +1118,7 @@ function restaurarEstadoSimple() {
   if (ronda) rondaActual = Number.parseInt(ronda, 10)
   if (turno) turnoRelativo = Number.parseInt(turno, 10)
 
+  // Restaurar jugadores
   const jugadoresStr = sessionStorage.getItem("jugadores")
   if (jugadoresStr && jugadoresStr !== "") {
     jugadores = []
@@ -1158,6 +1138,7 @@ function restaurarEstadoSimple() {
     }
   }
 
+  // Restaurar rondas
   const rondasStr = sessionStorage.getItem("listaRondas")
   if (rondasStr && rondasStr !== "") {
     listaRondas = []
@@ -1181,6 +1162,7 @@ function restaurarEstadoSimple() {
     }
   }
 
+  // Restaurar futbolistas usados
   const futUsados = sessionStorage.getItem("futbolistasUsados")
   if (futUsados && futUsados !== "") {
     futbolistasUsados = futUsados.split(",")
@@ -1349,4 +1331,41 @@ function obtenerEmojiLiga(liga) {
     Polonia: "🇵🇱",
   }
   return ligaEmojis[liga] || "⚽"
+}
+
+function eliminarFutbolista(buscador) {
+  for (let i = 0; i < listaMacro.length; i++) {
+    const pos = listaMacro[i]
+    if (buscador === pos.nombre) {
+      listaMacro.splice(i, 1)
+      return true
+    }
+  }
+  return false
+}
+
+function contarPorLiga() {
+  const conteo = {}
+  for (let i = 0; i < listaMacro.length; i++) {
+    const liga = listaMacro[i].liga
+    if (conteo[liga]) {
+      conteo[liga] = conteo[liga] + 1
+    } else {
+      conteo[liga] = 1
+    }
+  }
+  return conteo
+}
+
+function contarPorPais() {
+  const conteo = {}
+  for (let i = 0; i < listaMacro.length; i++) {
+    const pais = listaMacro[i].pais
+    if (conteo[pais]) {
+      conteo[pais] = conteo[pais] + 1
+    } else {
+      conteo[pais] = 1
+    }
+  }
+  return conteo
 }
