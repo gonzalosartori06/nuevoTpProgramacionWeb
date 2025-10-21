@@ -1338,10 +1338,33 @@ function eliminarFutbolista(buscador) {
     const pos = listaMacro[i]
     if (buscador === pos.nombre) {
       listaMacro.splice(i, 1)
+
+      reconstruirLocalStorage()
+
       return true
     }
   }
   return false
+}
+
+function reconstruirLocalStorage() {
+  
+  const count = localStorage.getItem("listaMacroCount")
+  if (count) {
+    const total = Number.parseInt(count, 10)
+    for (let i = 0; i < total; i++) {
+      localStorage.removeItem("jugador_" + i + "_nombre")
+      localStorage.removeItem("jugador_" + i + "_pais")
+      localStorage.removeItem("jugador_" + i + "_liga")
+      localStorage.removeItem("jugador_" + i + "_activo")
+    }
+  }
+
+  localStorage.setItem("listaMacroCount", "0")
+
+  for (let i = initialSize; i < listaMacro.length; i++) {
+    guardarJugadorEnLocalStorage(listaMacro[i])
+  }
 }
 
 function contarPorLiga() {
