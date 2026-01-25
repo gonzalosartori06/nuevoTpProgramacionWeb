@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Clash+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Removed inline styles for footer to match other HTML files -->
 </head>
 <body>
   <header class="header-custom">
@@ -24,7 +25,7 @@
     </div>
   </header>
 
-  <main class="py-5">
+  <main class="py-4">
     <div class="container">
       <div class="container-bordered">
         <h1 class="titulo-principal text-center mb-5" style="color: #000000;">Configuración inicial</h1>
@@ -38,6 +39,14 @@
           <label for="cantidadJugadores" class="form-label">Cantidad de jugadores (3 a 10)</label>
           <input type="number" class="form-control" id="cantidadJugadores" min="3" max="10" value="4">
         </div>
+
+        
+            <div class="mb-3">
+              <label for="cantidadImpostores" class="form-label">Cantidad de impostores</label>
+              <select id="cantidadImpostores" class="form-select">
+                <option value="1">1</option>
+              </select>
+            </div>
 
         <div class="text-center mt-5">
           <button id="siguentePaso" class="btn btn-dark btn-lg">Siguiente</button>

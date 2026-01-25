@@ -1,3 +1,4 @@
+/* Fuentes ONLINE únicamente (sin archivos locales) */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=gambarino@400,500,600,700&display=swap");
@@ -10,12 +11,18 @@
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue",
-    Arial, sans-serif;
+  font-family: "Europa Grotesk", "Riccione", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #000000;
-  background: linear-gradient(147.05deg, rgba(255, 237, 190, 0) 64.83%, #fffedb 77.53%, #ffbcc3 90.17%);
+    background: linear-gradient(
+    to bottom right,
+    #ffffff 0%,
+    #ffffff 60%,
+    rgba(26, 156, 14, 0.3) 70%,
+    rgba(26, 156, 14, 0.6) 85%,
+    rgba(4, 77, 4, 0.95) 100%
+  );
   background-attachment: fixed;
   min-height: 100vh;
   display: flex;
@@ -24,6 +31,7 @@ body {
   font-weight: 400;
 }
 
+/* Header */
 .header-custom {
   background-color: #ffffff;
   border-bottom: 1px solid #000000;
@@ -68,11 +76,13 @@ body {
   opacity: 0.6;
 }
 
+/* Main */
 main {
   flex: 1;
   margin-bottom: 100px;
 }
 
+/* Typography */
 .titulo-principal {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 4rem;
@@ -87,7 +97,7 @@ main {
   font-size: 2.5rem;
   font-weight: 400;
   line-height: 1.2;
-  color: rgb(255, 106, 123);
+  color: #056605;
   letter-spacing: -0.01em;
 }
 
@@ -101,7 +111,7 @@ main {
 }
 
 .texto-destacado {
-  color: rgb(255, 106, 123);
+  color: #056605;
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-weight: 500;
 }
@@ -116,7 +126,7 @@ main {
   font-weight: 600;
   font-size: 2.5rem;
   line-height: 1.2;
-  color: rgb(255, 106, 123);
+  color: #056605;
   letter-spacing: -0.01em;
 }
 
@@ -148,6 +158,7 @@ main {
   letter-spacing: -0.01em;
 }
 
+/* Consolidated all container-bordered variants into a single base class */
 .container-bordered,
 .container-bordered-title,
 .container-bordered-grid,
@@ -165,6 +176,12 @@ main {
   margin-right: auto;
   min-height: auto;
 }
+/* Paso 1: un poco menos alto */
+.paso1-compact {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+
 
 .container-bordered-title {
   padding: 24px;
@@ -178,6 +195,7 @@ main {
   margin-top: 0;
 }
 
+/* Filter Columns */
 .filter-column-full {
   border-right: 1px solid #000000;
   position: relative;
@@ -204,6 +222,7 @@ main {
   font-size: 18px;
 }
 
+/* Forms */
 .form-label {
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-weight: 500;
@@ -229,6 +248,7 @@ main {
   outline: none;
 }
 
+/* Buttons */
 .btn {
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   border-radius: 0;
@@ -280,6 +300,7 @@ main {
   object-fit: contain;
 }
 
+/* Game Screens */
 .pantalla-centro {
   text-align: center;
   padding: 40px 20px;
@@ -311,9 +332,9 @@ main {
 }
 
 .tag-alert {
-  background-color: rgb(255, 106, 123);
+  background-color: #1a9c0e;
   color: #ffffff;
-  border-color: rgb(255, 106, 123);
+  border-color: #1a9c0e;
 }
 
 .tag-palabra {
@@ -330,13 +351,15 @@ main {
 }
 
 .tag-palabra.impostor {
-  color: rgb(255, 106, 123);
+  /* Making impostor red with red border */
+  color: #dc3545;
   font-weight: 700;
   background-color: #ffffff;
-  border: 2px solid #000000;
+  border: 2px solid #dc3545;
   display: inline-block;
 }
 
+/* Nombres Page */
 .nombres-container .nombres-left {
   border-right: 1px solid #000000;
   position: relative;
@@ -348,6 +371,13 @@ main {
   width: auto;
 }
 
+  .index-top-right img {
+    max-height: 160px;
+    width: auto;
+  }
+
+
+/* Futbolistas Page */
 .futbolistas-header-container {
   border: 1px solid #000000;
   background-color: transparent;
@@ -404,7 +434,7 @@ main {
 }
 
 .futbolistas-titulo-principal {
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 
 .futbolistas-titulo-secundario {
@@ -477,6 +507,64 @@ main {
   color: #721c24;
 }
 
+/* Futbolista List Items */
+.futbolista-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  margin-bottom: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.futbolista-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.futbolista-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.futbolista-nombre {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #000000;
+}
+
+.futbolista-detalles {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: #666666;
+}
+
+.futbolista-estado {
+  padding: 6px 16px;
+  border: 1px solid #000000;
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.futbolista-estado.activo {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.futbolista-estado.retirado {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+/* Index Page */
 .index-top-container {
   border: 1px solid #000000;
   background-color: transparent;
@@ -506,6 +594,22 @@ main {
   align-items: center;
   justify-content: center;
   border-right: 1px solid #000000;
+}
+
+/* Imágenes del body en index */
+.indexImagenIzquierda {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 140px;
+}
+
+.indexImagenDerecha {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
 }
 
 .index-bottom-container {
@@ -540,6 +644,26 @@ main {
   justify-content: center;
 }
 
+/* Filtros Page */
+.filtros-5cols {
+  display: flex;
+}
+
+.filtros-5col {
+  flex: 1;
+  min-width: 0;
+  border-right: 1px solid #000000;
+}
+
+.filtros-5col:last-child {
+  border-right: none;
+}
+
+.filtros-5col-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .filtros-buttons-container {
   border: 1px solid #000000;
   border-top: none;
@@ -610,6 +734,7 @@ main {
   object-fit: contain;
 }
 
+/* Footer */
 .footer-custom {
   background-color: #000000;
   color: #ffffff;
@@ -635,7 +760,7 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 48px 0 48px 0;
-  padding-top: 30px;
+  padding-top: 56px;
 }
 
 .footer-left {
@@ -672,15 +797,19 @@ main {
   width: auto;
 }
 
-.tutorial-hero {
+/* Tutorial Landing Page Styles */
+.tutorial-page .tutorial-hero {
   text-align: center;
   padding: 80px 20px 60px;
   background-color: #ffffff;
   border: 1px solid #000000;
   margin-bottom: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.tutorial-hero-title {
+.tutorial-page .tutorial-hero-title {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 5rem;
   font-weight: 400;
@@ -690,33 +819,36 @@ main {
   margin-bottom: 32px;
 }
 
-.tutorial-hero-subtitle {
+.tutorial-page .tutorial-hero-subtitle {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 3.5rem;
   font-weight: 400;
   line-height: 1.2;
-  color: rgb(255, 106, 123);
+  color: #1a9c0e;
   letter-spacing: -0.01em;
   margin-bottom: 48px;
 }
 
-.tutorial-hero-image {
+.tutorial-page .tutorial-hero-image {
   max-width: 800px;
   width: 100%;
   height: auto;
   margin-top: 32px;
 }
 
-.tutorial-section-split {
+.tutorial-page .tutorial-section-split {
   display: flex;
   min-height: 500px;
   border: 1px solid #000000;
   border-top: none;
   background-color: #ffffff;
   margin-bottom: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.tutorial-split-left {
+.tutorial-page .tutorial-split-left {
   flex: 1;
   padding: 80px 60px;
   display: flex;
@@ -725,7 +857,7 @@ main {
   border-right: 1px solid #000000;
 }
 
-.tutorial-split-right {
+.tutorial-page .tutorial-split-right {
   flex: 1;
   padding: 80px 60px;
   display: flex;
@@ -733,7 +865,7 @@ main {
   justify-content: center;
 }
 
-.tutorial-section-title-large {
+.tutorial-page .tutorial-section-title-large {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 4rem;
   font-weight: 400;
@@ -742,7 +874,7 @@ main {
   letter-spacing: -0.02em;
 }
 
-.tutorial-section-title-medium {
+.tutorial-page .tutorial-section-title-medium {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 3rem;
   font-weight: 400;
@@ -752,52 +884,59 @@ main {
   margin-bottom: 32px;
 }
 
-.tutorial-text-large,
-.tutorial-text-medium {
+/* Consolidated tutorial text classes */
+.tutorial-page .tutorial-text-large,
+.tutorial-page .tutorial-text-medium {
   font-family: "Inter", system-ui, sans-serif;
   line-height: 1.7;
   color: #000000;
   margin-bottom: 20px;
 }
 
-.tutorial-text-large {
+.tutorial-page .tutorial-text-large {
   font-size: 1.3rem;
   line-height: 1.8;
   margin-bottom: 24px;
 }
 
-.tutorial-text-medium {
+.tutorial-page .tutorial-text-medium {
   font-size: 1.15rem;
 }
 
-.tutorial-split-image {
+.tutorial-page .tutorial-split-image {
   max-width: 100%;
   height: auto;
 }
 
-.tutorial-image-full {
+.tutorial-page .tutorial-image-full {
   border: 1px solid #000000;
   border-top: none;
   background-color: #ffffff;
   padding: 0;
   margin-bottom: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.tutorial-full-image {
+.tutorial-page .tutorial-full-image {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.tutorial-section-centered {
+.tutorial-page .tutorial-section-centered {
   border: 1px solid #000000;
   border-top: none;
   background-color: #ffffff;
   padding: 80px 60px;
   margin-bottom: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.tutorial-section-title-center {
+.tutorial-page .tutorial-section-title-center {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 3.5rem;
   font-weight: 400;
@@ -808,45 +947,46 @@ main {
   margin-bottom: 60px;
 }
 
-.tutorial-roles-grid {
+.tutorial-page .tutorial-roles-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 }
 
-.tutorial-role-card {
+.tutorial-page .tutorial-role-card {
   padding: 40px;
   border: 1px solid #000000;
   background-color: #ffffff;
 }
 
-.tutorial-role-card.tutorial-role-impostor {
-  background-color: rgba(255, 106, 123, 0.05);
+.tutorial-page .tutorial-role-card.tutorial-role-impostor {
+  background-color: rgba(26, 156, 14, 0.05);
 }
 
-.tutorial-role-title,
-.tutorial-role-title-pink {
+/* Consolidated role title classes */
+.tutorial-page .tutorial-role-title,
+.tutorial-page .tutorial-role-title-pink {
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 24px;
 }
 
-.tutorial-role-title {
+.tutorial-page .tutorial-role-title {
   color: #000000;
 }
 
-.tutorial-role-title-pink {
-  color: rgb(255, 106, 123);
+.tutorial-page .tutorial-role-title-pink {
+  color: #1a9c0e;
 }
 
-.tutorial-role-image {
+.tutorial-page .tutorial-role-image {
   width: 100%;
   height: auto;
   margin-bottom: 24px;
 }
 
-.tutorial-role-text {
+.tutorial-page .tutorial-role-text {
   font-family: "Inter", system-ui, sans-serif;
   font-size: 1.1rem;
   line-height: 1.7;
@@ -854,7 +994,243 @@ main {
   margin-bottom: 16px;
 }
 
-.tutorial-section-dark {
+.tutorial-page .tutorial-section-dark {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #000000;
+  padding: 80px 0;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Consolidated section title classes with color variants */
+.tutorial-page .tutorial-section-title-cyan,
+.tutorial-page .tutorial-section-title-white {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+  padding: 0 60px;
+}
+
+.tutorial-page .tutorial-section-title-cyan {
+  color: rgb(60, 217, 179);
+}
+
+.tutorial-page .tutorial-section-title-white {
+  color: #ffffff;
+}
+
+.tutorial-page .tutorial-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+  padding: 0 60px;
+}
+
+/* ---------------------------
+   Tutorial (scoped)
+   --------------------------- */
+
+.tutorial-page {
+  /* Fondo propio del tutorial para que no dependa del resto del sitio */
+  background: linear-gradient(147.05deg, rgba(0, 0, 0, 0) 64.83%, rgba(60, 217, 179, 0.15) 80%, rgba(5, 214, 112, 0.18) 95%);
+  background-attachment: fixed;
+}
+
+.tutorial-page main {
+  flex: 1;
+  margin-bottom: 100px;
+}
+
+.tutorial-page .tutorial-hero {
+  text-align: center;
+  padding: 80px 20px 60px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  margin-bottom: 0;
+}
+
+.tutorial-page .tutorial-hero-title {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #000000;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.tutorial-page .tutorial-hero-subtitle {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(60, 217, 179);
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+
+.tutorial-page .tutorial-hero-lead {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #000000;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tutorial-page .tutorial-hero-image {
+  max-width: 900px;
+  width: 100%;
+  height: auto;
+  margin-top: 32px;
+}
+
+.tutorial-page .tutorial-section-split {
+  display: flex;
+  min-height: 520px;
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  margin-bottom: 0;
+}
+
+.tutorial-page .tutorial-split-left {
+  flex: 1;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #000000;
+}
+
+.tutorial-page .tutorial-split-right {
+  flex: 1;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tutorial-page .tutorial-section-title-large {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #000000;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+}
+
+.tutorial-page .tutorial-section-title-medium {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.tutorial-page .tutorial-text-large {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #000000;
+  margin-bottom: 22px;
+}
+
+.tutorial-page .tutorial-text-medium {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: #000000;
+  margin-bottom: 18px;
+}
+
+.tutorial-page .tutorial-split-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.tutorial-page .tutorial-section-centered {
+  border: 1px solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  padding: 80px 60px;
+  margin-bottom: 0;
+}
+
+.tutorial-page .tutorial-section-title-center {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin-bottom: 54px;
+}
+
+.tutorial-page .tutorial-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.tutorial-page .tutorial-role-card {
+  padding: 40px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+}
+
+.tutorial-page .tutorial-role-card.tutorial-role-impostor {
+  background-color: rgba(60, 217, 179, 0.06);
+}
+
+.tutorial-page .tutorial-role-title,
+.tutorial-page .tutorial-role-title-green {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.tutorial-page .tutorial-role-title {
+  color: #000000;
+}
+
+.tutorial-page .tutorial-role-title-green {
+  color: rgb(60, 217, 179);
+}
+
+.tutorial-page .tutorial-role-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 22px;
+}
+
+.tutorial-page .tutorial-role-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #000000;
+  margin-bottom: 14px;
+}
+
+.tutorial-page .tutorial-section-dark {
   border: 1px solid #000000;
   border-top: none;
   background-color: #000000;
@@ -866,8 +1242,8 @@ main {
   width: 100vw;
 }
 
-.tutorial-section-title-cyan,
-.tutorial-section-title-white {
+.tutorial-page .tutorial-section-title-green,
+.tutorial-page .tutorial-section-title-white {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
   font-size: 4rem;
   font-weight: 400;
@@ -877,15 +1253,15 @@ main {
   padding: 0 60px;
 }
 
-.tutorial-section-title-cyan {
+.tutorial-page .tutorial-section-title-green {
   color: rgb(60, 217, 179);
 }
 
-.tutorial-section-title-white {
+.tutorial-page .tutorial-section-title-white {
   color: #ffffff;
 }
 
-.tutorial-tips-grid {
+.tutorial-page .tutorial-tips-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
@@ -893,21 +1269,21 @@ main {
   padding: 0 60px;
 }
 
-.tutorial-tip {
+.tutorial-page .tutorial-tip {
   padding: 32px;
   border: 1px solid #ffffff;
   background-color: transparent;
 }
 
-.tutorial-tip-title {
+.tutorial-page .tutorial-tip-title {
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-.tutorial-tip-text {
+.tutorial-page .tutorial-tip-text {
   font-family: "Inter", system-ui, sans-serif;
   font-size: 1.05rem;
   line-height: 1.7;
@@ -915,8 +1291,8 @@ main {
   margin: 0;
 }
 
-.tutorial-section-image {
-  max-width: 600px;
+.tutorial-page .tutorial-section-image {
+  max-width: 620px;
   width: 100%;
   height: auto;
   margin: 0 auto;
@@ -924,147 +1300,145 @@ main {
   padding: 0 60px;
 }
 
-.tutorial-section-mobile {
+.tutorial-page .tutorial-section-mobile {
   border: 1px solid #000000;
-  background-color: rgba(255, 106, 123, 0.03);
+  background-color: rgba(60, 217, 179, 0.05);
   padding: 80px 60px;
   margin-bottom: 0;
 }
 
-.tutorial-section-title-pink {
+.tutorial-page .tutorial-section-title-green-center {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
-  font-size: 4rem;
+  font-size: 3.6rem;
   font-weight: 400;
   line-height: 1.1;
-  color: rgb(255, 106, 123);
+  color: rgb(60, 217, 179);
   letter-spacing: -0.02em;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
-.tutorial-mobile-intro {
+.tutorial-page .tutorial-mobile-intro {
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   line-height: 1.8;
   color: #000000;
   text-align: center;
   max-width: 900px;
-  margin: 0 auto 60px;
+  margin: 0 auto 54px;
 }
 
-.tutorial-mobile-step {
+.tutorial-page .tutorial-mobile-step {
   display: flex;
   gap: 60px;
   align-items: center;
   margin-bottom: 60px;
   padding: 48px;
   background-color: #ffffff;
-  border: 2px solid rgb(255, 106, 123);
+  border: 2px solid rgb(5, 214, 112);
 }
 
-.tutorial-mobile-step-reverse {
+.tutorial-page .tutorial-mobile-step-reverse {
   flex-direction: row-reverse;
 }
 
-.tutorial-mobile-content {
+.tutorial-page .tutorial-mobile-content {
   flex: 1;
 }
 
-.tutorial-mobile-step-title {
+.tutorial-page .tutorial-mobile-step-title {
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-size: 2rem;
   font-weight: 600;
-  color: rgb(255, 106, 123);
-  margin-bottom: 24px;
+  color: rgb(5, 214, 112);
+  margin-bottom: 18px;
 }
 
-.tutorial-mobile-text-large,
-.tutorial-mobile-text {
+.tutorial-page .tutorial-mobile-text-large {
   font-family: "Inter", system-ui, sans-serif;
-  line-height: 1.7;
-  color: #000000;
-  margin-bottom: 16px;
-}
-
-.tutorial-mobile-text-large {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font-weight: 500;
+  color: #000000;
 }
 
-.tutorial-mobile-text {
+.tutorial-page .tutorial-mobile-text {
+  font-family: "Inter", system-ui, sans-serif;
   font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  color: #000000;
 }
 
-.tutorial-mobile-image {
+.tutorial-page .tutorial-mobile-image {
   flex: 1;
-  max-width: 400px;
+  max-width: 420px;
   width: 100%;
   height: auto;
 }
 
-.tutorial-strategies-grid {
+.tutorial-page .tutorial-strategies-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 }
 
-.tutorial-strategy-card {
+.tutorial-page .tutorial-strategy-card {
   text-align: center;
 }
 
-.tutorial-strategy-image {
+.tutorial-page .tutorial-strategy-image {
   width: 100%;
   max-width: 300px;
   height: auto;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
-.tutorial-strategy-title {
+.tutorial-page .tutorial-strategy-title {
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   color: #000000;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-.tutorial-strategy-text {
+.tutorial-page .tutorial-strategy-text {
   font-family: "Inter", system-ui, sans-serif;
   font-size: 1.05rem;
   line-height: 1.7;
   color: #000000;
 }
 
-.tutorial-cta {
+.tutorial-page .tutorial-cta {
   border: 1px solid #000000;
   border-top: none;
   background-color: #ffffff;
-  padding: 100px 60px;
+  padding: 90px 60px;
   text-align: center;
   margin-bottom: 0;
 }
 
-.tutorial-cta-title {
+.tutorial-page .tutorial-cta-title {
   font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 400;
   line-height: 1.2;
   color: #000000;
   letter-spacing: -0.01em;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
-.tutorial-cta-text {
+.tutorial-page .tutorial-cta-text {
   font-family: "Inter", system-ui, sans-serif;
   font-size: 1.2rem;
   line-height: 1.8;
   color: #000000;
-  max-width: 700px;
-  margin: 0 auto 48px;
+  max-width: 760px;
+  margin: 0 auto 40px;
 }
 
-.tutorial-cta-button {
+.tutorial-page .tutorial-cta-button {
   font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
   background-color: #000000;
   color: #ffffff;
@@ -1076,205 +1450,82 @@ main {
   transition: all 0.2s;
 }
 
-.tutorial-cta-button:hover {
+.tutorial-page .tutorial-cta-button:hover {
   background-color: #333333;
   border-color: #333333;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-  .brand img {
-    height: 48px;
-  }
-
-  .titulo-principal {
-    font-size: 2.5rem;
-  }
-
-  .titulo-secundario,
-  .titulo-lista-futbolistas {
-    font-size: 1.8rem;
-  }
-
-  .lista-icon-large {
-    height: 120px;
-  }
-
-  .container-bordered {
-    padding: 24px;
-  }
-
-  .filter-column-full,
-  .futbolistas-header-left,
-  .index-top-left,
-  .index-top-right,
-  .filtros-button-left,
-  .nombres-container .nombres-left,
-  .filtros-image-column {
-    border-right: none !important;
-  }
-
-  .filter-column-full {
-    border-bottom: 1px solid #000000;
-  }
-
-  .filter-column-full:last-child {
-    border-bottom: none;
-  }
-
-  .index-top-left,
-  .nombres-container .nombres-left {
-    border-bottom: none !important;
-  }
-
-  .filtros-button-left {
-    border-bottom: 1px solid #000000;
-  }
-
-  .btn-lg {
-    width: 100%;
-    margin-bottom: 12px !important;
-  }
-
-  .nav-custom {
-    gap: 16px;
-  }
-
-  body {
-    padding-top: 70px;
-  }
-
-  .futbolistas-header-container,
-  .index-top-container,
-  .index-bottom-container,
-  .filtros-buttons-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .futbolistas-header-left,
-  .futbolistas-header-right,
-  .index-top-left,
-  .index-top-right,
-  .index-bottom-left,
-  .index-bottom-right,
-  .filtros-button-left,
-  .filtros-button-right {
-    padding: 32px;
-  }
-
-  .index-bottom-left {
-    border-bottom: 1px solid #000000;
-  }
-
-  .futbolistas-titulo-principal,
-  .futbolistas-titulo-secundario {
-    font-size: 2rem;
-  }
-
-  .lista-icon-extra-large {
-    height: 180px;
-  }
-
-  .futbolistas-lista-container {
-    padding: 32px;
-  }
-
-  .footer-content {
-    flex-direction: column-reverse;
-    gap: 24px;
-    align-items: center;
-  }
-
-  .footer-right {
-    align-self: center;
-  }
-
-  .filtros-images-container {
-    display: none;
-  }
-
-  .nombres-container .row {
-    flex-direction: column-reverse !important;
-  }
-
-  #omitirNombres {
-    display: none;
-  }
-
-  .futbolista-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .tutorial-hero {
+  .tutorial-page .tutorial-hero {
     padding: 48px 20px 40px;
   }
 
-  .tutorial-hero-title {
-    font-size: 2.5rem;
+  .tutorial-page .tutorial-hero-title {
+    font-size: 2.6rem;
   }
 
-  .tutorial-hero-subtitle {
-    font-size: 2rem;
+  .tutorial-page .tutorial-hero-subtitle {
+    font-size: 2.05rem;
   }
 
-  .tutorial-section-split {
+  .tutorial-page .tutorial-section-split {
     flex-direction: column;
     min-height: auto;
   }
 
-  .tutorial-split-left,
-  .tutorial-split-right {
+  .tutorial-page .tutorial-split-left,
+  .tutorial-page .tutorial-split-right {
     padding: 40px 24px;
     border-right: none;
   }
 
-  .tutorial-split-left {
+  .tutorial-page .tutorial-split-left {
     border-bottom: 1px solid #000000;
   }
 
-  .tutorial-section-title-large {
+  .tutorial-page .tutorial-section-title-large {
     font-size: 2.5rem;
   }
 
-  .tutorial-section-title-medium {
+  .tutorial-page .tutorial-section-title-medium {
     font-size: 2rem;
   }
 
-  .tutorial-text-large {
+  .tutorial-page .tutorial-text-large {
     font-size: 1.1rem;
   }
 
-  .tutorial-text-medium {
+  .tutorial-page .tutorial-text-medium {
     font-size: 1rem;
   }
 
-  .tutorial-section-centered {
+  .tutorial-page .tutorial-section-centered {
     padding: 48px 24px;
   }
 
-  .tutorial-section-title-center {
+  .tutorial-page .tutorial-section-title-center {
     font-size: 2.5rem;
     margin-bottom: 40px;
   }
 
-  .tutorial-roles-grid,
-  .tutorial-tips-grid,
-  .tutorial-strategies-grid {
+  .tutorial-page .tutorial-roles-grid,
+  .tutorial-page .tutorial-tips-grid,
+  .tutorial-page .tutorial-strategies-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 
-  .tutorial-role-card {
+  .tutorial-page .tutorial-role-card {
     padding: 24px;
   }
 
-  .tutorial-role-title,
-  .tutorial-role-title-pink {
+  .tutorial-page .tutorial-role-title,
+  .tutorial-page .tutorial-role-title-green {
     font-size: 1.5rem;
   }
 
-  .tutorial-section-dark {
+  .tutorial-page .tutorial-section-dark {
     padding: 48px 0;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -1283,77 +1534,471 @@ main {
     width: 100%;
   }
 
-  .tutorial-section-title-cyan,
-  .tutorial-section-title-white {
+  .tutorial-page .tutorial-section-title-green,
+  .tutorial-page .tutorial-section-title-white {
     font-size: 2.5rem;
     margin-bottom: 40px;
     padding: 0 24px;
   }
 
-  .tutorial-tips-grid {
+  .tutorial-page .tutorial-tips-grid {
     gap: 20px;
     padding: 0 24px;
   }
 
-  .tutorial-section-mobile {
+  .tutorial-page .tutorial-section-image {
+    padding: 0 24px;
+  }
+
+  .tutorial-page .tutorial-section-mobile {
     padding: 48px 24px;
   }
 
-  .tutorial-section-title-pink {
+  .tutorial-page .tutorial-section-title-green-center {
     font-size: 2.5rem;
   }
 
-  .tutorial-mobile-intro {
+  .tutorial-page .tutorial-mobile-intro {
     font-size: 1.1rem;
     margin-bottom: 40px;
   }
 
-  .tutorial-mobile-step {
+  .tutorial-page .tutorial-mobile-step {
     flex-direction: column;
     gap: 32px;
     padding: 32px 24px;
   }
 
-  .tutorial-mobile-step-reverse {
+  .tutorial-page .tutorial-mobile-step-reverse {
     flex-direction: column;
   }
 
-  .tutorial-mobile-step-title {
+  .tutorial-page .tutorial-mobile-step-title {
     font-size: 1.5rem;
   }
 
-  .tutorial-mobile-text-large {
+  .tutorial-page .tutorial-mobile-text-large {
     font-size: 1.1rem;
   }
 
-  .tutorial-mobile-text {
+  .tutorial-page .tutorial-mobile-text {
     font-size: 1rem;
   }
 
-  .tutorial-mobile-image {
+  .tutorial-page .tutorial-mobile-image {
     max-width: 100%;
   }
 
-  .tutorial-cta {
+  .tutorial-page .tutorial-cta {
     padding: 60px 24px;
   }
 
-  .tutorial-cta-title {
+  .tutorial-page .tutorial-cta-title {
     font-size: 2.5rem;
   }
 
-  .tutorial-cta-text {
+  .tutorial-page .tutorial-cta-text {
     font-size: 1.1rem;
   }
 
-  .tutorial-cta-button {
+  .tutorial-page .tutorial-cta-button {
     width: 100%;
     padding: 16px 32px;
   }
 }
 
-@media (min-width: 769px) {
-  .brand img {
-    height: 40px;
+
+
+/* =============================
+   TUTORIAL V2 (SOLO tutorial.html)
+   - Estilo inspirado en la versión que enviaste
+   - Colores verdes neon
+   - Scoping: solo aplica cuando body tiene .tutorial-v2
+   ============================= */
+
+body.tutorial-v2 {
+  background: linear-gradient(147.05deg, rgba(47, 244, 10, 0) 64.83%, rgba(47, 244, 10, 0.22) 77.53%, rgba(47, 244, 10, 0.35) 90.17%);
+  background-attachment: fixed;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-hero,
+body.tutorial-v2 #tutorialV2 .tut-split,
+body.tutorial-v2 #tutorialV2 .tut-center,
+body.tutorial-v2 #tutorialV2 .tut-cta {
+  border: 1px solid #000000;
+  background-color: #ffffff;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-hero {
+  text-align: center;
+  padding: 80px 20px 60px;
+  margin-bottom: 0;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-hero-title {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #000000;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-hero-subtitle {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #000000;
+  max-width: 900px;
+  margin: 0 auto 10px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-hero-img {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  margin-top: 22px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-split {
+  display: flex;
+  border-top: none;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-split-col {
+  flex: 1;
+  padding: 70px 60px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-split-col + .tut-split-col {
+  border-left: 1px solid #000000;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-h2 {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-h2-center {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-h3 {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 12px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-p,
+body.tutorial-v2 #tutorialV2 .tut-ul {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #000000;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-note {
+  margin-top: 22px;
+  border: 1px solid #000000;
+  padding: 14px 16px;
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 500;
+  background: rgba(47, 244, 10, 0.12);
+}
+
+body.tutorial-v2 #tutorialV2 .tut-center {
+  border-top: none;
+  padding: 80px 60px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-step {
+  display: flex;
+  gap: 18px;
+  padding: 22px;
+  border: 1px solid #000000;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-step-num {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #000000;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  background: rgba(47, 244, 10, 0.18);
+}
+
+/* Sección oscura: SIN márgenes negativos para evitar que se corra */
+body.tutorial-v2 #tutorialV2 .tut-dark {
+  border: 1px solid #000000;
+  border-top: none;
+  background: #000000;
+  padding: 70px 60px;
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-h2-dark {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 44px;
+  color: #ffffff;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-tips {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-tip {
+  padding: 28px;
+  border: 1px solid #ffffff;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-tip-title {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2ff40a;
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-tip-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #ffffff;
+  margin: 0;
+  word-break: break-word;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-card {
+  border: 1px solid #000000;
+  padding: 32px;
+  background: rgba(47, 244, 10, 0.06);
+}
+
+body.tutorial-v2 #tutorialV2 .tut-cta {
+  border-top: none;
+  padding: 90px 60px;
+  text-align: center;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-cta-title {
+  font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000000;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-cta-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #000000;
+  max-width: 700px;
+  margin: 0 auto 34px;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-cta-btn {
+  font-family: "Clash Grotesk", "Inter", system-ui, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  padding: 18px 48px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
+  background-color: #333333;
+  border-color: #333333;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  body.tutorial-v2 #tutorialV2 .tut-hero { padding: 48px 20px 40px; }
+  body.tutorial-v2 #tutorialV2 .tut-hero-title { font-size: 2.5rem; }
+  body.tutorial-v2 #tutorialV2 .tut-hero-subtitle { font-size: 1.05rem; }
+
+  body.tutorial-v2 #tutorialV2 .tut-split { flex-direction: column; }
+  body.tutorial-v2 #tutorialV2 .tut-split-col { padding: 40px 24px; }
+  body.tutorial-v2 #tutorialV2 .tut-split-col + .tut-split-col { border-left: none; border-top: 1px solid #000000; }
+
+  body.tutorial-v2 #tutorialV2 .tut-h2 { font-size: 2rem; }
+  body.tutorial-v2 #tutorialV2 .tut-h2-center { font-size: 2.5rem; margin-bottom: 40px; }
+
+  body.tutorial-v2 #tutorialV2 .tut-center { padding: 48px 24px; }
+
+  body.tutorial-v2 #tutorialV2 .tut-dark { padding: 48px 24px; }
+  body.tutorial-v2 #tutorialV2 .tut-h2-dark { font-size: 2.5rem; margin-bottom: 32px; }
+  body.tutorial-v2 #tutorialV2 .tut-tips { grid-template-columns: 1fr; gap: 18px; }
+
+  body.tutorial-v2 #tutorialV2 .tut-grid-2 { grid-template-columns: 1fr; gap: 24px; }
+  body.tutorial-v2 #tutorialV2 .tut-cta { padding: 60px 24px; }
+  body.tutorial-v2 #tutorialV2 .tut-cta-title { font-size: 2.5rem; }
+  body.tutorial-v2 #tutorialV2 .tut-cta-btn { width: 100%; }
+}
+
+
+/* FIX: ensure footer logo looks consistent across pages */
+.footer-custom img,
+.footer-logo {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+
+/* =========================
+   Index (imagenes del body)
+   ========================= */
+
+/* Nuevo: nombres pedidos */
+.indexImagenIzquierda,
+.index-logo-img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 90px;
+}
+
+.indexImagenDerecha,
+.index-hero-img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+}
+
+/* =========================
+   Filtros (columna simétrica)
+   ========================= */
+.filtros-dificultad-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.filtros-dificultad-wrap .form-select {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .index-logo-img,
+  .indexImagenIzquierda {
+    max-height: 140px;
   }
+
+  .index-hero-img,
+  .indexImagenDerecha {
+    max-width: 320px;
+  }
+
+  .filtros-dificultad-wrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+
+/* =========================
+   Filtros: 5 filas simétricas
+   ========================= */
+.filtros-rows-vertical .filtros-row-item {
+  border-bottom: 1px solid #000000;
+}
+
+.filtros-rows-vertical .filtros-row-item:last-child {
+  border-bottom: none;
+}
+
+.filtros-filter-box {
+  padding: 18px 16px;
+  min-height: 120px;
+}
+
+.filtros-filter-box .filter-label {
+  margin-bottom: 12px;
+}
+
+.filtros-row-trash .filtros-trash-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive extra para la grilla de filtros (5 columnas) */
+@media (max-width: 768px) {
+  .filtros-5cols {
+    flex-direction: column;
+  }
+
+  .filtros-5col {
+    border-right: none;
+    border-bottom: 1px solid #000000;
+  }
+
+  .filtros-5col:last-child {
+    border-bottom: none;
+  }
+}
+
+
+/* Imagen pequeña del futbolista (Juego) */
+.futbolista-img-peq {
+  max-width: 90px;
+  height: auto;
+  object-fit: cover;
 }

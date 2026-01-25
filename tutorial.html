@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tutorial - ImpostBall</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tutorial</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
 </head>
-<body>
+<body class="tutorial-page tutorial-v2">
   <header class="header-custom">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center py-3">
@@ -22,171 +24,106 @@
     </div>
   </header>
 
-  <main class="py-5">
-    <div class="container" style="max-width: 1400px;">
-      <section class="tutorial-hero">
-        <h1 class="tutorial-hero-title">
-          el juego del Stream
-        </h1>
-        <h2 class="tutorial-hero-subtitle">
-          para aquellos<br>
-          que celebran<br>
-          el fútbol & los juegos de estrategia
-        </h2>
+  <main class="py-5" id="tutorialV2">
+    <div class="container">
+      <section class="tut-hero">
+        <h1 class="tut-hero-title">Tutorial</h1>
+        <p class="tut-hero-subtitle">Aprendé las reglas, entendé las rondas y ganá con estrategia.</p>
+        <img class="tut-hero-img" src="media/tutorialPortada.png" alt="Tutorial" onerror="this.style.display='none'" />
       </section>
-      <section class="tutorial-section-split">
-        <div class="tutorial-split-left">
-          <h2 class="tutorial-section-title-large">¿Qué es<br>ImpostBall?</h2>
+
+      <section class="tut-split">
+        <div class="tut-split-col">
+          <h2 class="tut-h2">Objetivo</h2>
+          <p class="tut-p">En cada ronda, casi todos reciben el <strong>mismo futbolista</strong>. Pero algunos jugadores reciben <strong>IMPOSTOR</strong>.</p>
+          <p class="tut-p">Los que conocen el futbolista deben dar pistas sin decir el nombre. El impostor debe disimular y adivinar de quién se trata.</p>
         </div>
-        <div class="tutorial-split-right">
-          <p class="tutorial-text-large">
-            Un juego de deducción donde todos conocen el futbolista secreto... excepto un jugador: el impostor.
-          </p>
-          <p class="tutorial-text-large">
-            Cada jugador da una pista relacionada con el futbolista. El impostor debe pasar desapercibido mientras intenta deducir quién es el jugador secreto.
-          </p>
-          <p class="tutorial-text-large">
-            Al final de cada ronda, todos votan para decidir quién es el impostor. ¿Podrás identificarlo antes de que sea demasiado tarde?
-          </p>
+        <div class="tut-split-col">
+          <h2 class="tut-h2">Roles</h2>
+          <ul class="tut-ul">
+            <li><strong>Jugador normal</strong>: conoce el futbolista, da pistas específicas sin revelar.</li>
+            <li><strong>Impostor</strong>: no conoce el futbolista, intenta pasar desapercibido y adivinar.</li>
+          </ul>
+          <div class="tut-note">Tip: cuanto más precisa la pista (sin decir el nombre), más fácil detectar al impostor.</div>
         </div>
       </section>
-      <section class="tutorial-section-centered">
-        <h2 class="tutorial-section-title-center">Dos roles, una misión</h2>
-        <div class="tutorial-roles-grid">
-          <div class="tutorial-role-card">
-            <h3 class="tutorial-role-title">Tripulante</h3>
-            <p class="tutorial-role-text">
-              Tu objetivo: identificar al impostor sin revelar demasiado sobre el futbolista.
-            </p>
-            <p class="tutorial-role-text">
-              Da pistas específicas pero sutiles. Si el futbolista es Messi, podés decir "Barcelona" o "Pulga", pero no seas tan obvio como los ejemplos que acabo de dar.
-            </p>
+
+      <section class="tut-center">
+        <h2 class="tut-h2-center">Mecánicas de rondas</h2>
+        <div class="tut-steps">
+          <div class="tut-step">
+            <div class="tut-step-num">1</div>
+            <div>
+              <h3 class="tut-h3">Revelar palabra</h3>
+              <p class="tut-p">Cada jugador mira su palabra en privado. Si sos impostor, aparece el aviso <strong>IMPOSTOR</strong>.</p>
+            </div>
           </div>
-          <div class="tutorial-role-card tutorial-role-impostor">
-            <h3 class="tutorial-role-title-pink">Impostor</h3>
-            <p class="tutorial-role-text">
-              Tu objetivo: pasar desapercibido y deducir quién es el futbolista secreto.
-            </p>
-            <p class="tutorial-role-text">
-              Escuchá atentamente las pistas. Intentá dar palabras genéricas que puedan aplicar a varios futbolistas: "goleador", "europeo", "campeón".
-            </p>
+          <div class="tut-step">
+            <div class="tut-step-num">2</div>
+            <div>
+              <h3 class="tut-h3">Dar una pista</h3>
+              <p class="tut-p">En orden, cada jugador dice una palabra o frase corta como pista.</p>
+            </div>
+          </div>
+          <div class="tut-step">
+            <div class="tut-step-num">3</div>
+            <div>
+              <h3 class="tut-h3">Debate y votación</h3>
+              <p class="tut-p">Al final, discutan quién parece impostor y voten.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="tutorial-section-dark">
-        <h2 class="tutorial-section-title-cyan">Cómo atrapar<br>al impostor</h2>
-        <div class="tutorial-tips-grid">
-          <div class="tutorial-tip">
-            <h3 class="tutorial-tip-title">Pistas vagas</h3>
-            <p class="tutorial-tip-text">
-              El impostor no conoce el futbolista, por lo que tiende a dar palabras muy generales: "talentoso", "rápido", "ganador".
-            </p>
-          </div>
-          <div class="tutorial-tip">
-            <h3 class="tutorial-tip-title">Contradicciones</h3>
-            <p class="tutorial-tip-text">
-              Si alguien dice algo que contradice las pistas anteriores, puede ser el impostor. Prestá atención a los detalles.
-            </p>
-          </div>
-          <div class="tutorial-tip">
-            <h3 class="tutorial-tip-title">Comportamiento</h3>
-            <p class="tutorial-tip-text">
-              El impostor puede dudar más de lo normal, copiar respuestas de otros jugadores, o intentar cambiar de tema.
-            </p>
-          </div>
-          <div class="tutorial-tip">
-            <h3 class="tutorial-tip-title">Votación estratégica</h3>
-            <p class="tutorial-tip-text">
-              Analizá todas las pistas dadas durante la ronda y votá a quien te pareció más sospechoso. No votes solo por intuición.
-            </p>
-          </div>
+      <section class="tut-dark">
+        <h2 class="tut-h2-dark">Cómo atrapar al impostor</h2>
+        <div class="tut-tips">
+          <article class="tut-tip">
+            <h3 class="tut-tip-title">Pistas vagas</h3>
+            <p class="tut-tip-text">El impostor no conoce al futbolista, así que suele tirar cosas generales: “talentoso”, “rápido”, “ganador”.</p>
+          </article>
+          <article class="tut-tip">
+            <h3 class="tut-tip-title">Contradicciones</h3>
+            <p class="tut-tip-text">Si alguien dice algo que contradice pistas anteriores, puede estar improvisando. Prestá atención a los detalles.</p>
+          </article>
+          <article class="tut-tip">
+            <h3 class="tut-tip-title">Comportamiento</h3>
+            <p class="tut-tip-text">El impostor puede dudar, copiar respuestas de otros o cambiar de tema cuando le preguntan.</p>
+          </article>
+          <article class="tut-tip">
+            <h3 class="tut-tip-title">Votación estratégica</h3>
+            <p class="tut-tip-text">Analizá todo lo dicho durante la ronda y votá al que te pareció más sospechoso.</p>
+          </article>
         </div>
       </section>
-      <section class="tutorial-section-mobile">
-        <h2 class="tutorial-section-title-pink">Instrucciones críticas<br>para cada dispositivo</h2>
-        <p class="tutorial-mobile-intro">
-          Si jugás desde un celular o ordenador, es fundamental seguir estas instrucciones para que el juego funcione correctamente y nadie haga trampa.
-        </p>
-        
-        <div class="tutorial-mobile-step">
-          <div class="tutorial-mobile-content">
-            <h3 class="tutorial-mobile-step-title">Version Ordenador</h3>
-            <p class="tutorial-mobile-text-large">
-              Una vez hayan ingresando los nombres de los jugadores al principio del juego, <strong>todos deben jugar con los ojos cerrados</strong> o <strong>sin mirar la pantalla</strong>.
-            </p>
-            <p class="tutorial-mobile-text">
-              ¿Por qué? uno solo puede mirar cuando el jugador del turno anterior le avisa que es su turno por el mensaje: <strong>"Jugador X ¿Listo para comenzar?"</strong>
-              Una vez haya terminado la ronda de asignacion de futbolista/rol y en la pantalla aparezca el mensaje <strong>"Resultado de la ronda"</strong>, todos pueden abrir los ojos y mirar la pantalla nuevamente y empezar con las rondas de palabras.
-            </p>
-          </div>
-          <img src="media/imagenTutorial6.png" alt="Ojos cerrados" class="tutorial-mobile-image">
-        </div>
 
-        <div class="tutorial-mobile-step tutorial-mobile-step-reverse">
-          <div class="tutorial-mobile-content">
-            <h3 class="tutorial-mobile-step-title">Version Mobil</h3>
-            <p class="tutorial-mobile-text-large">
-              Durante el juego, aparecerá un mensaje que dice: <strong>"Jugador X ¿Listo para comenzar?"</strong>
-            </p>
-            <p class="tutorial-mobile-text">
-              El jugador que tiene el teléfono en ese momento debe <strong>pasárselo inmediatamente al Jugador X</strong> sin mirar la pantalla.
-            </p>
-            <p class="tutorial-mobile-text">
-              Solo el Jugador X debe ver su rol (si es tripulante o impostor) y el futbolista asignado. Nadie más puede ver esta información.
-            </p>
-            <p class="tutorial-mobile-text">
-              Después de ver su rol, el Jugador X toca el botón "Listo" y pasa el teléfono al siguiente jugador.
-            </p>
+      <section class="tut-center">
+        <h2 class="tut-h2-center">Estrategias para ganar</h2>
+        <div class="tut-grid-2">
+          <div class="tut-card">
+            <h3 class="tut-h3">Si NO sos impostor</h3>
+            <ul class="tut-ul">
+              <li>Arrancá con pistas <strong>medias</strong> (ni obvias ni demasiado crípticas).</li>
+              <li>Si alguien se contradice, preguntale por qué.</li>
+              <li>Coordiná con el grupo: las pistas tienen que “encajar”.</li>
+            </ul>
           </div>
-          <img src="media/imagenTutorial7.png" alt="Pasar teléfono" class="tutorial-mobile-image">
-        </div>
-      </section>
-      <section class="tutorial-section-split">
-        <div class="tutorial-split-left">
-          <img src="media/imagenTutorial8.png" alt="Mecánica de rondas" class="tutorial-split-image">
-        </div>
-        <div class="tutorial-split-right">
-          <h2 class="tutorial-section-title-medium">Mecánica de rondas</h2>
-          <p class="tutorial-text-medium">
-            El juego se divide en múltiples rondas. En cada ronda, se asigna un nuevo futbolista y un nuevo impostor.
-          </p>
-          <p class="tutorial-text-medium">
-            <strong>Orden de turnos:</strong> El orden cambia cada ronda para que todos tengan la oportunidad de hablar primero, en el medio, o último.
-          </p>
-          <p class="tutorial-text-medium">
-            <strong>Ronda de palabras:</strong> Cada jugador, terminada la ronda de asignacion, dice una palabra o frase corta relacionada con el futbolista en el mismo orden que se le asigno en la ronda de asignacion.
-          </p>
-          <p class="tutorial-text-medium">
-            <strong>Votación:</strong> Al final de cada ronda de palabras, todos votan simultáneamente a quién creen que es el impostor, al eliminar un jugador este debe decir sin mentir si era el impostor, si era el impostor se termina el juego y si no era el impostor comienza otra ronda de palabras sin el jugador expulsado.
-          </p>
-          <p class="tutorial-text-medium">
-            <strong>Final de ronda:</strong> Si el impostor es expulsado se termina la ronda y se empieza otra ronda de asignacion. Si el impostor queda con un tripulante, el impostor gana y se empieza otra ronda de asignacion. Recorda anotar en las casillas el resultado de la ronda de palabras para llevar un recuento de los puntos.
-          </p>
-        </div>
-      </section>
-      <section class="tutorial-section-centered">
-        <h2 class="tutorial-section-title-center">Estrategias para ganar</h2>
-        <div class="tutorial-strategies-grid">
-          <div class="tutorial-strategy-card">
-            <h3 class="tutorial-strategy-title">Como tripulante</h3>
-            <p class="tutorial-strategy-text">Sé específico pero no obvio. Da pistas que solo alguien que conoce al futbolista entendería.</p>
-          </div>
-          <div class="tutorial-strategy-card">
-            <h3 class="tutorial-strategy-title">Como impostor</h3>
-            <p class="tutorial-strategy-text">Escuchá primero. Usá palabras genéricas que puedan aplicar a muchos jugadores.</p>
+          <div class="tut-card">
+            <h3 class="tut-h3">Si SOS impostor</h3>
+            <ul class="tut-ul">
+              <li>Copiá el “nivel” de detalle del resto (sin exagerar).</li>
+              <li>Elegí pistas amplias pero coherentes con el tema que se insinúa.</li>
+              <li>Si te acusan, pedí que comparen tu pista con otras pistas vagas.</li>
+            </ul>
           </div>
         </div>
       </section>
 
-      <section class="tutorial-cta">
-        <h2 class="tutorial-cta-title">¿Listo para jugar?</h2>
-        <p class="tutorial-cta-text">
-          Ahora que conocés todas las reglas y estrategias, es hora de poner a prueba tus habilidades de deducción.
-        </p>
-        <button class="tutorial-cta-button" id="btnComenzar">Comenzar a Jugar</button>
+      <section class="tut-cta">
+        <h2 class="tut-cta-title">¿Listo para jugar?</h2>
+        <p class="tut-cta-text">Volvé al inicio y configurá la cantidad de jugadores, rondas e impostores.</p>
+        <a href="index.html" class="tut-cta-btn">Volver al menú</a>
       </section>
-
     </div>
   </main>
 
@@ -195,7 +132,7 @@
       <div class="footer-content">
         <div class="footer-left">
           <div class="footer-contacto-item">
-            <img src="media/mail.png" alt="Email" class="footer-contacto-icon">
+            <img src="media/logoIndex1.png" alt="Email" class="footer-contacto-icon">
             <span class="footer-contacto-text">gsartori@itba.edu.ar</span>
           </div>
           <div class="footer-contacto-item">
@@ -204,9 +141,7 @@
           </div>
         </div>
         <div class="footer-right">
-          <a href="index.html">
-            <img src="media/logoInvertido.png" alt="ImpostBall Logo" class="footer-logo">
-          </a>
+          <img src="media/logoInvertido.png" alt="ImpostBall Logo" class="footer-logo">
         </div>
       </div>
     </div>
@@ -214,12 +149,5 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="main.js"></script>
-  <script>
-    document.getElementById('btnComenzar').addEventListener('click', () => irA('index.html'))
-    document.getElementById('brandLink').addEventListener('click', (e) => {
-      e.preventDefault()
-      reiniciarYVolverInicio()
-    })
-  </script>
 </body>
 </html>
