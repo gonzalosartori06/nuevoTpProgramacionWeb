@@ -23,7 +23,16 @@
     max-height: 90px;
     width: auto;
     height: auto;
+
+    /* 🔪 Achicar SOLO el cuchillo, aunque tenga .trash-icon */
+#contenedorJuego img.trash-icon[src*="cuchillo"]{
+  width: px !important;
+  height: 32px !important;
+  object-fit: contain;
   }
+
+  }
+
 </style>
 
 
