@@ -66,7 +66,7 @@ const listaMacro = [
   {
     nombre: "Claudio 'Diablito' Echeverri",
     pais: "Argentina",
-    liga: "Inglaterra",
+    liga: "Alemania",
     activo: true,
     status: 2,
     imagen: "media/futbolistas/claudio_diablito_echeverri.jpg",
@@ -1688,7 +1688,7 @@ const listaMacro = [
   {
     nombre: "Marcus Rashford",
     pais: "Inglaterra",
-    liga: "Inglaterra",
+    liga: "España",
     activo: true,
     status: 3,
     imagen: "media/futbolistas/marcus_rashford.jpg",
