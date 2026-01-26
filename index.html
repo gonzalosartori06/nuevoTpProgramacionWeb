@@ -4,15 +4,47 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ImpostBall</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Clash+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     .texto-destacado {
       font-family: 'Clash Grotesk', sans-serif;
     }
+
+    /* ✅ SOLO ARRIBA: sacar la división vertical entre el bloque izquierdo y el derecho */
+    .index-top-right {
+      border-right: none !important;
+      border-left: none !important;
+    }
+
+    /* ✅ Imagen 1 realmente más grande: pisa el max-height 160/200 del styles.css */
+    .index-top-right img.indexImagenDerecha {
+      max-height: 275px !important;
+      max-width: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
+
+    /* opcional: darle más altura al contenedor de arriba para que entre la imagen grande */
+    .index-top-container {
+      min-height: 420px;
+    }
+    .index-titulo-jetbrains {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #000000;
+  line-height: 1;
+}
+
   </style>
 </head>
+
 <body>
   <header class="header-custom">
     <div class="container">
@@ -31,14 +63,17 @@
   <main class="py-5">
     <div class="container">
       <div class="index-top-container">
-	        <div class="index-top-left">
-	          <img src="media/logoindex.png" alt="ImpostBall" class="indexImagenIzquierda mb-4">
+        <div class="index-top-left">
+          <h1 class="titulo-principal">Impostor</h1>
           <p class="texto-destacado fs-4">Juego de rondas con pistas mínimas, un impostor por ronda y puntuación final.</p>
         </div>
-	        <div class="index-top-right">
-	          <img src="media/imagen1.png" alt="ImpostBall" class="indexImagenDerecha">
+
+        <div class="index-top-right">
+          <img src="media/imagen1.png" alt="ImpostBall" class="indexImagenDerecha">
         </div>
       </div>
+
+      <!-- ✅ ABAJO se mantiene la división vertical (no se toca) -->
       <div class="index-bottom-container">
         <div class="index-bottom-left border-right">
           <button class="btn btn-dark btn-lg" id="btnEmpezar">Empezar a jugar</button>
@@ -85,4 +120,3 @@
   </script>
 </body>
 </html>
-

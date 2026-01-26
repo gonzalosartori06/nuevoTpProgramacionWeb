@@ -596,13 +596,13 @@ main {
   border-right: 1px solid #000000;
 }
 
-/* Imágenes del body en index */
-.indexImagenIzquierda {
-  max-width: 100%;
+.indexImagenDerecha {
+  max-height: 460px;
   width: auto;
   height: auto;
-  max-height: 140px;
+  object-fit: contain;
 }
+
 
 .indexImagenDerecha {
   max-width: 100%;
@@ -1910,14 +1910,13 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
   max-height: 90px;
 }
 
-.indexImagenDerecha,
-.index-hero-img {
-  max-width: 100%;
+.indexImagenDerecha {
+  max-height: 460px;
   width: auto;
   height: auto;
-  max-height: 260px;
   object-fit: contain;
 }
+
 
 /* =========================
    Filtros (columna simétrica)

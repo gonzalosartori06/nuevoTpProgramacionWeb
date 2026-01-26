@@ -8,6 +8,143 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Clash+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Tutorial landing overrides (solo tutorial.html) -->
+  <style>
+    /* Paleta del sitio (sin rosa) */
+    :root{
+            --accent-green: #056605;
+      --ink: #000;
+      --paper: #fff;
+    }
+
+    /* Look tipo landing (anytype-ish) pero con tu paleta */
+    body.tutorial-v2 #tutorialV2 .tut-hero-title{
+      font-size: 5.2rem;
+      margin-bottom: 10px;
+    }
+    body.tutorial-v2 #tutorialV2 .tut-hero-title .accent{
+      color: var(--accent-green);
+    }
+    body.tutorial-v2 #tutorialV2 .tut-hero-subtitle{
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 920px;
+      margin: 0 auto 6px;
+    }
+    body.tutorial-v2 #tutorialV2 .tut-hero-kicker{
+      font-family: "Gambarino", "Cormorant Garamond", Georgia, serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--accent-green);
+      margin: 12px 0 0;
+    }
+
+    /* Imágenes pixel-art nítidas */
+    body.tutorial-v2 #tutorialV2 img{
+      image-rendering: pixelated;
+    }
+
+    /* Sección oscura: títulos en cyan (sin neon) */
+    body.tutorial-v2 #tutorialV2 .tut-tip-title{
+      color: var(--accent-green);
+    }
+
+    /* Número de pasos */
+    body.tutorial-v2 #tutorialV2 .tut-step-num{
+      background: rgba(5, 102, 5, 0.10);
+      border-color: #000;
+    }
+
+    /* Cards de features */
+    body.tutorial-v2 #tutorialV2 .tut-feature-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 28px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    body.tutorial-v2 #tutorialV2 .tut-feature{
+      border: 1px solid #000;
+      padding: 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: #fff;
+    }
+    body.tutorial-v2 #tutorialV2 .tut-feature-icon{
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+    body.tutorial-v2 #tutorialV2 .tut-feature-title{
+      font-family: "Clash Grotesk","Inter",system-ui,sans-serif;
+      font-size: 1.15rem;
+      font-weight: 650;
+      margin: 0 0 6px;
+      color: #000;
+    }
+    body.tutorial-v2 #tutorialV2 .tut-feature-text{
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin: 0;
+      color: #000;
+    }
+
+    /* Tabla simple para probabilidades */
+    body.tutorial-v2 #tutorialV2 .tut-table{
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 1.02rem;
+    }
+    body.tutorial-v2 #tutorialV2 .tut-table th,
+    body.tutorial-v2 #tutorialV2 .tut-table td{
+      border: 1px solid #000;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    body.tutorial-v2 #tutorialV2 .tut-table th{
+      background: rgba(5, 102, 5, 0.08);
+      font-weight: 650;
+    }
+
+    /* Responsive: features en columna */
+    @media (max-width: 768px){
+      body.tutorial-v2 #tutorialV2 .tut-hero-title{ font-size: 2.7rem; }
+      body.tutorial-v2 #tutorialV2 .tut-hero-kicker{ font-size: 2.05rem; }
+      body.tutorial-v2 #tutorialV2 .tut-feature-grid{ grid-template-columns: 1fr; }
+      body.tutorial-v2 #tutorialV2 .tut-feature-icon{ width: 54px; height: 54px; }
+    }
+  
+/* Separar título del contenido (landing) */
+body.tutorial-v2 #tutorialV2 .tut-title{
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 72px 18px 62px;
+  text-align: center;
+  margin-bottom: 0;
+}
+body.tutorial-v2 #tutorialV2 .tut-title .tut-hero-title{
+  margin-bottom: 10px;
+}
+body.tutorial-v2 #tutorialV2 .tut-hero{
+  border-top: none; /* queda separado del título */
+}
+
+/* No usar celeste: cualquier "accent" va en verde del sitio */
+body.tutorial-v2 #tutorialV2 .accent{ color: var(--accent-green) !important; }
+  </style>
+
 </head>
 <body class="tutorial-page tutorial-v2">
   <header class="header-custom">
@@ -26,11 +163,37 @@
 
   <main class="py-5" id="tutorialV2">
     <div class="container">
-      <section class="tut-hero">
-        <h1 class="tut-hero-title">Tutorial</h1>
-        <p class="tut-hero-subtitle">Aprendé las reglas, entendé las rondas y ganá con estrategia.</p>
-        <img class="tut-hero-img" src="media/tutorialPortada.png" alt="Tutorial" onerror="this.style.display='none'" />
+      
+      <section class="tut-title">
+        <h1 class="tut-hero-title">Guía <span class="accent">ImpostBall</span></h1>
       </section>
+
+      <section class="tut-hero">
+        <div class="tut-feature-grid">
+          <div class="tut-feature">
+            <div>
+              <div class="tut-feature-title">Puntuación</div>
+              <p class="tut-feature-text">Sumás puntos por sobrevivir, detectar al impostor y por acertar si te toca el rol de impostor.</p>
+            </div>
+          </div>
+
+          <div class="tut-feature">
+            <div>
+              <div class="tut-feature-title">Rondas rápidas</div>
+              <p class="tut-feature-text">Cada ronda: palabra secreta → pistas → debate → votación. Repetís hasta terminar las rondas configuradas.</p>
+            </div>
+          </div>
+
+          <div class="tut-feature">
+            <div>
+              <div class="tut-feature-title">Dificultad</div>
+              <p class="tut-feature-text">La dificultad cambia qué tan seguido salen futbolistas “fáciles” o “difíciles” (según el status).</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
 
       <section class="tut-split">
         <div class="tut-split-col">
@@ -46,9 +209,107 @@
           </ul>
           <div class="tut-note">Tip: cuanto más precisa la pista (sin decir el nombre), más fácil detectar al impostor.</div>
         </div>
+      
       </section>
 
       <section class="tut-center">
+        <h2 class="tut-h2-center">Cantidad de impostores</h2>
+        <div class="tut-grid-2">
+          <div class="tut-card">
+            <h3 class="tut-h3">¿Cuántos hay por partida?</h3>
+            <p class="tut-p">La cantidad de impostores la elegís al configurar la partida. Se reparten <strong>en cada ronda</strong>: si configurás 1, habrá 1 impostor por ronda; si configurás 2, habrá 2 impostores por ronda, y así.</p>
+            <div class="tut-note">Recomendación rápida: con pocos jugadores, usá 1 impostor. Con grupos grandes, 2 impostores hace la ronda más desafiante.</div>
+          </div>
+          <div class="tut-card">
+            <h3 class="tut-h3">Sugerencias según jugadores</h3>
+            <table class="tut-table" aria-label="Sugerencias de impostores por cantidad de jugadores">
+              <thead>
+                <tr>
+                  <th>Jugadores</th>
+                  <th>Impostores sugeridos</th>
+                  <th>Por qué</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3–5</td>
+                  <td>1</td>
+                  <td>Si hay más, el debate se vuelve muy caótico y se pierde la deducción.</td>
+                </tr>
+                <tr>
+                  <td>6–8</td>
+                  <td>1–2</td>
+                  <td>Con 2 impostores aparecen alianzas y confusión, pero todavía se puede razonar.</td>
+                </tr>
+                <tr>
+                  <td>9+</td>
+                  <td>3</td>
+                  <td>El grupo grande genera ruido; 2 impostores mantienen la tensión sin hacerla imposible.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="tut-split">
+        <div class="tut-split-col">
+          <h2 class="tut-h2">Dificultades</h2>
+          <p class="tut-p">La dificultad no cambia las reglas: cambia la <strong>probabilidad</strong> de que salga un futbolista según su <strong>status</strong>.</p>
+          <ul class="tut-ul">
+            <li><strong>Status 1</strong>: más “difícil” (pistas menos obvias).</li>
+            <li><strong>Status 2</strong>: intermedio.</li>
+            <li><strong>Status 3</strong>: más “fácil” (más conocido / más pistas típicas).</li>
+            <li><strong>Status 4</strong>: futbolistas agregados por el jugador (solo en modo custom / no aparecen en dificultades normales).</li>
+          </ul>
+          <div class="tut-note">Importante: en Fácil / Normal / Difícil la chance de status 4 es <strong>0%</strong>.</div>
+        </div>
+
+        <div class="tut-split-col">
+          <h2 class="tut-h2">Probabilidades por ronda</h2>
+          <table class="tut-table" aria-label="Probabilidades por dificultad">
+            <thead>
+              <tr>
+                <th>Dificultad</th>
+                <th>Status 3</th>
+                <th>Status 2</th>
+                <th>Status 1</th>
+                <th>Status 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Fácil</strong></td>
+                <td>80%</td>
+                <td>15%</td>
+                <td>5%</td>
+                <td>0%</td>
+              </tr>
+              <tr>
+                <td><strong>Normal</strong></td>
+                <td>35%</td>
+                <td>40%</td>
+                <td>25%</td>
+                <td>0%</td>
+              </tr>
+              <tr>
+                <td><strong>Difícil</strong></td>
+                <td>10%</td>
+                <td>25%</td>
+                <td>65%</td>
+                <td>0%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="tut-p" style="margin-top:12px;">
+            <strong>Random</strong>: elige cualquiera menos status 4. <br>
+            <strong>Custom</strong>: usa solo status 4 (tus jugadores agregados).
+          </p>
+        </div>
+      </section>
+
+      <section class="tut-center">
+
         <h2 class="tut-h2-center">Mecánicas de rondas</h2>
         <div class="tut-steps">
           <div class="tut-step">
@@ -132,7 +393,7 @@
       <div class="footer-content">
         <div class="footer-left">
           <div class="footer-contacto-item">
-            <img src="media/logoIndex1.png" alt="Email" class="footer-contacto-icon">
+            <img src="media/mail.png" alt="Email" class="footer-contacto-icon">
             <span class="footer-contacto-text">gsartori@itba.edu.ar</span>
           </div>
           <div class="footer-contacto-item">
@@ -141,7 +402,9 @@
           </div>
         </div>
         <div class="footer-right">
-          <img src="media/logoInvertido.png" alt="ImpostBall Logo" class="footer-logo">
+          <a href="index.html">
+            <img src="media/logoInvertido.png" alt="ImpostBall Logo" class="footer-logo">
+          </a>
         </div>
       </div>
     </div>

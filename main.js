@@ -1970,6 +1970,110 @@ function aplicarDificultad(listaCompleta, dificultad) {
   return resultado
 }
 
+
+// Elige 1 futbolista según la dificultad (probabilidades por ronda).
+// facil: 80% status 3, 15% status 2, 5% status 1, 0% status 4
+// normal: 35% status 3, 40% status 2, 25% status 1, 0% status 4
+// dificil: 10% status 3, 25% status 2, 65% status 1, 0% status 4
+// random: aleatorio puro (sin status 4)
+// custom: aleatorio puro dentro de status 4
+function elegirFutbolistaPorDificultad(lista, dificultad) {
+  if (!dificultad || dificultad === "") {
+    dificultad = "normal"
+  }
+
+  if (!lista || lista.length === 0) {
+    return null
+  }
+
+  // Custom: solo status 4
+  if (dificultad === "custom") {
+    const custom = []
+    for (let i = 0; i < lista.length; i++) {
+      if (lista[i] && lista[i].status === 4) {
+        custom.push(lista[i])
+      }
+    }
+    if (custom.length === 0) {
+      return null
+    }
+    const idx = Math.floor(Math.random() * custom.length)
+    return custom[idx]
+  }
+
+  // Base: excluir status 4
+  const base = []
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i] && lista[i].status !== 4) {
+      base.push(lista[i])
+    }
+  }
+  if (base.length === 0) {
+    return null
+  }
+
+  if (dificultad === "random") {
+    const idx = Math.floor(Math.random() * base.length)
+    return base[idx]
+  }
+
+  const s3 = []
+  const s2 = []
+  const s1 = []
+  for (let i = 0; i < base.length; i++) {
+    const j = base[i]
+    if (j.status === 3) {
+      s3.push(j)
+    } else if (j.status === 2) {
+      s2.push(j)
+    } else if (j.status === 1) {
+      s1.push(j)
+    }
+  }
+
+  let w3 = 0.35
+  let w2 = 0.40
+  let w1 = 0.25
+
+  if (dificultad === "facil") {
+    w3 = 0.80
+    w2 = 0.15
+    w1 = 0.05
+  } else if (dificultad === "dificil") {
+    w3 = 0.10
+    w2 = 0.25
+    w1 = 0.65
+  }
+
+  function pick(arr) {
+    if (!arr || arr.length === 0) return null
+    const idx = Math.floor(Math.random() * arr.length)
+    return arr[idx]
+  }
+
+  const r = Math.random()
+  let elegido = null
+  if (r < w3) {
+    elegido = pick(s3)
+  } else if (r < w3 + w2) {
+    elegido = pick(s2)
+  } else {
+    elegido = pick(s1)
+  }
+  if (elegido) return elegido
+
+  // Fallback si el status elegido no existe en la lista filtrada
+  elegido = pick(s3)
+  if (elegido) return elegido
+  elegido = pick(s2)
+  if (elegido) return elegido
+  elegido = pick(s1)
+  if (elegido) return elegido
+
+  const idx = Math.floor(Math.random() * base.length)
+  return base[idx]
+}
+
 function reiniciarFiltrado() {
   listaFiltrada = listaMacro
 }
@@ -2020,7 +2124,6 @@ function generarRondas(cantRondas) {
     }
   }
 
-  listaFiltrada = aplicarDificultad(listaFiltrada, dificultadSeleccionada)
 
   if (listaFiltrada.length < jugadores.length - cantidadImpostoresConfig) {
     mostrarAlerta(
@@ -2083,15 +2186,17 @@ impostorIndices.forEach((index) => {
       }
     }
 
-    let elegidoObj = null
-    if (futbolistasDisponibles.length > 0) {
-      const idx = Math.floor(Math.random() * futbolistasDisponibles.length)
-      elegidoObj = futbolistasDisponibles[idx]
-      futbolistasUsados.push(elegidoObj.nombre)
-    } else if (listaFiltrada.length > 0) {
-      const idx = Math.floor(Math.random() * listaFiltrada.length)
-      elegidoObj = listaFiltrada[idx]
-    }
+    
+let elegidoObj = null
+if (futbolistasDisponibles.length > 0) {
+  // Elegir por dificultad (probabilidades por ronda)
+  elegidoObj = elegirFutbolistaPorDificultad(futbolistasDisponibles, dificultadSeleccionada)
+  if (elegidoObj) {
+    futbolistasUsados.push(elegidoObj.nombre)
+  }
+} else if (listaFiltrada.length > 0) {
+  elegidoObj = elegirFutbolistaPorDificultad(listaFiltrada, dificultadSeleccionada)
+}
 
     for (let j = 0; j < rondaJugadores.length; j++) {
       if (rondaJugadores[j].futbolista !== "Impostor") {
@@ -2571,7 +2676,6 @@ function initFiltros() {
     // Dificultad (se aplica sobre la lista ya filtrada)
     const dif = selDificultad ? selDificultad.value : ""
     dificultadSeleccionada = dif && dif !== "" ? dif : "normal"
-    listaFiltrada = aplicarDificultad(listaFiltrada, dificultadSeleccionada)
   }
 
   if (selPais) selPais.addEventListener("change", aplicarFiltrosYdificultad)
@@ -2609,10 +2713,19 @@ function initFiltros() {
         return
       }
 
-      // Si es custom y no hay jugadores, avisar
-      if (dificultadSeleccionada === "custom" && listaFiltrada.length === 0) {
-        mostrarAlerta("No hay futbolistas custom (agregados por vos). Agregá alguno en 'Futbolistas'.", "alertContainer")
-        return
+      // Si es custom y no hay futbolistas agregados por vos (status 4), avisar
+      if (dificultadSeleccionada === "custom") {
+        let hayCustom = false
+        for (let i = 0; i < listaFiltrada.length; i++) {
+          if (listaFiltrada[i] && listaFiltrada[i].status === 4) {
+            hayCustom = true
+            break
+          }
+        }
+        if (!hayCustom) {
+          mostrarAlerta("No hay futbolistas custom (agregados por vos). Agregá alguno en 'Futbolistas'.", "alertContainer")
+          return
+        }
       }
 
       generarRondas(cantidadRondasConfig)
