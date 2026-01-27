@@ -20,18 +20,22 @@
       border-left: none !important;
     }
 
-    /* ✅ Imagen 1 realmente más grande: pisa el max-height 160/200 del styles.css */
-    .index-top-right img.indexImagenDerecha {
-      max-height: 275px !important;
-      max-width: 100% !important;
-      width: auto !important;
-      height: auto !important;
-      object-fit: contain !important;
+    /* ✅ Imagen 1 grande SOLO en desktop (en mobile lo controla styles.css) */
+    @media (min-width: 769px) {
+      .index-top-right img.indexImagenDerecha {
+        max-height: 275px;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
     }
 
-    /* opcional: darle más altura al contenedor de arriba para que entre la imagen grande */
-    .index-top-container {
-      min-height: 420px;
+    /* opcional: darle más altura al contenedor de arriba para que entre la imagen grande (solo desktop) */
+    @media (min-width: 769px) {
+      .index-top-container {
+        min-height: 420px;
+      }
     }
     .index-titulo-jetbrains {
   font-family: "JetBrains Mono", monospace;

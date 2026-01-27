@@ -2110,3 +2110,156 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
 
 }
 
+/* =========================================================
+   MOBILE ONLY (no afecta desktop)
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* ---------- Reducir TODOS los títulos en mobile ---------- */
+  h1 { font-size: 2.0rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.25rem !important; }
+
+  .titulo-principal { font-size: 2.25rem !important; line-height: 1.08 !important; }
+  .titulo-secundario { font-size: 1.55rem !important; }
+  .titulo-secundario-jetbrains { font-size: 1.55rem !important; }
+  .titulo-jugadores { font-size: 1.65rem !important; }
+  .titulo-principal-jetbrains { font-size: 1.65rem !important; }
+  .index-titulo-jetbrains { font-size: 2.25rem !important; line-height: 1.05 !important; }
+
+  /* ---------- INDEX ---------- */
+
+  .index-top-container {
+    flex-direction: column !important;
+    min-height: unset !important;
+  }
+
+  .index-top-left,
+  .index-top-right {
+    padding: 18px !important;
+  }
+
+  /* Achicar un poco más el texto del index:
+     "Juego de rondas con pistas..." (tiene fs-4 de Bootstrap) */
+  .index-top-left .texto-destacado {
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+    margin-top: 8px !important;
+  }
+
+  /* Imagen1 más chica SOLO en mobile (pisando el inline de index.html) */
+  .index-top-right img.indexImagenDerecha {
+    max-height: 140px !important;
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* Botón "¿Cómo jugar?" abajo de "Empezar a jugar" */
+  .index-bottom-container {
+    flex-direction: column !important;
+    min-height: unset !important;
+  }
+
+  .index-bottom-left {
+    border-right: none !important;
+    border-bottom: 1px solid #000 !important;
+    padding: 18px !important;
+  }
+
+  .index-bottom-right {
+    padding: 18px !important;
+  }
+
+  /* Botones (general) */
+  .btn {
+    padding: 12px 22px !important;
+    font-size: 15px !important;
+  }
+
+  /* ---------- Tutorial: achicar cuadros/tablas ---------- */
+  body.tutorial-v2 #tutorialV2 .tut-feature {
+    padding: 14px !important;
+    gap: 10px !important;
+  }
+
+  body.tutorial-v2 #tutorialV2 .tut-feature-title {
+    font-size: 1.02rem !important;
+  }
+
+  body.tutorial-v2 #tutorialV2 .tut-feature-text {
+    font-size: 0.96rem !important;
+    line-height: 1.5 !important;
+  }
+
+  body.tutorial-v2 #tutorialV2 .tut-table {
+    font-size: 0.93rem !important;
+  }
+
+  body.tutorial-v2 #tutorialV2 .tut-table th,
+  body.tutorial-v2 #tutorialV2 .tut-table td {
+    padding: 7px 9px !important;
+  }
+
+  body.tutorial-v2 #tutorialV2 .tut-card {
+    padding: 14px !important;
+  }
+
+  /* ---------- NOMBRES: centrar jugadores + botones ---------- */
+
+  .nombres-container .nombres-left {
+    border-right: none !important;
+  }
+
+  /* Centrar "Jugadores:" + lista */
+  .nombres-container .nombres-left .p-4 {
+    text-align: center !important;
+  }
+
+  #listaNombresIzquierda {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  /* FIX: Botones Omitir/Siguiente centrados en mobile */
+  .nombres-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  /* Quitar margen lateral de Bootstrap (me-3) en mobile */
+  .nombres-actions .me-3 {
+    margin-right: 0 !important;
+  }
+
+  /* Botones con ancho prolijo y centrados */
+  .nombres-actions .btn {
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+}
+
+/* Pantallas muy chicas (tipo iPhone) */
+@media (max-width: 480px) {
+  .titulo-principal { font-size: 2.05rem !important; }
+
+  .index-top-left .texto-destacado {
+    font-size: 0.98rem !important;
+    line-height: 1.32 !important;
+  }
+
+  .index-top-right img.indexImagenDerecha {
+    max-height: 150px !important;
+  }
+
+  .btn {
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+}
