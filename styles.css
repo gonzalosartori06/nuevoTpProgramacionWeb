@@ -2263,3 +2263,37 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
     max-width: 320px !important;
   }
 }
+/* =========================
+   FIXES SOLO MOBILE (≤768px)
+   ========================= */
+@media (max-width: 768px) {
+
+  /* INDEX: título "Impostor" un poco más grande SOLO en index */
+  .index-top-left .titulo-principal{
+    font-size: 2.85rem !important;
+    line-height: 1.05 !important;
+  }
+
+  /* INDEX: imagen1 un poco más grande SOLO en index */
+  .index-top-right img.indexImagenDerecha{
+    max-height: 240px !important;
+    max-width: 360px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* FINAL: botones centrados, separados y prolijos */
+  .final-actions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .final-actions .btn{
+    width: 100%;
+    max-width: 360px;
+    margin: 0 !important; /* pisa el me-3 de Bootstrap en mobile */
+  }
+}
