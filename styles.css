@@ -2066,9 +2066,25 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
     word-break: break-word;
   }
 
-  /* 5) Index (mobile): ocultar imagen1 (imagen derecha) y evitar espacio vacío */
-  .index-top-right { display: none !important; }
-  .index-top-container { min-height: auto !important; }
+  /* 5) Index (mobile): MOSTRAR imagen1 debajo del título+descripción y hacerla un poco más chica */
+  .index-top-container { 
+    min-height: auto !important;
+    flex-direction: column;   /* imagen queda abajo del texto */
+  }
+
+  .index-top-right { 
+    display: flex !important; /* por si estaba oculta */
+    padding: 18px !important;
+  }
+
+  /* Imagen1 (index): un poco más chica en mobile */
+  .index-top-right img.indexImagenDerecha{
+    max-height: 220px !important;  /* desktop 275px, mobile un poco menor */
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
 
   /* 6) Nombres (mobile): sacar la línea vertical y reordenar:
         arriba "Editar" (col derecha), abajo la lista (col izquierda) */
@@ -2078,6 +2094,17 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
   .nombres-container .row.g-0 { flex-direction: column; }
 
   .nombres-container .nombres-left { order: 2; }
+
+  /* 6.b) Nombres (mobile): "Siguiente" arriba de "Omitir" */
+  .nombres-actions{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .nombres-actions #seguirAFiltros{ order: 1; }
+  .nombres-actions #omitirNombres{ order: 2; }
+  .nombres-actions .btn{ width: 100%; max-width: 100%; }
   .nombres-container .row.g-0 > .col-md-6:not(.nombres-left) { order: 1; }
 
 
