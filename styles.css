@@ -2193,12 +2193,12 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
   }
 
   body.tutorial-v2 #tutorialV2 .tut-table {
-    font-size: 0.93rem !important;
+    font-size: 0.85rem !important;
   }
 
   body.tutorial-v2 #tutorialV2 .tut-table th,
   body.tutorial-v2 #tutorialV2 .tut-table td {
-    padding: 7px 9px !important;
+    padding: 8px 10px !important;
   }
 
   body.tutorial-v2 #tutorialV2 .tut-card {
@@ -2296,4 +2296,67 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
     max-width: 360px;
     margin: 0 !important; /* pisa el me-3 de Bootstrap en mobile */
   }
+
+
+  /* ===== Header: logo más grande (solo mobile) ===== */
+  .brand img{
+    height: 60px !important;
+    width: auto;
+  }
+  /* compensar header fijo para que no tape contenido */
+  body{
+    padding-top: 92px;
+  }
+
+  /* ===== Futbolistas (mobile): sacar "Los convocados / De ImpostBall" y centrar lista.png ===== */
+  .futbolistas-header-left{
+    display: none !important;
+  }
+  .futbolistas-header-right{
+    flex: 0 0 100%;
+    width: 100%;
+    padding: 18px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .futbolistas-header-container{
+    min-height: auto !important;
+  }
+  .lista-icon-extra-large{
+    height: 260px !important;
+    max-width: 100% !important;
+    width: auto !important;
+  }
+
+  /* ===== Final (mobile): "Volver a filtros" arriba de "Volver al menú" ===== */
+  .final-actions #btnRejugarFiltros{ order: 1; }
+  .final-actions #btnVolverMenu{ order: 2; }
+
+  /* ===== HEADER - LOGO MÁS CHICO (MOBILE) ===== */
+
 }
+/* ===== HEADER - LOGO MÁS CHICO (MOBILE) ===== */
+@media (max-width: 768px) {
+  .brand img {
+    height: 48px !important;   /* antes estaba más grande */
+    width: auto;
+  }
+
+  body {
+    padding-top: 80px; /* evita que el header tape contenido */
+  }
+}
+/* ===== TUTORIAL - TABLAS MÁS CHICAS (MOBILE) ===== */
+@media (max-width: 768px) {
+  body.tutorial-v2 .tut-table {
+    font-size: 0.82rem;
+  }
+
+  body.tutorial-v2 .tut-table th,
+  body.tutorial-v2 .tut-table td {
+    padding: 6px 8px;
+    line-height: 1.3;
+  }
+}
+
