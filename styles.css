@@ -2387,4 +2387,27 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
     border-right: none !important;
   }
 }
+/* ===============================
+   TUTORIAL – TABLAS MOBILE (iPhone)
+   =============================== */
+@media (max-width: 768px) {
+
+  body.tutorial-v2 #tutorialV2 .tut-table {
+    font-size: 0.72rem !important;
+    line-height: 1.25 !important;
+  }
+
+  body.tutorial-v2 #tutorialV2 .tut-table th,
+  body.tutorial-v2 #tutorialV2 .tut-table td {
+    padding: 6px 6px !important;
+    font-size: 0.72rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word;
+  }
+
+  /* Encabezados un poquito más marcados */
+  body.tutorial-v2 #tutorialV2 .tut-table th {
+    font-weight: 600;
+  }
+}
 
