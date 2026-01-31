@@ -2411,3 +2411,34 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
   }
 }
 
+/* FUTBOLISTAS: tablas más chicas (MOBILE) */
+@media (max-width: 768px) {
+  #listaFutbolistas table,
+  #listaFutbolistas .table {
+    font-size: 0.68rem !important;
+    line-height: 1.15 !important;
+  }
+
+  #listaFutbolistas th,
+  #listaFutbolistas td {
+    font-size: 0.68rem !important;
+    padding: 4px 6px !important;
+    line-height: 1.15 !important;
+    vertical-align: top;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 430px) {
+  #listaFutbolistas table,
+  #listaFutbolistas .table,
+  #listaFutbolistas th,
+  #listaFutbolistas td {
+    font-size: 0.62rem !important;
+  }
+
+  #listaFutbolistas th,
+  #listaFutbolistas td {
+    padding: 3px 5px !important;
+  }
+}
