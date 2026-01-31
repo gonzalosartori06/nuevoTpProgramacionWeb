@@ -7,23 +7,45 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .titulo-clash {
-      font-family: 'Clash Display', sans-serif;
-    }
-    .titulo-jetbrains {
-      font-family: 'JetBrains Mono', monospace;
-    }
+    .titulo-clash { font-family: 'Clash Display', sans-serif; }
+    .titulo-jetbrains { font-family: 'JetBrains Mono', monospace; }
+
     .futbolistas-titulo-principal,
     .futbolistas-titulo-secundario {
       color: #000000;
     }
+
     .footer-contacto-titulo,
     .footer-contacto-text {
       font-family: 'Clash Grotesk', sans-serif;
     }
+
+    /* ✅ Flechita volver arriba */
+    #btnVolverArriba{
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 46px;
+      height: 46px;
+      border: 1px solid #000;
+      background: #000;
+      color: #fff;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: none;
+      z-index: 9999;
+      border-radius: 0;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    #btnVolverArriba:hover{
+      opacity: .85;
+      transform: translateY(-2px);
+    }
   </style>
   <link rel="icon" type="image/png" href="media/favicon.png">
 </head>
+
 <body>
   <header class="header-custom">
     <div class="container">
@@ -43,7 +65,8 @@
     <div class="container">
       <div id="alertContainer"></div>
 
-      <div class="futbolistas-header-container">
+      <!-- ✅ TOP (objetivo del scroll) -->
+      <div class="futbolistas-header-container" id="topFutbolistas">
         <div class="futbolistas-header-left">
           <h1 class="futbolistas-titulo-principal titulo-jetbrains">Los convocados</h1>
           <h2 class="futbolistas-titulo-secundario titulo-jetbrains">De ImpostBall</h2>
@@ -53,10 +76,29 @@
         </div>
       </div>
 
-      <div class="futbolistas-lista-container">
-        <div id="listaFutbolistas"></div>
+      <!-- 🔎 Buscar futbolista (debajo del título) -->
+      <div class="container-bordered-title mb-0 mt-4" id="buscar-futbolista">
+        <h2 class="titulo-secundario text-center mb-0">Buscar futbolista</h2>
       </div>
 
+      <div class="container-bordered-grid mb-0">
+        <div class="row g-0">
+          <div class="col-md-8 filter-column-full">
+            <div class="filter-box">
+              <input type="text" id="buscarNombre" class="form-control" placeholder="Nombre del futbolista">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="filter-box d-flex align-items-center justify-content-center">
+              <button id="btnBuscarFutbolista" class="btn-trash" type="button" aria-label="Buscar futbolista">
+                <img src="media/lupa.png" alt="Buscar" class="trash-icon">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ➕ Agregar Futbolista -->
       <div class="container-bordered-title mb-0 mt-4" id="agregar-futbolista">
         <h2 class="titulo-secundario text-center mb-0">Agregar Futbolista</h2>
       </div>
@@ -94,6 +136,8 @@
           <button id="btnAgregarFutbolista" class="btn btn-dark btn-lg">añadir jugador</button>
         </div>
       </div>
+
+      <!-- 🗑️ Eliminar Futbolista -->
       <div class="container-bordered-title mb-0 mt-4">
         <h2 class="titulo-secundario text-center mb-0">Eliminar Futbolista</h2>
       </div>
@@ -114,7 +158,16 @@
           </div>
         </div>
       </div>
+
+      <!-- ✅ Lista -->
+      <div class="futbolistas-lista-container">
+        <div id="listaFutbolistas"></div>
+      </div>
+
     </div>
+
+    <!-- ✅ Flechita -->
+    <button id="btnVolverArriba" type="button" aria-label="Volver arriba" title="Volver arriba">▲</button>
   </main>
 
   <footer class="footer-custom">
@@ -143,9 +196,23 @@
   <script src="main.js"></script>
   <script>
     initFutbolistas()
+
     document.getElementById('brandLink').addEventListener('click', (e) => {
       e.preventDefault()
       reiniciarYVolverInicio()
+    })
+
+    // ✅ Flechita: aparece si bajás mucho y vuelve arriba
+    const btnVolverArriba = document.getElementById('btnVolverArriba')
+    const topFutbolistas = document.getElementById('topFutbolistas')
+
+    window.addEventListener('scroll', () => {
+      btnVolverArriba.style.display = (window.scrollY > 450) ? 'block' : 'none'
+    })
+
+    btnVolverArriba.addEventListener('click', () => {
+      if (topFutbolistas) topFutbolistas.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      else window.scrollTo({ top: 0, behavior: 'smooth' })
     })
   </script>
 </body>

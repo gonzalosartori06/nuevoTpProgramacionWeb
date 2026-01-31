@@ -3724,6 +3724,46 @@ function obtenerEmoji(nombre) {
   return EMOJIS_MAPA[nombre] || "🌍"
 }
 
+
+
+// =========================
+// Normalización / formato de nombres (Title Case)
+// =========================
+function _quitarAcentos(str) {
+  try {
+    return (str || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  } catch (e) {
+    return (str || "")
+  }
+}
+
+// Para comparar nombres de manera "tolerante": minúsculas + sin acentos + espacios normalizados
+function _canonNombre(str) {
+  return _quitarAcentos((str || ""))
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLowerCase()
+}
+
+// Para mostrar "lindo": Primera letra de cada palabra en mayúscula
+function formatearNombreTitulo(str) {
+  const limpio = (str || "").trim().replace(/\s+/g, " ")
+  if (limpio === "") return ""
+  return limpio
+    .split(" ")
+    .map((w) => {
+      if (w.length === 0) return w
+      const first = w.charAt(0).toUpperCase()
+      const rest = w.slice(1).toLowerCase()
+      return first + rest
+    })
+    .join(" ")
+}
+
+// Para ids/anchors (sin acentos, guiones)
+function _slugNombre(str) {
+  return _canonNombre(str).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")
+}
 function agregarFutbolista(nombre, pais, liga, activo) {
   const jugador = {
     nombre: nombre,
@@ -3887,7 +3927,6 @@ function elegirFutbolistaPorDificultad(lista, dificultad) {
   if (!dificultad || dificultad === "") {
     dificultad = "normal"
   }
-
   if (!lista || lista.length === 0) {
     return null
   }
@@ -3896,88 +3935,47 @@ function elegirFutbolistaPorDificultad(lista, dificultad) {
   if (dificultad === "custom") {
     const custom = []
     for (let i = 0; i < lista.length; i++) {
-      if (lista[i] && lista[i].status === 4) {
-        custom.push(lista[i])
-      }
+      if (lista[i] && lista[i].status === 4) custom.push(lista[i])
     }
-    if (custom.length === 0) {
-      return null
-    }
-    const idx = Math.floor(Math.random() * custom.length)
-    return custom[idx]
+    if (custom.length === 0) return null
+    return custom[Math.floor(Math.random() * custom.length)]
   }
 
-  // Base: excluir status 4
-  const base = []
-  for (let i = 0; i < lista.length; i++) {
-    if (lista[i] && lista[i].status !== 4) {
-      base.push(lista[i])
-    }
-  }
-  if (base.length === 0) {
-    return null
-  }
-
+  // Random: cualquiera menos status 4
   if (dificultad === "random") {
-    const idx = Math.floor(Math.random() * base.length)
-    return base[idx]
-  }
-
-  const s3 = []
-  const s2 = []
-  const s1 = []
-  for (let i = 0; i < base.length; i++) {
-    const j = base[i]
-    if (j.status === 3) {
-      s3.push(j)
-    } else if (j.status === 2) {
-      s2.push(j)
-    } else if (j.status === 1) {
-      s1.push(j)
+    const base = []
+    for (let i = 0; i < lista.length; i++) {
+      if (lista[i] && lista[i].status !== 4) base.push(lista[i])
     }
+    if (base.length === 0) return null
+    return base[Math.floor(Math.random() * base.length)]
   }
 
-  let w3 = 0.35
-  let w2 = 0.40
-  let w1 = 0.25
-
-  if (dificultad === "facil") {
-    w3 = 0.80
-    w2 = 0.15
-    w1 = 0.05
-  } else if (dificultad === "dificil") {
-    w3 = 0.10
-    w2 = 0.25
-    w1 = 0.65
+  // ✅ Reglas pedidas:
+  // - Fácil: SOLO status 3
+  // - Normal: SOLO status 2 y 3
+  // - Difícil: SOLO status 1 y 2 (más "hard", sin status 3)
+  const permitidos = []
+  for (let i = 0; i < lista.length; i++) {
+    const j = lista[i]
+    if (!j) continue
+    if (j.status === 4) continue
+    if (dificultad === "facil" && j.status === 3) permitidos.push(j)
+    else if (dificultad === "normal" && (j.status === 2 || j.status === 3)) permitidos.push(j)
+    else if (dificultad === "dificil" && (j.status === 1 || j.status === 2)) permitidos.push(j)
   }
 
-  function pick(arr) {
-    if (!arr || arr.length === 0) return null
-    const idx = Math.floor(Math.random() * arr.length)
-    return arr[idx]
+  if (permitidos.length === 0) {
+    // fallback razonable (sin status 4)
+    const base = []
+    for (let i = 0; i < lista.length; i++) {
+      if (lista[i] && lista[i].status !== 4) base.push(lista[i])
+    }
+    if (base.length === 0) return null
+    return base[Math.floor(Math.random() * base.length)]
   }
 
-  const r = Math.random()
-  let elegido = null
-  if (r < w3) {
-    elegido = pick(s3)
-  } else if (r < w3 + w2) {
-    elegido = pick(s2)
-  } else {
-    elegido = pick(s1)
-  }
-  if (elegido) return elegido
-
-  // Fallback si el status elegido no existe en la lista filtrada
-  elegido = pick(s3)
-  if (elegido) return elegido
-  elegido = pick(s2)
-  if (elegido) return elegido
-  elegido = pick(s1)
-  if (elegido) return elegido
-
-  const idx = Math.floor(Math.random() * base.length)
-  return base[idx]
+  return permitidos[Math.floor(Math.random() * permitidos.length)]
 }
 
 function reiniciarFiltrado() {
@@ -4485,7 +4483,7 @@ function initFutbolistas() {
   const btnAgregarFut = document.getElementById("btnAgregarFutbolista")
 
   btnAgregarFut.addEventListener("click", () => {
-    const nombre = (inpNombre.value || "").trim()
+    const nombre = formatearNombreTitulo(inpNombre.value || "")
     const pais = (inpPais.value || "").trim()
     const liga = (inpLiga.value || "").trim()
     const activoSelect = chkActivo
@@ -4511,7 +4509,7 @@ function initFutbolistas() {
   const btnEliminarFut = document.getElementById("btnEliminarFutbolista")
 
   btnEliminarFut.addEventListener("click", () => {
-    const nombre = (inpEliminar.value || "").trim()
+    const nombre = formatearNombreTitulo(inpEliminar.value || "")
 
     if (nombre === "") {
       mostrarAlerta("Ingresá el nombre del futbolista a eliminar.", "alertContainer")
@@ -4528,6 +4526,80 @@ function initFutbolistas() {
       mostrarAlerta("No se encontró un futbolista con ese nombre.", "alertContainer")
     }
   })
+
+
+  // =========================
+  // Buscar futbolista (scroll a la ubicación en la lista)
+  // =========================
+  const inpBuscar = document.getElementById("buscarNombre")
+  const btnBuscar = document.getElementById("btnBuscarFutbolista")
+
+  function _buscarYScroll() {
+    const buscadoRaw = inpBuscar ? inpBuscar.value : ""
+    const buscado = formatearNombreTitulo(buscadoRaw || "")
+    if (inpBuscar) inpBuscar.value = buscado
+
+    if (!buscado || buscado.trim() === "") {
+      mostrarAlerta("Ingresá el nombre del futbolista a buscar.", "alertContainer")
+      return
+    }
+
+    const canonBuscado = _canonNombre(buscado)
+    let encontrado = null
+    for (let i = 0; i < listaMacro.length; i++) {
+      if (_canonNombre(listaMacro[i].nombre) === canonBuscado) {
+        encontrado = listaMacro[i]
+        break
+      }
+    }
+
+    if (!encontrado) {
+      mostrarAlerta("El futbolista no se encuentra en la lista", "alertContainer")
+      return
+    }
+
+    const targetId = "fut-" + _slugNombre(encontrado.nombre)
+    const el = document.getElementById(targetId)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" })
+
+      // pequeño highlight para que se note
+      el.classList.add("futbolista-highlight")
+      setTimeout(() => el.classList.remove("futbolista-highlight"), 1200)
+    }
+  }
+
+  if (btnBuscar) {
+    btnBuscar.addEventListener("click", _buscarYScroll)
+  }
+  if (inpBuscar) {
+    inpBuscar.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") _buscarYScroll()
+    })
+  }
+
+  // =========================
+  // Botón "volver arriba" (aparece al scrollear)
+  // =========================
+  const btnArriba = document.getElementById("btnVolverArriba")
+  const topAnchor = document.getElementById("topFutbolistas")
+
+  function _toggleBtnArriba() {
+    if (!btnArriba) return
+    if (window.scrollY > 260) {
+      btnArriba.style.display = "inline-flex"
+    } else {
+      btnArriba.style.display = "none"
+    }
+  }
+
+  if (btnArriba && topAnchor) {
+    window.addEventListener("scroll", _toggleBtnArriba)
+    _toggleBtnArriba()
+    btnArriba.addEventListener("click", () => {
+      topAnchor.scrollIntoView({ behavior: "smooth", block: "start" })
+    })
+  }
 
   mostrarListaFutbolistas()
 }
@@ -5139,6 +5211,8 @@ function mostrarListaFutbolistas() {
     const fut = listaMacro[i]
     const div = document.createElement("div")
     div.className = "futbolista-item"
+    div.id = "fut-" + _slugNombre(fut.nombre)
+    div.dataset.canon = _canonNombre(fut.nombre)
 
     const emojiBandera = obtenerEmoji(fut.pais)
     const emojiLiga = obtenerEmoji(fut.liga)
@@ -5158,9 +5232,11 @@ function mostrarListaFutbolistas() {
 }
 
 function eliminarFutbolista(buscador) {
+  const canonBuscado = _canonNombre(buscador)
+
   for (let i = 0; i < listaMacro.length; i++) {
     const pos = listaMacro[i]
-    if (buscador === pos.nombre) {
+    if (canonBuscado !== "" && _canonNombre(pos.nombre) === canonBuscado) {
       listaMacro.splice(i, 1)
 
       reconstruirLocalStorage()
