@@ -1682,7 +1682,7 @@ const listaMacro = [
     pais: "Italia",
     liga: "Inglaterra",
     activo: true,
-    status: 2,
+    status: 3,
     imagen: "media/futbolistas/sandro_tonali.jpg",
 },
   {
@@ -1775,7 +1775,7 @@ const listaMacro = [
     imagen: "media/futbolistas/ariel_ortega.jpg",
   },
   {
-    nombre: "Norberto 'El Beto' Alonso",
+    nombre: "Norberto Alonso",
     pais: "Argentina",
     liga: "Argentina",
     activo: false,
@@ -4960,6 +4960,7 @@ function elegirFutbolistaPorDificultad(lista, dificultad) {
   if (!dificultad || dificultad === "") {
     dificultad = "normal"
   }
+
   if (!lista || lista.length === 0) {
     return null
   }
@@ -4968,47 +4969,65 @@ function elegirFutbolistaPorDificultad(lista, dificultad) {
   if (dificultad === "custom") {
     const custom = []
     for (let i = 0; i < lista.length; i++) {
-      if (lista[i] && lista[i].status === 4) custom.push(lista[i])
+      if (lista[i] && lista[i].status === 4) {
+        custom.push(lista[i])
+      }
     }
     if (custom.length === 0) return null
     return custom[Math.floor(Math.random() * custom.length)]
   }
 
-  // Random: cualquiera menos status 4
-  if (dificultad === "random") {
-    const base = []
-    for (let i = 0; i < lista.length; i++) {
-      if (lista[i] && lista[i].status !== 4) base.push(lista[i])
+  // Base: excluir status 4
+  const base = []
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i] && lista[i].status !== 4) {
+      base.push(lista[i])
     }
-    if (base.length === 0) return null
+  }
+  if (base.length === 0) return null
+
+  // Random: aleatorio puro (sin status 4)
+  if (dificultad === "random") {
     return base[Math.floor(Math.random() * base.length)]
+  }
+
+  // Separar por status
+  const s3 = []
+  const s2 = []
+  const s1 = []
+  for (let i = 0; i < base.length; i++) {
+    const j = base[i]
+    if (j.status === 3) s3.push(j)
+    else if (j.status === 2) s2.push(j)
+    else if (j.status === 1) s1.push(j)
   }
 
   // ✅ Reglas pedidas:
-  // - Fácil: SOLO status 3
-  // - Normal: SOLO status 2 y 3
-  // - Difícil: SOLO status 1 y 2 (más "hard", sin status 3)
-  const permitidos = []
-  for (let i = 0; i < lista.length; i++) {
-    const j = lista[i]
-    if (!j) continue
-    if (j.status === 4) continue
-    if (dificultad === "facil" && j.status === 3) permitidos.push(j)
-    else if (dificultad === "normal" && (j.status === 2 || j.status === 3)) permitidos.push(j)
-    else if (dificultad === "dificil" && (j.status === 1 || j.status === 2)) permitidos.push(j)
+  // - facil: SOLO status 3
+  // - normal: SOLO status 2 y 3
+  // - dificil: prioriza status 1, pero puede salir 2/3 (si existen)
+  if (dificultad === "facil") {
+    if (s3.length === 0) return null
+    return s3[Math.floor(Math.random() * s3.length)]
   }
 
-  if (permitidos.length === 0) {
-    // fallback razonable (sin status 4)
-    const base = []
-    for (let i = 0; i < lista.length; i++) {
-      if (lista[i] && lista[i].status !== 4) base.push(lista[i])
-    }
-    if (base.length === 0) return null
-    return base[Math.floor(Math.random() * base.length)]
+  if (dificultad === "normal") {
+    const pool = []
+    for (let i = 0; i < s3.length; i++) pool.push(s3[i])
+    for (let i = 0; i < s2.length; i++) pool.push(s2[i])
+    if (pool.length === 0) return null
+    return pool[Math.floor(Math.random() * pool.length)]
   }
 
-  return permitidos[Math.floor(Math.random() * permitidos.length)]
+  // dificil (fallback): sesgo fuerte hacia s1
+  const pick = (arr) => (arr && arr.length ? arr[Math.floor(Math.random() * arr.length)] : null)
+
+  // Probabilidades (si un grupo no existe, cae al siguiente disponible)
+  // 70% s1, 20% s2, 10% s3
+  const r = Math.random()
+  if (r < 0.70) return pick(s1) || pick(s2) || pick(s3)
+  if (r < 0.90) return pick(s2) || pick(s1) || pick(s3)
+  return pick(s3) || pick(s2) || pick(s1)
 }
 
 function reiniciarFiltrado() {
@@ -5506,6 +5525,241 @@ function initNombres() {
   })
 }
 
+/* ===========================
+   Helpers: búsqueda inteligente + Title Case
+   =========================== */
+
+function _sinAcentos(str) {
+  return (str || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+}
+
+function _normalizarBusqueda(str) {
+  // minúsculas, sin acentos, sin símbolos raros, espacios normalizados
+  return _sinAcentos(str)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+}
+
+function _toTitleCase(str) {
+  // Capitaliza cada palabra (respetando acentos)
+  const s = (str || "").trim()
+  if (!s) return ""
+  return s
+    .split(/\s+/)
+    .map((w) => {
+      const lower = w.toLocaleLowerCase("es-AR")
+      return lower.charAt(0).toLocaleUpperCase("es-AR") + lower.slice(1)
+    })
+    .join(" ")
+}
+
+function _slugNombre(nombre) {
+  return _normalizarBusqueda(nombre).replace(/\s+/g, "-")
+}
+
+function _getRecentSearches() {
+  const raw = localStorage.getItem("busquedasRecientes") || ""
+  if (!raw) return []
+  const parts = raw.split("||").map((x) => x.trim()).filter(Boolean)
+  // unique manteniendo orden
+  const seen = {}
+  const out = []
+  for (let i = 0; i < parts.length; i++) {
+    const k = _normalizarBusqueda(parts[i])
+    if (!k || seen[k]) continue
+    seen[k] = true
+    out.push(parts[i])
+  }
+  return out
+}
+
+function _saveRecentSearch(query) {
+  const q = (query || "").trim()
+  if (!q) return
+  const prev = _getRecentSearches()
+  // poner primero
+  const next = [q]
+  for (let i = 0; i < prev.length; i++) {
+    if (_normalizarBusqueda(prev[i]) !== _normalizarBusqueda(q)) {
+      next.push(prev[i])
+    }
+  }
+  // limitar
+  localStorage.setItem("busquedasRecientes", next.slice(0, 10).join("||"))
+}
+
+function _buscarMejorCoincidencia(query) {
+  const qn = _normalizarBusqueda(query)
+  if (!qn) return null
+
+  const qTokens = qn.split(" ")
+
+  let best = null
+  let bestScore = -1
+
+  for (let i = 0; i < listaMacro.length; i++) {
+    const fut = listaMacro[i]
+    const name = fut && fut.nombre ? fut.nombre : ""
+    const nn = _normalizarBusqueda(name)
+    if (!nn) continue
+
+    let score = 0
+
+    // match exacto
+    if (nn === qn) score += 1000
+
+    // match por tokens (permite buscar solo apellido)
+    const nTokens = nn.split(" ")
+    const lastName = nTokens.length ? nTokens[nTokens.length - 1] : ""
+
+    // si el usuario escribe exactamente el apellido
+    if (qTokens.length === 1 && lastName && lastName === qTokens[0]) score += 650
+
+    // prefijo del apellido
+    if (qTokens.length === 1 && lastName && lastName.startsWith(qTokens[0])) score += 500
+
+    // prefijo del nombre completo
+    if (nn.startsWith(qn)) score += 450
+
+    // cada token del query que aparece en algún token del nombre
+    let tokensHit = 0
+    for (let t = 0; t < qTokens.length; t++) {
+      const qt = qTokens[t]
+      for (let nt = 0; nt < nTokens.length; nt++) {
+        if (nTokens[nt] === qt) {
+          tokensHit += 1
+          score += 120
+          break
+        }
+        if (nTokens[nt].startsWith(qt)) {
+          tokensHit += 1
+          score += 80
+          break
+        }
+      }
+    }
+    if (tokensHit === qTokens.length && qTokens.length > 0) score += 60
+
+    // substring general
+    if (nn.includes(qn)) score += 40
+
+    if (score > bestScore) {
+      bestScore = score
+      best = fut
+    }
+  }
+
+  return best
+}
+
+function _obtenerSugerencias(query, max = 2) {
+  const qn = _normalizarBusqueda(query)
+  const out = []
+
+  // si no hay query, sugerimos recientes
+  if (!qn) {
+    const rec = _getRecentSearches()
+    for (let i = 0; i < rec.length && out.length < max; i++) out.push(rec[i])
+    return out
+  }
+
+  // top por score
+  const scored = []
+  for (let i = 0; i < listaMacro.length; i++) {
+    const name = listaMacro[i].nombre || ""
+    const nn = _normalizarBusqueda(name)
+    if (!nn) continue
+
+    let s = 0
+    if (nn === qn) s += 1000
+    if (nn.startsWith(qn)) s += 400
+    if (nn.includes(qn)) s += 120
+
+    // token match (apellido)
+    const nTokens = nn.split(" ")
+    const last = nTokens.length ? nTokens[nTokens.length - 1] : ""
+    if (last && last.startsWith(qn)) s += 350
+
+    // match por tokens del query
+    const qTokens = qn.split(" ")
+    for (let t = 0; t < qTokens.length; t++) {
+      const qt = qTokens[t]
+      for (let nt = 0; nt < nTokens.length; nt++) {
+        if (nTokens[nt].startsWith(qt)) {
+          s += 60
+          break
+        }
+      }
+    }
+
+    if (s > 0) scored.push({ name, s })
+  }
+
+  scored.sort((a, b) => b.s - a.s || a.name.localeCompare(b.name, "es"))
+
+  for (let i = 0; i < scored.length && out.length < max; i++) {
+    out.push(scored[i].name)
+  }
+
+  // si no hay matches, mostrar recientes
+  if (out.length === 0) {
+    const rec = _getRecentSearches()
+    for (let i = 0; i < rec.length && out.length < max; i++) out.push(rec[i])
+  }
+
+  return out
+}
+
+function _renderSugerencias(contenedor, sugerencias, onPick, anchorInput) {
+  if (!contenedor) return
+  contenedor.innerHTML = ""
+  if (!sugerencias || sugerencias.length === 0) {
+    contenedor.style.display = "none"
+    return
+  }
+
+  contenedor.style.display = "block"
+
+  // ✅ fijar el ancho EXACTO y alinearlo al input (no incluye el botón de la lupa)
+  if (anchorInput && anchorInput.offsetWidth) {
+    // alineación horizontal al borde izquierdo REAL del input
+    contenedor.style.left = (anchorInput.offsetLeft || 0) + "px"
+    contenedor.style.right = "auto"
+    contenedor.style.width = anchorInput.offsetWidth + "px"
+
+    // pegarlo al input (más cerca)
+    const topPx = (anchorInput.offsetTop || 0) + (anchorInput.offsetHeight || 0) + 2
+    contenedor.style.top = topPx + "px"
+  }
+
+  for (let i = 0; i < Math.min(2, sugerencias.length); i++) {
+    const item = document.createElement("button")
+    item.type = "button"
+    item.className = "sug-item"
+    item.textContent = sugerencias[i]
+    item.addEventListener("click", () => onPick(sugerencias[i]))
+    contenedor.appendChild(item)
+  }
+}
+
+function _scrollToFutbolista(nombre) {
+  const el = document.getElementById("fut-" + _slugNombre(nombre))
+  if (!el) return false
+
+  el.scrollIntoView({ behavior: "smooth", block: "center" })
+
+  // resaltado breve
+  el.classList.add("futbolista-highlight")
+  setTimeout(() => el.classList.remove("futbolista-highlight"), 1200)
+
+  return true
+}
+
+
 function initFutbolistas() {
   cargarJugadoresAgregados()
 
@@ -5515,127 +5769,136 @@ function initFutbolistas() {
   const chkActivo = document.getElementById("nuevoActivo")
   const btnAgregarFut = document.getElementById("btnAgregarFutbolista")
 
-  btnAgregarFut.addEventListener("click", () => {
-    const nombre = formatearNombreTitulo(inpNombre.value || "")
-    const pais = (inpPais.value || "").trim()
-    const liga = (inpLiga.value || "").trim()
-    const activoSelect = chkActivo
-    const activo = activoSelect.value === "1"
-
-    if (nombre === "" || pais === "" || liga === "") {
-      mostrarAlerta("Completá Nombre, País y Liga.", "alertContainer")
-      return
-    }
-
-    agregarFutbolista(nombre, pais, liga, activo)
-
-    inpNombre.value = ""
-    inpPais.value = ""
-    inpLiga.value = ""
-    activoSelect.selectedIndex = 0
-
-    mostrarAlertaInfo("Futbolista agregado correctamente.", "alertContainer")
-    mostrarListaFutbolistas()
-  })
-
-  const inpEliminar = document.getElementById("eliminarNombre")
-  const btnEliminarFut = document.getElementById("btnEliminarFutbolista")
-
-  btnEliminarFut.addEventListener("click", () => {
-    const nombre = formatearNombreTitulo(inpEliminar.value || "")
-
-    if (nombre === "") {
-      mostrarAlerta("Ingresá el nombre del futbolista a eliminar.", "alertContainer")
-      return
-    }
-
-    const eliminado = eliminarFutbolista(nombre)
-
-    if (eliminado) {
-      inpEliminar.value = ""
-      mostrarAlertaInfo("Futbolista eliminado correctamente.", "alertContainer")
-      mostrarListaFutbolistas()
-    } else {
-      mostrarAlerta("No se encontró un futbolista con ese nombre.", "alertContainer")
-    }
-  })
-
-
-  // =========================
-  // Buscar futbolista (scroll a la ubicación en la lista)
-  // =========================
+  // Buscar futbolista (si existe en el HTML)
   const inpBuscar = document.getElementById("buscarNombre")
   const btnBuscar = document.getElementById("btnBuscarFutbolista")
+  const sugBox = document.getElementById("buscarSugerencias")
 
-  function _buscarYScroll() {
-    const buscadoRaw = inpBuscar ? inpBuscar.value : ""
-    const buscado = formatearNombreTitulo(buscadoRaw || "")
-    if (inpBuscar) inpBuscar.value = buscado
-
-    if (!buscado || buscado.trim() === "") {
-      mostrarAlerta("Ingresá el nombre del futbolista a buscar.", "alertContainer")
+  function ejecutarBusqueda(raw) {
+    const q = (raw || "").trim()
+    if (!q) {
+      mostrarAlerta("Ingresá un nombre para buscar.", "alertContainer")
       return
     }
 
-    const canonBuscado = _canonNombre(buscado)
-    let encontrado = null
-    for (let i = 0; i < listaMacro.length; i++) {
-      if (_canonNombre(listaMacro[i].nombre) === canonBuscado) {
-        encontrado = listaMacro[i]
-        break
-      }
-    }
-
-    if (!encontrado) {
+    const mejor = _buscarMejorCoincidencia(q)
+    if (!mejor) {
       mostrarAlerta("El futbolista no se encuentra en la lista", "alertContainer")
       return
     }
 
-    const targetId = "fut-" + _slugNombre(encontrado.nombre)
-    const el = document.getElementById(targetId)
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" })
+    _saveRecentSearch(mejor.nombre)
 
-      // pequeño highlight para que se note
-      el.classList.add("futbolista-highlight")
-      setTimeout(() => el.classList.remove("futbolista-highlight"), 1200)
+    // Scroll al jugador en la lista
+    const ok = _scrollToFutbolista(mejor.nombre)
+    if (!ok) {
+      // si por algún motivo no se encuentra el nodo (lista no renderizada, etc.)
+      mostrarAlerta("El futbolista no se encuentra en la lista", "alertContainer")
     }
   }
 
-  if (btnBuscar) {
-    btnBuscar.addEventListener("click", _buscarYScroll)
-  }
-  if (inpBuscar) {
+  if (inpBuscar && btnBuscar) {
+    // Mostrar sugerencias mientras escribe
+    inpBuscar.addEventListener("input", () => {
+      const sug = _obtenerSugerencias(inpBuscar.value, 2)
+      _renderSugerencias(sugBox, sug, (picked) => {
+        inpBuscar.value = picked
+        if (sugBox) sugBox.style.display = "none"
+        ejecutarBusqueda(picked)
+      }, inpBuscar)
+    })
+
+    // Enter busca directo
     inpBuscar.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") _buscarYScroll()
+      if (e.key === "Enter") {
+        e.preventDefault()
+        // normalizamos a Title Case solo para estética
+        inpBuscar.value = _toTitleCase(inpBuscar.value)
+        if (sugBox) sugBox.style.display = "none"
+        ejecutarBusqueda(inpBuscar.value)
+      }
+    })
+
+    // Click en la lupita
+    btnBuscar.addEventListener("click", () => {
+      inpBuscar.value = _toTitleCase(inpBuscar.value)
+      if (sugBox) sugBox.style.display = "none"
+      ejecutarBusqueda(inpBuscar.value)
+    })
+
+    // Al focus, mostrar recientes si está vacío
+    inpBuscar.addEventListener("focus", () => {
+      if (!_normalizarBusqueda(inpBuscar.value)) {
+        const sug = _obtenerSugerencias("", 2)
+        _renderSugerencias(sugBox, sug, (picked) => {
+          inpBuscar.value = picked
+          if (sugBox) sugBox.style.display = "none"
+          ejecutarBusqueda(picked)
+        }, inpBuscar)
+      }
+    })
+
+    // Cerrar sugerencias al hacer click afuera
+    document.addEventListener("click", (e) => {
+      if (!sugBox) return
+      if (e.target === inpBuscar || e.target === sugBox || (sugBox.contains && sugBox.contains(e.target))) return
+      sugBox.style.display = "none"
     })
   }
 
-  // =========================
-  // Botón "volver arriba" (aparece al scrollear)
-  // =========================
-  const btnArriba = document.getElementById("btnVolverArriba")
-  const topAnchor = document.getElementById("topFutbolistas")
+  if (btnAgregarFut) {
+    btnAgregarFut.addEventListener("click", () => {
+      const nombre = _toTitleCase((inpNombre && inpNombre.value) || "")
+      const pais = (inpPais && inpPais.value ? inpPais.value : "").trim()
+      const liga = (inpLiga && inpLiga.value ? inpLiga.value : "").trim()
+      const activoSelect = chkActivo
+      const activo = activoSelect ? activoSelect.value === "1" : true
 
-  function _toggleBtnArriba() {
-    if (!btnArriba) return
-    if (window.scrollY > 260) {
-      btnArriba.style.display = "inline-flex"
-    } else {
-      btnArriba.style.display = "none"
-    }
+      if (nombre === "" || pais === "" || liga === "") {
+        mostrarAlerta("Completá Nombre, País y Liga.", "alertContainer")
+        return
+      }
+
+      agregarFutbolista(nombre, pais, liga, activo)
+
+      if (inpNombre) inpNombre.value = ""
+      if (inpPais) inpPais.value = ""
+      if (inpLiga) inpLiga.value = ""
+      if (activoSelect) activoSelect.selectedIndex = 0
+
+      mostrarAlertaInfo("Futbolista agregado correctamente.", "alertContainer")
+      mostrarListaFutbolistas()
+    })
   }
 
-  if (btnArriba && topAnchor) {
-    window.addEventListener("scroll", _toggleBtnArriba)
-    _toggleBtnArriba()
-    btnArriba.addEventListener("click", () => {
-      topAnchor.scrollIntoView({ behavior: "smooth", block: "start" })
+  const inpEliminar = document.getElementById("eliminarNombre")
+  const btnEliminarFut = document.getElementById("btnEliminarFutbolista")
+
+  if (btnEliminarFut) {
+    btnEliminarFut.addEventListener("click", () => {
+      const nombre = _toTitleCase((inpEliminar && inpEliminar.value) || "")
+
+      if (nombre === "") {
+        mostrarAlerta("Ingresá el nombre del futbolista a eliminar.", "alertContainer")
+        return
+      }
+
+      const eliminado = eliminarFutbolista(nombre)
+
+      if (eliminado) {
+        if (inpEliminar) inpEliminar.value = ""
+        mostrarAlertaInfo("Futbolista eliminado correctamente.", "alertContainer")
+        mostrarListaFutbolistas()
+      } else {
+        mostrarAlerta("No se encontró un futbolista con ese nombre.", "alertContainer")
+      }
     })
   }
 
   mostrarListaFutbolistas()
 }
+
+
 
 function initFiltros() {
   restaurarEstadoSimple()
@@ -6242,10 +6505,13 @@ function mostrarListaFutbolistas() {
 
   for (let i = 0; i < listaMacro.length; i++) {
     const fut = listaMacro[i]
+
     const div = document.createElement("div")
     div.className = "futbolista-item"
+
+    // ✅ Para que la búsqueda pueda hacer scroll a un jugador específico
+    div.dataset.nombre = fut.nombre
     div.id = "fut-" + _slugNombre(fut.nombre)
-    div.dataset.canon = _canonNombre(fut.nombre)
 
     const emojiBandera = obtenerEmoji(fut.pais)
     const emojiLiga = obtenerEmoji(fut.liga)

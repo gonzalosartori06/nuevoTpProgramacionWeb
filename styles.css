@@ -2512,3 +2512,179 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
 .futbolistas-titulo-secundario{
   color: #000000 !important;
 }
+/* =========================
+   FUTBOLISTAS: buscador (sin “cuadrado”) + sugerencias estéticas
+   ========================= */
+
+#buscarGrid .buscar-btn-cell{
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+}
+
+/* botón lupa: SIN borde, SIN fondo, SIN padding */
+#btnBuscarFutbolista.btn-lupa{
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#btnBuscarFutbolista.btn-lupa:focus{
+  outline: none;
+}
+
+#btnBuscarFutbolista.btn-lupa img{
+  /* mantené lo que ya te gustaba */
+  width: 90px !important;
+  height: 90px !important;
+  object-fit: contain;
+}
+
+/* wrapper input para poder “colgar” el dropdown */
+.buscar-input-wrap{
+  position: relative;
+}
+
+/* dropdown de sugerencias (bonito) */
+.buscar-sugerencias{
+  position: absolute;
+  top: 100%;
+  z-index: 999999;
+
+  display: none;
+
+  /* ✅ fondo 100% sólido */
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  border: 2px solid #000000;
+  border-radius: 10px;
+
+  overflow: hidden;
+  box-shadow: none;
+  max-height: 210px;
+
+  /* por si algún estilo global mete transparencia */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.buscar-sugerencias .sug-item{
+  display: block;
+  width: 100%;
+  text-align: left;
+
+  background-color: #ffffff !important;
+  color: #000000;
+
+  padding: 10px 12px;
+  cursor: pointer;
+
+  border: 0;
+  border-bottom: 2px solid #000000;
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  line-height: 1.1;
+}
+
+.buscar-sugerencias .sug-item:last-child{
+  border-bottom: none;
+}
+
+.buscar-sugerencias .sug-item:hover{
+  background-color: #000000 !important;
+  color: #ffffff;
+}
+
+.buscar-sugerencias .sug-muted{
+  display: none;
+}
+
+/* por si algún estilo raro te cambia colores */
+.futbolistas-titulo-principal,
+.futbolistas-titulo-secundario{
+  color: #000000 !important;
+}
+
+
+
+/* =========================================
+   BUSCADOR FUTBOLISTAS — SUGERENCIAS (MIN)
+   Blanco/Negro, pegadas al input, sin recorte
+   ========================================= */
+
+/* ✅ evitar que el contenedor recorte el dropdown */
+#buscarGrid.container-bordered-grid{
+  overflow: visible !important;
+}
+#buscarGrid .row,
+#buscarGrid .filter-column-full{
+  overflow: visible !important;
+}
+
+/* ✅ el wrapper del input no debe centrar (acerca dropdown al input) */
+#buscarGrid .filter-box.buscar-input-wrap{
+  position: relative;
+  min-height: auto !important;
+  justify-content: flex-start !important;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  overflow: visible !important;
+}
+
+/* ✅ dropdown */
+#buscarGrid .buscar-sugerencias{
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  /* más pegado al input */
+  top: 100%;
+  transform: translateY(-2px);
+
+  z-index: 20000;
+  display: none;
+
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+
+  overflow: hidden;
+  box-shadow: none;
+  pointer-events: auto;
+}
+
+/* ✅ items (uno abajo del otro) */
+#buscarGrid .buscar-sugerencias .sug-item{
+  display: block;
+  width: 100%;
+  text-align: left;
+
+  background: #ffffff;
+  color: #000000;
+
+  border: 0;
+  border-top: 1px solid #000000;
+
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.1;
+
+  cursor: pointer;
+}
+
+#buscarGrid .buscar-sugerencias .sug-item:first-child{
+  border-top: 0;
+}
+
+/* ✅ hover sin grises: invertido */
+#buscarGrid .buscar-sugerencias .sug-item:hover{
+  background: #000000;
+  color: #ffffff;
+}
