@@ -6019,7 +6019,7 @@ const CONTINENTES = {
     "Arabia Saudita","Emiratos Árabes Unidos","Corea del Sur","Japón","Japon","China","Qatar","Irán","Iran","Armenia","Georgia"
   ],
   Africa: [
-    "Argelia","Camerún","Costa de Marfil","Egipto","Gabón","Ghana","Marruecos","Nigeria","Senegal","Túnez","Tunez","Sudáfrica","Sudafrica"
+    "Argelia","Camerún","Costa de Marfil","Egipto","Gabón","Ghana","Marruecos","Nigeria","Senegal","Túnez","Tunez","Sudáfrica","Sudafrica","Libia","Liberia"
   ]
 }
 
