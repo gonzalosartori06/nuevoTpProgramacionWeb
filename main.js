@@ -90,7 +90,7 @@ const listaMacro = [
   {
     nombre: "Ronaldo Nazario",
     pais: "Brasil",
-    liga: "España",
+    liga: ["Brasil", "Países Bajos", "España", "Italia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/ronaldo_nazario.jpg",
@@ -122,7 +122,7 @@ const listaMacro = [
   {
     nombre: "Diego Maradona",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Argentina", "España", "Italia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/diego_maradona.jpg",
@@ -130,7 +130,7 @@ const listaMacro = [
   {
     nombre: "Juan Román Riquelme",
     pais: "Argentina",
-    liga: "Argentina",
+    liga: ["Argentina", "España"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/juan_roman_riquelme.jpg",
@@ -138,7 +138,7 @@ const listaMacro = [
   {
     nombre: "Gabriel Batistuta",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Argentina", "Italia", "Qatar"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/gabriel_batistuta.jpg",
@@ -290,7 +290,7 @@ const listaMacro = [
   {
     nombre: "Pelé",
     pais: "Brasil",
-    liga: "Brasil",
+    liga: ["Brasil", "Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/pele.jpg",
@@ -298,7 +298,7 @@ const listaMacro = [
   {
     nombre: "Diego Godín",
     pais: "Uruguay",
-    liga: "España",
+    liga: ["España","Argentina","Brasil"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/diego_godin.jpg",
@@ -306,7 +306,7 @@ const listaMacro = [
   {
     nombre: "Marcelo",
     pais: "Brasil",
-    liga: "España",
+    liga: ["España","Brasil","Grecia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/marcelo.jpg",
@@ -322,7 +322,7 @@ const listaMacro = [
   {
     nombre: "Zinedine Zidane",
     pais: "Francia",
-    liga: "España",
+    liga: ["Francia", "Italia", "España"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/zinedine_zidane.jpg",
@@ -338,7 +338,7 @@ const listaMacro = [
   {
     nombre: "Johan Cruyff",
     pais: "Países Bajos",
-    liga: "España",
+    liga: ["Países Bajos", "España", "Estados Unidos"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/johan_cruyff.jpg",
@@ -346,7 +346,7 @@ const listaMacro = [
   {
     nombre: "Thiago Alcântara",
     pais: "España",
-    liga: "Alemania",
+    liga: ["Alemania", "España", "Inglaterra"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/thiago_alcantara.jpg",
@@ -362,7 +362,7 @@ const listaMacro = [
   {
     nombre: "Carlos Tevez",
     pais: "Argentina",
-    liga: "Argentina",
+    liga: ["Argentina", "Brasil", "Inglaterra", "Italia", "China"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/carlos_tevez.jpg",
@@ -370,7 +370,7 @@ const listaMacro = [
   {
     nombre: "Franz Beckenbauer",
     pais: "Alemania",
-    liga: "Alemania",
+    liga: ["Alemania", "Estados Unidos"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/franz_beckenbauer.jpg",
@@ -386,7 +386,7 @@ const listaMacro = [
   {
     nombre: "Zlatan Ibrahimović",
     pais: "Suecia",
-    liga: "Italia",
+    liga: ["Suecia", "Países Bajos", "Italia", "España", "Francia", "Inglaterra", "Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/zlatan_ibrahimovic.jpg",
@@ -402,7 +402,7 @@ const listaMacro = [
   {
     nombre: "Sergio Ramos",
     pais: "España",
-    liga: "España",
+    liga: ["España", "Francia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/sergio_ramos.jpg",
@@ -418,7 +418,7 @@ const listaMacro = [
   {
     nombre: "Eden Hazard",
     pais: "Bélgica",
-    liga: "Inglaterra",
+    liga: ["Bélgica", "Francia", "Inglaterra", "España"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/eden_hazard.jpg",
@@ -450,7 +450,7 @@ const listaMacro = [
   {
     nombre: "Eric Cantona",
     pais: "Francia",
-    liga: "Inglaterra",
+    liga: ["Francia", "Inglaterra"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/eric_cantona.jpg",
@@ -499,7 +499,7 @@ const listaMacro = [
   {
     nombre: "Romário",
     pais: "Brasil",
-    liga: "España",
+    liga: ["Brasil", "Países Bajos", "España", "Qatar", "Estados Unidos"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/romario.jpg",
@@ -508,7 +508,7 @@ const listaMacro = [
   {
     nombre: "Pepe",
     pais: "Portugal",
-    liga: "Portugal",
+    liga: ["Portugal", "España", "Turquía"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/pepe.jpg",
@@ -540,7 +540,7 @@ const listaMacro = [
   {
     nombre: "George Best",
     pais: "Irlanda del Norte",
-    liga: "Inglaterra",
+    liga: ["Irlanda del Norte", "Inglaterra", "Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/george_best.jpg",
@@ -548,7 +548,7 @@ const listaMacro = [
   {
     nombre: "Ronaldinho",
     pais: "Brasil",
-    liga: "España",
+    liga: ["Brasil", "Francia", "España", "Italia", "México"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/ronaldinho.jpg",
@@ -564,7 +564,7 @@ const listaMacro = [
   {
     nombre: "Martin Palermo",
     pais: "Argentina",
-    liga: "Argentina",
+    liga: ["Argentina", "España"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/martin_palermo.jpg",
@@ -580,7 +580,7 @@ const listaMacro = [
   {
     nombre: "Alfredo Di Stéfano",
     pais: "Argentina",
-    liga: "España",
+    liga: ["Argentina", "Colombia", "España"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/alfredo_di_stefano.jpg",
@@ -588,7 +588,7 @@ const listaMacro = [
   {
     nombre: "Ferenc Puskás",
     pais: "Hungría",
-    liga: "España",
+    liga: ["Hungría", "España"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/ferenc_puskas.jpg",
@@ -612,7 +612,7 @@ const listaMacro = [
   {
     nombre: "Patrick Vieira",
     pais: "Francia",
-    liga: "Inglaterra",
+    liga: ["Francia", "Italia", "Inglaterra", "Estados Unidos"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/patrick_vieira.jpg",
@@ -620,7 +620,7 @@ const listaMacro = [
   {
     nombre: "Claude Makélélé",
     pais: "Francia",
-    liga: "España",
+    liga: ["Francia", "España", "Inglaterra"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/claude_makelele.jpg",
@@ -628,7 +628,7 @@ const listaMacro = [
   {
     nombre: "Edgar Davids",
     pais: "Países Bajos",
-    liga: "Italia",
+    liga: ["Países Bajos", "Italia", "España", "Inglaterra"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/edgar_davids.jpg",
@@ -636,7 +636,7 @@ const listaMacro = [
   {
     nombre: "Gennaro Gattuso",
     pais: "Italia",
-    liga: "Italia",
+    liga: ["Italia", "Escocia", "Suiza"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/gennaro_gattuso.jpg",
@@ -644,7 +644,7 @@ const listaMacro = [
   {
     nombre: "David Beckham",
     pais: "Inglaterra",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "España", "Estados Unidos", "Francia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/david_beckham.jpg",
@@ -660,7 +660,7 @@ const listaMacro = [
   {
     nombre: "Wayne Rooney",
     pais: "Inglaterra",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/wayne_rooney.jpg",
@@ -684,7 +684,7 @@ const listaMacro = [
   {
     nombre: "Gareth Bale",
     pais: "Gales",
-    liga: "España",
+    liga: ["Gales", "Inglaterra", "España", "Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/gareth_bale.jpg",
@@ -692,7 +692,7 @@ const listaMacro = [
   {
     nombre: "Mesut Özil",
     pais: "Alemania",
-    liga: "Inglaterra",
+    liga: ["Alemania", "España", "Inglaterra", "Turquía"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/mesut_ozil.jpg",
@@ -700,7 +700,7 @@ const listaMacro = [
   {
     nombre: "Carlos Bianchi",
     pais: "Argentina",
-    liga: "Francia",
+    liga: ["Argentina", "Francia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/carlos_bianchi.jpg",
@@ -716,7 +716,7 @@ const listaMacro = [
   {
     nombre: "Steven Gerrard",
     pais: "Inglaterra",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/steven_gerrard.jpg",
@@ -724,7 +724,7 @@ const listaMacro = [
   {
     nombre: "Didier Drogba",
     pais: "Costa de Marfil",
-    liga: "Inglaterra",
+    liga: ["Costa de Marfil", "Francia", "Inglaterra", "China", "Turquía", "Canadá"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/didier_drogba.jpg",
@@ -732,7 +732,7 @@ const listaMacro = [
   {
     nombre: "Samuel Eto’o",
     pais: "Camerún",
-    liga: "España",
+    liga: ["Camerún", "España", "Italia", "Inglaterra", "Rusia", "Turquía", "Qatar"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/samuel_eto_o.jpg",
@@ -740,7 +740,7 @@ const listaMacro = [
   {
     nombre: "Fernando Torres",
     pais: "España",
-    liga: "España",
+    liga: ["España", "Inglaterra", "Italia", "Japón"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/fernando_torres.jpg",
@@ -748,7 +748,7 @@ const listaMacro = [
   {
     nombre: "Robin van Persie",
     pais: "Países Bajos",
-    liga: "Inglaterra",
+    liga: ["Países Bajos", "Inglaterra", "Turquía"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/robin_van_persie.jpg",
@@ -756,7 +756,7 @@ const listaMacro = [
   {
     nombre: "Frank Ribéry",
     pais: "Francia",
-    liga: "Alemania",
+    liga: ["Francia", "Alemania", "Italia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/frank_ribery.jpg",
@@ -764,7 +764,7 @@ const listaMacro = [
   {
     nombre: "Arjen Robben",
     pais: "Países Bajos",
-    liga: "Alemania",
+    liga: ["Países Bajos", "Inglaterra", "España", "Alemania"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/arjen_robben.jpg",
@@ -780,7 +780,7 @@ const listaMacro = [
   {
     nombre: "Gerard Piqué",
     pais: "España",
-    liga: "España",
+    liga: ["España", "Inglaterra"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/gerard_pique.jpg",
@@ -788,7 +788,7 @@ const listaMacro = [
   {
     nombre: "Ivan Rakitić",
     pais: "Croacia",
-    liga: "Croacia",
+    liga: ["Croacia","España"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/ivan_rakitic.jpg",
@@ -796,7 +796,7 @@ const listaMacro = [
   {
     nombre: "Yaya Touré",
     pais: "Costa de Marfil",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "España", "China"," Grecia"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/yaya_toure.jpg",
@@ -820,7 +820,7 @@ const listaMacro = [
   {
     nombre: "Radamel Falcao",
     pais: "Colombia",
-    liga: "Colombia",
+    liga: ["Colombia","España","Turquía","Francia","Italia","Portugal","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/radamel_falcao.jpg",
@@ -845,7 +845,7 @@ const listaMacro = [
   {
     nombre: "Kaká",
     pais: "Brasil",
-    liga: "Italia",
+    liga: ["Italia", "España", "Estados Unidos", "Brasil"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/kaka.jpg",
@@ -853,7 +853,7 @@ const listaMacro = [
   {
     nombre: "Rivaldo",
     pais: "Brasil",
-    liga: "España",
+    liga: ["España", "Italia", "Brasil"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/rivaldo.jpg",
@@ -861,7 +861,7 @@ const listaMacro = [
   {
     nombre: "Cafu",
     pais: "Brasil",
-    liga: "Italia",
+    liga: ["Italia", "Brasil"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/cafu.jpg",
@@ -869,7 +869,7 @@ const listaMacro = [
   {
     nombre: "Dani Alves",
     pais: "Brasil",
-    liga: "España",
+    liga: ["España", "Italia", "Brasil"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/dani_alves.jpg",
@@ -877,7 +877,7 @@ const listaMacro = [
   {
     nombre: "Thiago Silva",
     pais: "Brasil",
-    liga: "Portugal",
+    liga: ["Portugal", "Brasil", "Francia", "Inglaterra", "Italia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/thiago_silva.jpg",
@@ -886,7 +886,7 @@ const listaMacro = [
   {
     nombre: "Hernán Crespo",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia", "España", "Brasil", "Argentina", "Inglaterra"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/hernan_crespo.jpg",
@@ -894,7 +894,7 @@ const listaMacro = [
   {
     nombre: "Pablo Aimar",
     pais: "Argentina",
-    liga: "España",
+    liga: ["España","Argentina", "Portugal", "Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/pablo_aimar.jpg",
@@ -902,7 +902,7 @@ const listaMacro = [
   {
     nombre: "Javier Saviola",
     pais: "Argentina",
-    liga: "España",
+    liga: ["España", "Italia", "Brasil", "Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/javier_saviola.jpg",
@@ -910,7 +910,7 @@ const listaMacro = [
   {
     nombre: "Esteban Cambiasso",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia", "España", "Brasil", "Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/esteban_cambiasso.jpg",
@@ -918,7 +918,7 @@ const listaMacro = [
   {
     nombre: "Diego Simeone",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia", "España", "Brasil", "Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/diego_simeone.jpg",
@@ -926,7 +926,7 @@ const listaMacro = [
   {
     nombre: "Juan Sebastián Verón",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia", "España", "Brasil", "Argentina", "Inglaterra", "Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/juan_sebastian_veron.jpg",
@@ -934,7 +934,7 @@ const listaMacro = [
   {
     nombre: "Roberto Ayala",
     pais: "Argentina",
-    liga: "España",
+    liga: ["España", "Italia", "Argentina", "Brasil", "Estados Unidos"],
     activo: false,
     status: 1,
     imagen: "media/futbolistas/roberto_ayala.jpg",
@@ -942,7 +942,7 @@ const listaMacro = [
   {
     nombre: "Enzo Francescoli",
     pais: "Uruguay",
-    liga: "Francia",
+    liga: ["Francia", "España", "Argentina", "Brasil", "Italia", "Uruguay"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/enzo_francescoli.jpg",
@@ -950,7 +950,7 @@ const listaMacro = [
   {
     nombre: "Diego Forlán",
     pais: "Uruguay",
-    liga: "España",
+    liga: ["España", "Italia", "Brasil", "Argentina", "Uruguay"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/diego_forlan.jpg",
@@ -966,7 +966,7 @@ const listaMacro = [
   {
     nombre: "Andrés Iniesta",
     pais: "España",
-    liga: "Emiratos Árabes Unidos",
+    liga: ["Emiratos Árabes Unidos", "España", "Italia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/andres_iniesta.jpg",
@@ -974,7 +974,7 @@ const listaMacro = [
   {
     nombre: "Xavi Hernández",
     pais: "España",
-    liga: "España",
+    liga: ["España"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/xavi_hernandez.jpg",
@@ -982,7 +982,7 @@ const listaMacro = [
   {
     nombre: "Cesc Fàbregas",
     pais: "España",
-    liga: "España",
+    liga: ["España", "Inglaterra", "Francia"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/cesc_fabregas.jpg",
@@ -998,7 +998,7 @@ const listaMacro = [
   {
     nombre: "David Trezeguet",
     pais: "Francia",
-    liga: "Italia",
+    liga: ["Italia","Argentina","Italia"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/david_trezeguet.jpg",
@@ -1006,7 +1006,7 @@ const listaMacro = [
   {
     nombre: "Robert Pirès",
     pais: "Francia",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "Francia", "España"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/robert_pires.jpg",
@@ -1014,7 +1014,7 @@ const listaMacro = [
   {
     nombre: "Edwin van der Sar",
     pais: "Países Bajos",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "Italia", "Países Bajos"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/edwin_van_der_sar.jpg",
@@ -1022,7 +1022,7 @@ const listaMacro = [
   {
     nombre: "Miroslav Klose",
     pais: "Alemania",
-    liga: "Alemania",
+    liga: ["Alemania","Italia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/miroslav_klose.jpg",
@@ -1030,7 +1030,7 @@ const listaMacro = [
   {
     nombre: "Bastian Schweinsteiger",
     pais: "Alemania",
-    liga: "Alemania",
+    liga: ["Alemania","Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/bastian_schweinsteiger.jpg",
@@ -1038,7 +1038,7 @@ const listaMacro = [
   {
     nombre: "Philipp Lahm",
     pais: "Alemania",
-    liga: "Alemania",
+    liga: ["Alemania"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/philipp_lahm.jpg",
@@ -1046,7 +1046,7 @@ const listaMacro = [
   {
     nombre: "Michael Ballack",
     pais: "Alemania",
-    liga: "Alemania",
+    liga: ["Alemania","Inglaterra"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/michael_ballack.jpg",
@@ -1102,7 +1102,7 @@ const listaMacro = [
   {
     nombre: "Andriy Shevchenko",
     pais: "Ucrania",
-    liga: "Italia",
+    liga: ["Italia","Inglaterra","Ucrania"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/andriy_shevchenko.jpg",
@@ -1134,7 +1134,7 @@ const listaMacro = [
   {
     nombre: "Mario Kempes",
     pais: "Argentina",
-    liga: "España",
+    liga: ["España","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/mario_kempes.jpg",
@@ -1142,7 +1142,7 @@ const listaMacro = [
   {
     nombre: "Omar Sivori",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","Argentina"],
     activo: false,
     status: 1,
     imagen: "media/futbolistas/omar_sivori.jpg",
@@ -1150,7 +1150,7 @@ const listaMacro = [
   {
     nombre: "Daniel Passarella",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/daniel_passarella.jpg",
@@ -1174,7 +1174,7 @@ const listaMacro = [
   {
     nombre: "Óscar Ruggeri",
     pais: "Argentina",
-    liga: "Argentina",
+    liga: ["Argentina","España"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/oscar_ruggeri.jpg",
@@ -1182,7 +1182,7 @@ const listaMacro = [
   {
     nombre: "Claudio Caniggia",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/claudio_caniggia.jpg",
@@ -1190,7 +1190,7 @@ const listaMacro = [
   {
     nombre: "Javier Mascherano",
     pais: "Argentina",
-    liga: "España",
+    liga: ["España","Argentina","China"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/javier_mascherano.jpg",
@@ -1198,7 +1198,7 @@ const listaMacro = [
   {
     nombre: "Guillermo Barros Schelotto",
     pais: "Argentina",
-    liga: "Argentina",
+    liga: ["Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/guillermo_barros_schelotto.jpg",
@@ -1214,7 +1214,7 @@ const listaMacro = [
   {
     nombre: "Diego Milito",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/diego_milito.jpg",
@@ -1222,7 +1222,7 @@ const listaMacro = [
   {
     nombre: "Gabriel Milito",
     pais: "Argentina",
-    liga: "España",
+    liga: ["España","Argentina"],
     activo: false,
     status: 1,
     imagen: "media/futbolistas/gabriel_milito.jpg",
@@ -1230,7 +1230,7 @@ const listaMacro = [
   {
     nombre: "Javier Zanetti",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/javier_zanetti.jpg",
@@ -1238,7 +1238,7 @@ const listaMacro = [
   {
     nombre: "Leandro Paredes",
     pais: "Argentina",
-    liga: "Italia",
+    liga: "Argentina",
     activo: true,
     status: 2,
     imagen: "media/futbolistas/leandro_paredes.jpg",
@@ -1311,7 +1311,7 @@ const listaMacro = [
   {
     nombre: "Fernando Gago",
     pais: "Argentina",
-    liga: "España",
+    liga: ["España","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/fernando_gago.jpg",
@@ -1383,7 +1383,7 @@ const listaMacro = [
   {
     nombre: "Marcelo Gallardo",
     pais: "Argentina",
-    liga: "Francia",
+    liga: ["Francia","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/marcelo_gallardo.jpg",
@@ -1455,7 +1455,7 @@ const listaMacro = [
   {
     nombre: "Martín Demichelis",
     pais: "Argentina",
-    liga: "Alemania",
+    liga: ["Alemania","Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/martin_demichelis.jpg",
@@ -1666,7 +1666,7 @@ const listaMacro = [
     pais: "Uruguay",
     liga: "Inglaterra",
     activo: true,
-    status: 3,
+    status: 2,
     imagen: "media/futbolistas/rodrigo_bentancur.jpg",
 },
   {
@@ -1682,7 +1682,7 @@ const listaMacro = [
     pais: "Italia",
     liga: "Inglaterra",
     activo: true,
-    status: 3,
+    status: 2,
     imagen: "media/futbolistas/sandro_tonali.jpg",
 },
   {
@@ -1769,7 +1769,7 @@ const listaMacro = [
   {
     nombre: "Ariel Ortega",
     pais: "Argentina",
-    liga: "Argentina",
+    liga: ["Argentina", "Italia", "España"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/ariel_ortega.jpg",
@@ -1899,7 +1899,7 @@ const listaMacro = [
     pais: "Argentina",
     liga: "Argentina",
     activo: false,
-    status: 3,
+    status: 2,
     imagen: "media/futbolistas/leonardo_ponzio.jpg",
   },
   {
@@ -2412,7 +2412,7 @@ const listaMacro = [
     pais: "Marruecos",
     liga: "Arabia Saudita",
     activo: true,
-    status: 2,
+    status: 3,
     imagen: "media/futbolistas/yassine_bounou.jpg",
   },
   {
@@ -2466,7 +2466,7 @@ const listaMacro = [
   {
     nombre: "Jorginho",
     pais: "Italia",
-    liga: "Inglaterra",
+    liga: "Brasil",
     activo: true,
     status: 2,
     imagen: "media/futbolistas/jorginho.jpg",
@@ -2482,7 +2482,7 @@ const listaMacro = [
   {
     nombre: "Luis Díaz",
     pais: "Colombia",
-    liga: "Inglaterra",
+    liga: "Alemania",
     activo: true,
     status: 3,
     imagen: "media/futbolistas/luis_diaz.jpg",
@@ -2602,7 +2602,7 @@ const listaMacro = [
   {
     nombre: "Sergio Agüero",
     pais: "Argentina",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "España", "Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/sergio_aguero.jpg",
@@ -2746,7 +2746,7 @@ const listaMacro = [
   {
     nombre: "Michel Platini",
     pais: "Francia",
-    liga: "Italia",
+    liga: ["Italia", "Francia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/michel_platini.jpg",
@@ -2778,7 +2778,7 @@ const listaMacro = [
   {
     nombre: "Dennis Bergkamp",
     pais: "Países Bajos",
-    liga: "Inglaterra",
+    liga: ["Inglaterra","Italia","Países Bajos"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/dennis_bergkamp.jpg",
@@ -2794,7 +2794,7 @@ const listaMacro = [
   {
     nombre: "David Silva",
     pais: "España",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "España"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/david_silva.jpg",
@@ -2818,7 +2818,7 @@ const listaMacro = [
   {
     nombre: "Marco van Basten",
     pais: "Países Bajos",
-    liga: "Italia",
+    liga: ["Italia", "Países Bajos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/marco_van_basten.jpg",
@@ -2874,7 +2874,7 @@ const listaMacro = [
   {
     nombre: "Iker Muniain",
     pais: "España",
-    liga: "España",
+    liga: ["España", "Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/iker_muniain.jpg",
@@ -2970,7 +2970,7 @@ const listaMacro = [
   {
     nombre: "Diego Latorre",
     pais: "Argentina",
-    liga: "Argentina",
+    liga: ["Argentina","España","Italia"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/diego_latorre.jpg",
@@ -3034,7 +3034,7 @@ const listaMacro = [
   {
     nombre: "Luis Figo",
     pais: "Portugal",
-    liga: "España",
+    liga: ["España","Italia","Portugal"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/luis_figo.jpg",
@@ -3042,7 +3042,7 @@ const listaMacro = [
   {
     nombre: "Xabi Alonso",
     pais: "España",
-    liga: "España",
+    liga: ["España","Alemania","Inglaterra"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/xabi_alonso.jpg",
@@ -3050,7 +3050,7 @@ const listaMacro = [
   {
     nombre: "Sergio Busquets",
     pais: "España",
-    liga: "España",
+    liga: ["España","Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/sergio_busquets.jpg",
@@ -3066,7 +3066,7 @@ const listaMacro = [
   {
     nombre: "Thierry Henry",
     pais: "Francia",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "España", "Estados Unidos","Francia","Italia"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/thierry_henry.jpg",
@@ -3098,7 +3098,7 @@ const listaMacro = [
   {
     nombre: "Walter Samuel",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/walter_samuel.jpg",
@@ -3106,7 +3106,7 @@ const listaMacro = [
   {
     nombre: "Andrés D'Alessandro",
     pais: "Argentina",
-    liga: "Brasil",
+    liga: ["Brasil", "Argentina"],
     activo: false,
     status: 1,
     imagen: "media/futbolistas/andres_dalessandro.jpg",
@@ -3162,7 +3162,7 @@ const listaMacro = [
   {
     nombre: "Michael Essien",
     pais: "Ghana",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "España", "Italia","Francia"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/michael_essien.jpg",
@@ -3170,7 +3170,7 @@ const listaMacro = [
   {
     nombre: "Diego Costa",
     pais: "España",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "España", "Brasil"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/diego_costa.jpg",
@@ -3178,7 +3178,7 @@ const listaMacro = [
   {
     nombre: "Pepe Reina",
     pais: "España",
-    liga: "Italia",
+    liga: ["Italia", "España"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/pepe_reina.jpg",
@@ -3202,7 +3202,7 @@ const listaMacro = [
   {
     nombre: "Deco",
     pais: "Portugal",
-    liga: "España",
+    liga: ["España","Portugal"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/deco.jpg",
@@ -3210,7 +3210,7 @@ const listaMacro = [
   {
     nombre: "Rui Costa",
     pais: "Portugal",
-    liga: "Italia",
+    liga: ["Italia", "Portugal"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/rui_costa.jpg",
@@ -3218,15 +3218,15 @@ const listaMacro = [
   {
     nombre: "Juan Mata",
     pais: "España",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "España"],
     activo: false,
-    status: 1,
+    status: 2,
     imagen: "media/futbolistas/juan_mata.jpg",
   },
   {
     nombre: "Robinho",
     pais: "Brasil",
-    liga: "Brasil",
+    liga: ["Brasil","España","Inglaterra","Italia"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/robinho.jpg",
@@ -3234,7 +3234,7 @@ const listaMacro = [
   {
     nombre: "Ezequiel Lavezzi",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/ezequiel_lavezzi.jpg",
@@ -3242,7 +3242,7 @@ const listaMacro = [
   {
     nombre: "Gonzalo Higuaín",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","España","Estados Unidos","Argentina"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/gonzalo_higuain.jpg",
@@ -3514,7 +3514,7 @@ const listaMacro = [
   {
     nombre: "Fernando Redondo",
     pais: "Argentina",
-    liga: "España",
+    liga: ["España","Italia","Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/fernando_redondo.jpg",
@@ -3594,7 +3594,7 @@ const listaMacro = [
   {
     nombre: "Daniel Osvaldo",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia","Argentina","Inglaterra"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/daniel_osvaldo.jpg",
@@ -3658,7 +3658,7 @@ const listaMacro = [
   {
     nombre: "Papu Gómez",
     pais: "Argentina",
-    liga: "Italia",
+    liga: ["Italia", "Argentina"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/papu_gomez.jpg",
@@ -3866,7 +3866,7 @@ const listaMacro = [
   {
     nombre: "Erik Lamela",
     pais: "Argentina",
-    liga: "Inglaterra",
+    liga: ["Inglaterra", "Argentina","España"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/erik_lamela.jpg",
@@ -3954,7 +3954,7 @@ const listaMacro = [
   {
     nombre: "Roberto Carlos",
     pais: "Brasil",
-    liga: "España",
+    liga: ["España", "Brasil"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/roberto_carlos.jpg",
@@ -3962,7 +3962,7 @@ const listaMacro = [
   {
     nombre: "Ruud Gullit",
     pais: "Países Bajos",
-    liga: "Italia",
+    liga: ["Italia","Países Bajos"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/ruud_gullit.jpg",
@@ -3970,7 +3970,7 @@ const listaMacro = [
   {
     nombre: "Lothar Matthäus",
     pais: "Alemania",
-    liga: "Alemania",
+    liga: ["Alemania", "Italia"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/lothar_matthaus.jpg",
@@ -4292,7 +4292,7 @@ const listaMacro = [
     pais: "México",
     liga: "España",
     activo: false,
-    status: 1,
+    status: 2,
     imagen: "media/futbolistas/hugo_sanchez.jpg",
   },
   {
@@ -4322,7 +4322,7 @@ const listaMacro = [
   {
     nombre: "Ronald Koeman",
     pais: "Países Bajos",
-    liga: "España",
+    liga: ["España", "Italia", "Países Bajos"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/ronald_koeman.jpg",
@@ -4338,7 +4338,7 @@ const listaMacro = [
   {
     nombre: "Jordi Alba",
     pais: "España",
-    liga: "España",
+    liga: ["España","Estados Unidos"],
     activo: false,
     status: 3,
     imagen: "media/futbolistas/jordi_alba.jpg",
@@ -4362,7 +4362,7 @@ const listaMacro = [
   {
     nombre: "Carlo Ancelotti",
     pais: "Italia",
-    liga: "España",
+    liga: "Italia",
     activo: false,
     status: 3,
     imagen: "media/futbolistas/carlo_ancelotti.jpg",
@@ -4378,7 +4378,7 @@ const listaMacro = [
   {
     nombre: "Patrick Kluivert",
     pais: "Países Bajos",
-    liga: "España",
+    liga: ["España", "Italia"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/patrick_kluivert.jpg",
@@ -4410,7 +4410,7 @@ const listaMacro = [
   {
     nombre: "Lilian Thuram",
     pais: "Francia",
-    liga: "Italia",
+    liga: ["Italia", "Francia"],
     activo: false,
     status: 1,
     imagen: "media/futbolistas/lilian_thuram.jpg",
@@ -4458,7 +4458,7 @@ const listaMacro = [
   {
     nombre: "Careca",
     pais: "Brasil",
-    liga: "Italia",
+    liga: ["Italia", "Brasil"],
     activo: false,
     status: 1,
     imagen: "media/futbolistas/careca.jpg",
@@ -4474,7 +4474,7 @@ const listaMacro = [
   {
     nombre: "Dunga",
     pais: "Brasil",
-    liga: "Italia",
+    liga: ["Italia", "Brasil"],
     activo: false,
     status: 1,
     imagen: "media/futbolistas/dunga.jpg",
@@ -4482,7 +4482,7 @@ const listaMacro = [
   {
     nombre: "Adriano",
     pais: "Brasil",
-    liga: "Italia",
+    liga: ["Italia", "Brasil"],
     activo: false,
     status: 2,
     imagen: "media/futbolistas/adriano.jpg",
@@ -4490,7 +4490,7 @@ const listaMacro = [
   {
     nombre: "Zé Roberto",
     pais: "Brasil",
-    liga: "Alemania",
+    liga: ["Alemania", "Brasil"],
     activo: false,
     status: 1,
     imagen: "media/futbolistas/ze_roberto.jpg",
@@ -4570,7 +4570,7 @@ const listaMacro = [
   {
     nombre: "Jonathan Calleri",
     pais: "Argentina",
-    liga: "Brasil",
+    liga: ["Brasil","Argentina"],
     activo: true,
     status: 1,
     imagen: "media/futbolistas/jonathan_calleri.jpg",
@@ -4762,7 +4762,7 @@ const listaMacro = [
 {
   nombre: "Unai Emery",
   pais: "España",
-  liga: "Inglaterra",
+  liga: "España",
   activo: false,
   status: 1,
   imagen: "media/futbolistas/unai_emery.jpg",
@@ -4810,7 +4810,7 @@ const listaMacro = [
 {
   nombre: "David Ginola",
   pais: "Francia",
-  liga: "Inglaterra",
+  liga: ["Inglaterra", "Francia"],
   activo: false,
   status: 2,
   imagen: "media/futbolistas/david_ginola.jpg",
@@ -4866,7 +4866,7 @@ const listaMacro = [
 {
   nombre: "Mikel Arteta",
   pais: "España",
-  liga: "Inglaterra",
+  liga: ["Inglaterra", "España"],
   activo: false,
   status: 2,
   imagen: "media/futbolistas/mikel_arteta.jpg",
@@ -5492,7 +5492,7 @@ const listaMacro = [
   pais: "Escocia",
   liga: "Inglaterra",
   activo: true,
-  status: 3,
+  status: 2,
   imagen: "media/futbolistas/andrew_robertson.jpg",
 },
 {
@@ -5594,7 +5594,7 @@ const listaMacro = [
 {
   nombre: "Clint Dempsey",
   pais: "Estados Unidos",
-  liga: "Inglaterra",
+  liga: ["Inglaterra","Estados Unidos"],
   activo: false,
   status: 1,
   imagen: "media/futbolistas/clint_dempsey.jpg",
@@ -5602,7 +5602,7 @@ const listaMacro = [
 {
   nombre: "Juninho Pernambucano",
   pais: "Brasil",
-  liga: "Francia",
+  liga: ["Francia", "Brasil"],
   activo: false,
   status: 1,
   imagen: "media/futbolistas/juninho_pernambucano.jpg",
@@ -5635,7 +5635,7 @@ const listaMacro = [
 {
   nombre: "Giorgio Chiellini",
   pais: "Italia",
-  liga: "Italia",
+  liga: ["Italia", "Estados Unidos"],
   activo: false,
   status: 3,
   imagen: "media/futbolistas/giorgio_chiellini.jpg",
@@ -5643,7 +5643,7 @@ const listaMacro = [
 {
   nombre: "Leonardo Bonucci",
   pais: "Italia",
-  liga: "Turquía",
+  liga: ["Italia", "Turquía"],
   activo: false,
   status: 2,
   imagen: "media/futbolistas/leonardo_bonucci.jpg",
@@ -5716,7 +5716,7 @@ const listaMacro = [
 {
   nombre: "Frank Rijkaard",
   pais: "Países Bajos",
-  liga: "Italia",
+  liga: ["Italia","Países Bajos","España"],
   activo: false,
   status: 2,
   imagen: "media/futbolistas/frank_rijkaard.jpg",
@@ -5835,6 +5835,29 @@ const listaMacro = [
 },
 ]
 
+
+// =========================
+// ✅ Soporte de múltiples ligas por jugador
+// - Ahora "liga" puede ser string o array: liga: ["España", "Italia"]
+// - Normalizamos todo a array para que el resto del código sea consistente.
+// =========================
+for (let i = 0; i < listaMacro.length; i++) {
+  if (!Array.isArray(listaMacro[i].liga)) {
+    listaMacro[i].liga = [listaMacro[i].liga]
+  }
+}
+
+function _ligasDeJugador(j) {
+  return Array.isArray(j.liga) ? j.liga : [j.liga]
+}
+function _ligaPrincipal(j) {
+  const arr = _ligasDeJugador(j)
+  return arr[0] || ""
+}
+function _ligaTexto(j) {
+  return _ligasDeJugador(j).join(" / ")
+}
+
 // =========================
 // Países/Ligas por defecto (los que vienen en la lista inicial)
 // Nota: se calcula UNA sola vez, antes de cargar futbolistas agregados desde localStorage.
@@ -5854,7 +5877,7 @@ const _normKeyPaisLiga = (s) => {
 }
 
 const PAISES_POR_DEFECTO = new Set(listaMacro.map((j) => _normKeyPaisLiga(j.pais)))
-const LIGAS_POR_DEFECTO = new Set(listaMacro.map((j) => _normKeyPaisLiga(j.liga)))
+const LIGAS_POR_DEFECTO = new Set(listaMacro.map((j) => _normKeyPaisLiga(_ligaPrincipal(j))))
 
 
 let listaRondas = []
@@ -5985,7 +6008,7 @@ function _slugNombre(str) {
 }
 function agregarFutbolista(nombre, pais, liga, activo) {
   const paisKey = _normKeyPaisLiga(pais)
-  const ligaKey = _normKeyPaisLiga(liga)
+  const ligaKey = _normKeyPaisLiga(Array.isArray(liga) ? (liga[0] || "") : liga)
 
   // ✅ Regla de status:
   // - Si país Y liga son de los que vienen por defecto => status 2
@@ -6060,14 +6083,14 @@ function filtrarPorLiga(liga) {
       const pos = listaFiltrada[i]
       // Si se selecciona un continente como liga, filtramos por la "nacionalidad de la liga"
       // (o sea, países que pertenecen a ese continente)
-      if (permitidos.includes(pos.liga)) {
+      if (_ligasDeJugador(pos).some((l) => permitidos.includes(l))) {
         temp.push(pos)
       }
     }
   } else {
     for (let i = 0; i < listaFiltrada.length; i++) {
       const pos = listaFiltrada[i]
-      if (pos.liga === liga) {
+      if (_ligasDeJugador(pos).includes(liga)) {
         temp.push(pos)
       }
     }
@@ -7542,7 +7565,7 @@ function _reconstruirSelects() {
   const ligas = {}
   for (let i = 0; i < listaMacro.length; i++) {
     paises[listaMacro[i].pais] = true
-    ligas[listaMacro[i].liga] = true
+    _ligasDeJugador(listaMacro[i]).forEach((l) => { ligas[l] = true })
   }
 
   if (selPais) {
@@ -7774,7 +7797,7 @@ function guardarJugadorEnLocalStorage(jugador) {
 
   localStorage.setItem("jugador_" + index + "_nombre", jugador.nombre)
   localStorage.setItem("jugador_" + index + "_pais", jugador.pais)
-  localStorage.setItem("jugador_" + index + "_liga", jugador.liga)
+  localStorage.setItem("jugador_" + index + "_liga", Array.isArray(jugador.liga) ? JSON.stringify(jugador.liga) : jugador.liga)
   localStorage.setItem("jugador_" + index + "_activo", jugador.activo ? "1" : "0")
   // Guardar status SIN romper cuando status es 0/4 (0 es falsy)
   const statusGuardar = (jugador.status === undefined || jugador.status === null) ? "2" : String(jugador.status)
@@ -7792,7 +7815,11 @@ function cargarJugadoresAgregados() {
   for (let i = 0; i < total; i++) {
     const nombre = localStorage.getItem("jugador_" + i + "_nombre")
     const pais = localStorage.getItem("jugador_" + i + "_pais")
-    const liga = localStorage.getItem("jugador_" + i + "_liga")
+    let liga = localStorage.getItem("jugador_" + i + "_liga")
+    // Si se guardó como array, viene como JSON
+    if (liga && liga.trim().startsWith("[")) {
+      try { liga = JSON.parse(liga) } catch (e) { /* noop */ }
+    }
     const activoStr = localStorage.getItem("jugador_" + i + "_activo")
     const statusStr = localStorage.getItem("jugador_" + i + "_status")
     const imagen = localStorage.getItem("jugador_" + i + "_imagen")
@@ -7807,11 +7834,11 @@ function cargarJugadoresAgregados() {
         status = Number.parseInt(statusStr, 10)
       } else {
         const paisKey = _normKeyPaisLiga(pais)
-        const ligaKey = _normKeyPaisLiga(liga)
+        const ligaKey = _normKeyPaisLiga(Array.isArray(liga) ? (liga[0] || "") : liga)
         status = (PAISES_POR_DEFECTO.has(paisKey) && LIGAS_POR_DEFECTO.has(ligaKey)) ? 2 : 4
       }
 
-      listaMacro.push({ nombre, pais, liga, activo, status, imagen: imagen || "" })
+      listaMacro.push({ nombre, pais, liga: Array.isArray(liga) ? liga : [liga], activo, status, imagen: imagen || "" })
     }
   }
 }
@@ -7833,12 +7860,13 @@ function mostrarListaFutbolistas() {
     div.id = "fut-" + _slugNombre(fut.nombre)
 
     const emojiBandera = obtenerEmoji(fut.pais)
-    const emojiLiga = obtenerEmoji(fut.liga)
+    const ligaTexto = _ligaTexto(fut)
+    const emojiLiga = obtenerEmoji(_ligaPrincipal(fut))
 
     div.innerHTML = `
       <div class="futbolista-info">
         <span class="futbolista-nombre">${fut.nombre}</span>
-        <span class="futbolista-detalles">${emojiBandera} ${fut.pais} | ${emojiLiga} ${fut.liga}</span>
+        <span class="futbolista-detalles">${emojiBandera} ${fut.pais} | ${emojiLiga} ${ligaTexto}</span>
       </div>
       <span class="futbolista-estado ${fut.activo ? "activo" : "retirado"}">
         ${fut.activo ? "Activo" : "Retirado"}
@@ -7897,11 +7925,14 @@ function reconstruirLocalStorage() {
 function contarPorLiga() {
   const conteo = {}
   for (let i = 0; i < listaMacro.length; i++) {
-    const liga = listaMacro[i].liga
-    if (conteo[liga]) {
+    const ligasJugador = _ligasDeJugador(listaMacro[i])
+    for (let j = 0; j < ligasJugador.length; j++) {
+      const liga = ligasJugador[j]
+      if (conteo[liga]) {
       conteo[liga] = conteo[liga] + 1
     } else {
       conteo[liga] = 1
+      }
     }
   }
   return conteo

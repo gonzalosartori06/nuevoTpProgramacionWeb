@@ -2816,8 +2816,8 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
   /* HEADER – más pegado a bordes */
   .header-custom .container{
     max-width: 100% !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 50px !important;
+    padding-right: 50px !important;
   }
 
   /* CONTENEDORES – un poco más chicos */
