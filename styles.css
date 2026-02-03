@@ -2799,4 +2799,9 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
   }
 }
 
-
+/* =====================================================
+   🖥️ MONITOR OVERRIDES (pantallas grandes)
+   - Header y footer full-width (sin "container" centrado)
+   - Layout menos compacto
+   - Elementos (no tipografías) un poco más grandes
+   ===================================================== */

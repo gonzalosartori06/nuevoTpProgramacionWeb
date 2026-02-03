@@ -7,43 +7,30 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 <style>
-  /* Imagen del futbolista */
+  /* Imagen del futbolista (base) */
   #contenedorJuego img:not(.trash-icon):not([src*="cuchillo"]) {
     transform: scale(2.4);
     transform-origin: center;
     image-rendering: pixelated;
 
     display: block;
-
-    /* 🔥 MÁS DISTANCIA ARRIBA Y ABAJO */
     margin: 100px auto;
 
-    /* Tope de tamaño */
+    /* 🔒 Tope base */
     max-width: 120px;
     max-height: 90px;
     width: auto;
     height: auto;
+  }
 
-    /* 🔪 Achicar SOLO el cuchillo, aunque tenga .trash-icon */
-#contenedorJuego img.trash-icon[src*="cuchillo"]{
-  width: px !important;
-  height: 32px !important;
-  object-fit: contain;
+  /* 🔪 Achicar SOLO el cuchillo (y arreglar el CSS roto) */
+  #contenedorJuego img.trash-icon[src*="cuchillo"]{
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: contain;
   }
 
   }
-  @media (min-width: 1400px){
-    #contenedorJuego img:not(.trash-icon):not([src*="cuchillo"]) {
-      transform: scale(3);
-      margin: 130px auto;
-
-      /* 🔒 TOPE EN MONITOR */
-      max-width: 190px;
-      max-height: 140px;
-    }
-  }
-
-
 </style>
 <link rel="icon" type="image/png" href="media/favicon.png">
 </head>
