@@ -5572,7 +5572,7 @@ const listaMacro = [
   pais: "Suecia",
   liga: "Escocia",
   activo: false,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/henrik_larsson.jpg",
 },
 {
@@ -5580,7 +5580,7 @@ const listaMacro = [
   pais: "Alemania",
   liga: "Italia",
   activo: false,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/sami_khedira.jpg",
 },
 {
@@ -5588,7 +5588,7 @@ const listaMacro = [
   pais: "Inglaterra",
   liga: "Inglaterra",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/ian_wright.jpg",
 },
 {
@@ -5596,7 +5596,7 @@ const listaMacro = [
   pais: "Estados Unidos",
   liga: "Inglaterra",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/clint_dempsey.jpg",
 },
 {
@@ -5604,7 +5604,7 @@ const listaMacro = [
   pais: "Brasil",
   liga: "Francia",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/juninho_pernambucano.jpg",
 },
 {
@@ -5612,7 +5612,7 @@ const listaMacro = [
   pais: "Países Bajos",
   liga: "Italia",
   activo: false,
-  status: 3,
+  status: 2,
   imagen: "media/futbolistas/wesley_sneijder.jpg",
 },
 {
@@ -5620,7 +5620,7 @@ const listaMacro = [
   pais: "Bosnia y Herzegovina",
   liga: "Turquía",
   activo: true,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/edin_dzeko.jpg",
 },
 {
@@ -5628,7 +5628,7 @@ const listaMacro = [
   pais: "Inglaterra",
   liga: "Inglaterra",
   activo: true,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/james_milner.jpg",
 },
 
@@ -5645,7 +5645,7 @@ const listaMacro = [
   pais: "Italia",
   liga: "Turquía",
   activo: false,
-  status: 3,
+  status: 2,
   imagen: "media/futbolistas/leonardo_bonucci.jpg",
 },
 
@@ -5654,7 +5654,7 @@ const listaMacro = [
   pais: "España",
   liga: "España",
   activo: true,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/cesar_azpilicueta.jpg",
 },
 {
@@ -5662,7 +5662,7 @@ const listaMacro = [
   pais: "Italia",
   liga: "Italia",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/antonio_di_natale.jpg",
 },
 {
@@ -5670,7 +5670,7 @@ const listaMacro = [
   pais: "España",
   liga: "España",
   activo: false,
-  status: 3,
+  status: 2,
   imagen: "media/futbolistas/guti.jpg",
 },
 {
@@ -5678,7 +5678,7 @@ const listaMacro = [
   pais: "Argentina",
   liga: "Brasil",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/juan_pablo_sorin.jpg",
 },
 {
@@ -5686,7 +5686,7 @@ const listaMacro = [
   pais: "Chile",
   liga: "Chile",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/matias_fernandez.jpg",
 },
 {
@@ -5694,7 +5694,7 @@ const listaMacro = [
   pais: "Francia",
   liga: "Inglaterra",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/samir_nasri.jpg",
 },
 {
@@ -5710,7 +5710,7 @@ const listaMacro = [
   pais: "Irlanda",
   liga: "Inglaterra",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/robbie_keane.jpg",
 },
 {
@@ -5718,7 +5718,7 @@ const listaMacro = [
   pais: "Países Bajos",
   liga: "Italia",
   activo: false,
-  status: 3,
+  status: 2,
   imagen: "media/futbolistas/frank_rijkaard.jpg",
 },
 {
@@ -5726,7 +5726,7 @@ const listaMacro = [
   pais: "Liberia",
   liga: "Italia",
   activo: false,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/george_weah.jpg",
 },
 {
@@ -5734,7 +5734,7 @@ const listaMacro = [
   pais: "Polonia",
   liga: "Turquía",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/krzysztof_piatek.jpg",
 },
 {
@@ -5742,7 +5742,7 @@ const listaMacro = [
   pais: "España",
   liga: "España",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/jese_rodriguez.jpg",
 },
 {
@@ -5750,7 +5750,7 @@ const listaMacro = [
   pais: "Serbia",
   liga: "Italia",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/luka_jovic.jpg",
 },
 {
@@ -5758,7 +5758,7 @@ const listaMacro = [
   pais: "Inglaterra",
   liga: "Inglaterra",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/danny_ings.jpg",
 },
 {
@@ -5766,7 +5766,7 @@ const listaMacro = [
   pais: "Brasil",
   liga: "Inglaterra",
   activo: true,
-  status: 3,
+  status: 2,
   imagen: "media/futbolistas/gabriel_martinelli.jpg",
 },
 {
@@ -5774,7 +5774,7 @@ const listaMacro = [
   pais: "Serbia",
   liga: "Arabia Saudita",
   activo: true,
-  status: 3,
+  status: 1,
   imagen: "media/futbolistas/aleksandar_mitrovic.jpg",
 },
 {
@@ -5782,7 +5782,7 @@ const listaMacro = [
   pais: "Finlandia",
   liga: "Estados Unidos",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/teemu_pukki.jpg",
 },
 {
@@ -5790,7 +5790,7 @@ const listaMacro = [
   pais: "Argentina",
   liga: "Argentina",
   activo: false,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/matias_abelairas.jpg",
 },
 {
@@ -5798,7 +5798,7 @@ const listaMacro = [
   pais: "Argentina",
   liga: "Argentina",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/emmanuel_gigliotti.jpg",
 },
 {
@@ -5806,7 +5806,7 @@ const listaMacro = [
   pais: "Uruguay",
   liga: "Uruguay",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/martin_cauteruccio.jpg",
 },
 {
@@ -5814,7 +5814,7 @@ const listaMacro = [
   pais: "Argentina",
   liga: "Argentina",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/leandro_fernandez.jpg",
 },
 {
@@ -5822,7 +5822,7 @@ const listaMacro = [
   pais: "Argentina",
   liga: "Argentina",
   activo: true,
-  status: 2,
+  status: 1,
   imagen: "media/futbolistas/gabriel_hauche.jpg",
 },
 {
@@ -5830,7 +5830,7 @@ const listaMacro = [
   pais: "Argentina",
   liga: "Argentina",
   activo: true,
-  status: 3,
+  status: 2,
   imagen: "media/futbolistas/luis_miguel_pulga_rodriguez.jpg",
 },
 ]
