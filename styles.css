@@ -2693,67 +2693,22 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
    Objetivo: menos “compacto”, más aire, footer más pegado a bordes,
    y elementos (no tipografías) un poco más grandes.
 */
-@media (min-width: 2000px){
-  /* Más ancho útil en monitores */
-  .container{
-    max-width: 1700px;
+/* 🖥️ HEADER full width en monitores */
+@media (min-width: 1900px){
+  .header-custom .container{
+    max-width: 100% !important;     /* rompe el centrado del container */
+    padding-left: 70px !important;  /* “semi pegado” a bordes */
+    padding-right: 70px !important;
   }
 
-  /* Contenedores principales: dejar de “encajonar” a 1400px */
-  .container-bordered,
-  .container-bordered-title,
-  .container-bordered-grid,
-  .container-bordered-buttons,
-  .container-bordered-button-single,
-  .futbolistas-header-container,
-  .futbolistas-lista-container,
-  .index-top-container,
-  .index-bottom-container,
-  .filtros-buttons-container,
-  .filtros-images-container,
-  .tutorial-page .tutorial-hero,
-  .tutorial-page .tutorial-section-split,
-  .tutorial-page .tutorial-image-full,
-  .tutorial-page .tutorial-section-centered{
-    max-width: 1700px !important;
+  /* opcional: un toque más de aire vertical sin tocar tipografías */
+  .header-custom .py-3{
+    padding-top: 22px !important;
+    padding-bottom: 22px !important;
   }
 
-  /* Un poco más de “aire” (sin tocar tamaños de letras) */
-  .container-bordered,
-  .container-bordered-title,
-  .container-bordered-grid,
-  .container-bordered-buttons,
-  .container-bordered-button-single{
-    padding: 22px;
-  }
-
-  .index-top-left,
-  .index-top-right,
-  .index-bottom-left,
-  .index-bottom-right,
-  .futbolistas-header-left,
-  .futbolistas-header-right{
-    padding: 44px;
-  }
-
-  .futbolistas-lista-container{
-    padding: 44px;
-  }
-
-  /* Imágenes/íconos un poco más grandes (sin cambiar tipografías) */
-  .brand img{ height: 58px; }
-  .footer-logo{ height: 82px; }
-  .footer-contacto-icon{ width: 28px; height: 28px; }
-  .trash-icon{ width: 56px; height: 56px; }
-
-  .lista-icon-extra-large{ height: 380px; }
-  .indexImagenDerecha{ max-height: 260px; }
-  .filtros-image{ max-height: 120px; }
-
-  /* Footer: contenido más cerca de los bordes */
-  .footer-custom .container{
-    max-width: 100% !important;
-    padding-left: 70px;
-    padding-right: 70px;
+  /* opcional: logo un poco más grande (solo elemento, no letras) */
+  .header-custom .brand img{
+    height: 58px;
   }
 }
