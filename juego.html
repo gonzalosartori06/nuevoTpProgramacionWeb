@@ -29,8 +29,14 @@
     height: 32px !important;
     object-fit: contain;
   }
-
+  /* 🖥️ Pantalla grande: permitir imágenes un poco más grandes */
+@media (min-width: 1400px){
+  #contenedorJuego img:not(.trash-icon):not([src*="cuchillo"]) {
+    max-width: 150px;
+    max-height: 110px;
   }
+}
+
 </style>
 <link rel="icon" type="image/png" href="media/favicon.png">
 </head>

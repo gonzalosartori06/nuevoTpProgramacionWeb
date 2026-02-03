@@ -2805,3 +2805,42 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
    - Layout menos compacto
    - Elementos (no tipografías) un poco más grandes
    ===================================================== */
+/* =====================================================
+   🖥️ PANTALLAS GRANDES (desktop / laptops grandes)
+   - Containers más anchos
+   - Header más cerca de los bordes
+   ===================================================== */
+
+   @media (min-width: 1400px){
+
+  /* HEADER – más pegado a bordes */
+  .header-custom .container{
+    max-width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* CONTENEDORES – un poco más chicos */
+  .container{
+    max-width: 1360px;
+  }
+
+  .container-bordered,
+  .container-bordered-title,
+  .container-bordered-grid,
+  .container-bordered-buttons,
+  .container-bordered-button-single,
+  .futbolistas-header-container,
+  .futbolistas-lista-container,
+  .index-top-container,
+  .index-bottom-container,
+  .filtros-buttons-container,
+  .filtros-images-container,
+  .tutorial-page .tutorial-hero,
+  .tutorial-page .tutorial-section-split,
+  .tutorial-page .tutorial-image-full,
+  .tutorial-page .tutorial-section-centered{
+    max-width: 1360px !important;
+  }
+}
+
