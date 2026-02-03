@@ -2694,21 +2694,30 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
    y elementos (no tipografías) un poco más grandes.
 */
 /* 🖥️ HEADER full width en monitores */
+/* 🖥️ HEADER full width en pantallas grandes (monitores) */
 @media (min-width: 1900px){
-  .header-custom .container{
-    max-width: 100% !important;     /* rompe el centrado del container */
-    padding-left: 70px !important;  /* “semi pegado” a bordes */
+  /* Romper el "container" centrado de Bootstrap SOLO en el header */
+  .header-custom > .container{
+    width: 100% !important;
+    max-width: none !important;     /* clave: elimina el límite del container */
+    padding-left: 70px !important;  /* semi pegado a bordes */
     padding-right: 70px !important;
   }
 
-  /* opcional: un toque más de aire vertical sin tocar tipografías */
+  /* Asegurar que la fila flex ocupe todo el ancho */
+  .header-custom .d-flex{
+    width: 100% !important;
+  }
+
+  /* Un poquito más de aire (sin tocar letras) */
   .header-custom .py-3{
     padding-top: 22px !important;
     padding-bottom: 22px !important;
   }
 
-  /* opcional: logo un poco más grande (solo elemento, no letras) */
+  /* Logo un poco más grande (solo elemento) */
   .header-custom .brand img{
-    height: 58px;
+    height: 58px !important;
   }
 }
+
