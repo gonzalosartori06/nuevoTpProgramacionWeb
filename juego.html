@@ -32,15 +32,16 @@
   }
 
   }
-  /* 🖥️ Monitores: futbolistas más grandes */
-@media (min-width: 1800px){
-  #contenedorJuego img:not(.trash-icon):not([src*="cuchillo"]) {
-    transform: scale(3.2);
-    margin: 130px auto;
-    max-width: 180px;
-    max-height: 135px;
+  @media (min-width: 1400px){
+    #contenedorJuego img:not(.trash-icon):not([src*="cuchillo"]) {
+      transform: scale(3);
+      margin: 130px auto;
+
+      /* 🔒 TOPE EN MONITOR */
+      max-width: 190px;
+      max-height: 140px;
+    }
   }
-}
 
 
 </style>

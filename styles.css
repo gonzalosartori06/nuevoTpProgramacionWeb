@@ -2720,4 +2720,83 @@ body.tutorial-v2 #tutorialV2 .tut-cta-btn:hover {
     height: 58px !important;
   }
 }
+/* =====================================================
+   🖥️ PANTALLAS GRANDES (monitores)
+   ===================================================== */
+@media (min-width: 1900px){
+
+  /* -----------------------------
+     HEADER – más pegado a bordes
+     ----------------------------- */
+  .header-custom .container{
+    max-width: 100% !important;
+
+    /* mucho más cerca que antes */
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* evitar que Bootstrap vuelva a centrar */
+  .header-custom .d-flex{
+    max-width: none;
+  }
+
+  /* logo apenas más grande (no texto) */
+  .header-custom .brand img{
+    height: 56px;
+  }
+
+  /* -----------------------------
+     CONTENEDORES – menos compactos
+     ----------------------------- */
+  .container{
+    max-width: 1700px;
+  }
+
+  .container-bordered,
+  .container-bordered-title,
+  .container-bordered-grid,
+  .container-bordered-buttons,
+  .container-bordered-button-single,
+  .futbolistas-header-container,
+  .futbolistas-lista-container,
+  .index-top-container,
+  .index-bottom-container,
+  .filtros-buttons-container,
+  .filtros-images-container,
+  .tutorial-page .tutorial-hero,
+  .tutorial-page .tutorial-section-split,
+  .tutorial-page .tutorial-image-full,
+  .tutorial-page .tutorial-section-centered{
+    max-width: 1700px !important;
+  }
+
+  /* -----------------------------
+     IMÁGENES – agrandar PERO con tope
+     ----------------------------- */
+  .indexImagenDerecha{
+    max-width: 420px;
+    max-height: 260px;
+  }
+
+  .lista-icon-extra-large{
+    max-width: 420px;
+    max-height: 380px;
+  }
+
+  .filtros-image{
+    max-width: 160px;
+    max-height: 120px;
+  }
+
+  /* -----------------------------
+     FOOTER – contenido más abierto
+     ----------------------------- */
+  .footer-custom .container{
+    max-width: 100% !important;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 
