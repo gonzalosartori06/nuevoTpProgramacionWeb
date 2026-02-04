@@ -5965,7 +5965,28 @@ Irlanda: "🇮🇪"
   Túnez: "🇹🇳",
   Tunez: "🇹🇳",
   Libia: "🇱🇾",
-  Liberia: "🇱🇷"
+  Liberia: "🇱🇷",
+
+  // ✅ Agregadas (faltantes comunes)
+  Finlandia: "🇫🇮",
+  Bosnia: "🇧🇦",
+  "Bosnia y Herzegovina": "🇧🇦",
+  Serbia: "🇷🇸",
+  Croacia: "🇭🇷",
+  Suecia: "🇸🇪",
+  Dinamarca: "🇩🇰",
+  Islandia: "🇮🇸",
+  Polonia: "🇵🇱",
+  Hungría: "🇭🇺",
+  Hungria: "🇭🇺",
+  Rusia: "🇷🇺",
+  Estonia: "🇪🇪",
+  Letonia: "🇱🇻",
+  Lituania: "🇱🇹",
+  Montenegro: "🇲🇪",
+  Albania: "🇦🇱",
+  "Macedonia del Norte": "🇲🇰",
+  Grecia: "🇬🇷",
 
 }
 
@@ -6040,9 +6061,10 @@ function obtenerNombreLigaDePais(paisLiga) {
 function renderLigasConBanderas(liga) {
   const arr = _ligaToArray(liga);
   if (arr.length === 0) return "";
+  // ✅ HTML: permite que en mobile cada liga quede en su propia línea via CSS
   return arr
-    .map((paisLiga) => `${obtenerEmoji(paisLiga)} ${obtenerNombreLigaDePais(paisLiga)}`)
-    .join(" / ");
+    .map((paisLiga) => `<span class="liga-item">${obtenerEmoji(paisLiga)} ${obtenerNombreLigaDePais(paisLiga)}</span>`)
+    .join('<span class="liga-sep"> / </span>');
 }
 
 
@@ -6209,6 +6231,17 @@ function aplicarDificultad(listaCompleta, dificultad) {
     return soloCustom
   }
 
+  if (dificultad === "extrema") {
+    // ✅ Extrema: SOLO status 1 (sin status 4)
+    const soloStatus1 = []
+    for (let i = 0; i < listaCompleta.length; i++) {
+      if (listaCompleta[i] && listaCompleta[i].status === 1) {
+        soloStatus1.push(listaCompleta[i])
+      }
+    }
+    return soloStatus1
+  }
+
   let porcentajeStatus3 = 0.3
   let porcentajeStatus2 = 0.4
   let porcentajeStatus1 = 0.3
@@ -6334,6 +6367,16 @@ function elegirFutbolistaPorDificultad(lista, dificultad) {
   // Random: aleatorio puro (sin status 4)
   if (dificultad === "random") {
     return base[Math.floor(Math.random() * base.length)]
+  }
+
+  // ✅ Extrema: SOLO status 1
+  if (dificultad === "extrema") {
+    const solo1 = []
+    for (let i = 0; i < base.length; i++) {
+      if (base[i] && base[i].status === 1) solo1.push(base[i])
+    }
+    if (solo1.length === 0) return null
+    return solo1[Math.floor(Math.random() * solo1.length)]
   }
 
   // Separar por status
@@ -7946,7 +7989,11 @@ function mostrarListaFutbolistas() {
     div.innerHTML = `
       <div class="futbolista-info">
         <span class="futbolista-nombre">${fut.nombre}</span>
-        <span class="futbolista-detalles">${emojiBandera} ${fut.pais} | ${ligasRender || ligaTexto}</span>
+        <span class="futbolista-detalles">
+          <span class="futbolista-pais">${emojiBandera} ${fut.pais}</span>
+          <span class="futbolista-sep"> | </span>
+          <span class="futbolista-ligas">${ligasRender || ligaTexto}</span>
+        </span>
       </div>
       <span class="futbolista-estado ${fut.activo ? "activo" : "retirado"}">
         ${fut.activo ? "Activo" : "Retirado"}

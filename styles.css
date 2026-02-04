@@ -543,6 +543,48 @@ main {
   color: #666666;
 }
 
+/* ✅ País/Ligas separados: en desktop se ven en una sola línea, en mobile se apilan */
+.futbolista-pais,
+.futbolista-ligas {
+  display: inline;
+}
+
+.futbolista-sep {
+  display: inline;
+}
+
+.liga-item {
+  display: inline;
+}
+
+.liga-sep {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .futbolista-sep {
+    display: none;
+  }
+  .futbolista-pais,
+  .futbolista-ligas {
+    display: block;
+  }
+
+  /* ✅ Rayita divisoria entre País y Liga(s) en mobile */
+  .futbolista-ligas {
+    border-top: 1px solid #000000;
+    margin-top: 6px;
+    padding-top: 6px;
+  }
+
+  .liga-item {
+    display: block;
+  }
+  .liga-sep {
+    display: none;
+  }
+}
+
 .futbolista-estado {
   padding: 6px 16px;
   border: 1px solid #000000;
