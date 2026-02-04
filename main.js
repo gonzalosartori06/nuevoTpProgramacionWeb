@@ -5855,9 +5855,9 @@ function _ligaPrincipal(j) {
   return arr[0] || ""
 }
 function _ligaTexto(j) {
-  return _ligasDeJugador(j).join(" / ")
+  // Mostrar nombre de liga (no país) en textos
+  return _ligasDeJugador(j).map(obtenerNombreLigaDePais).join(" / ")
 }
-
 // =========================
 // Países/Ligas por defecto (los que vienen en la lista inicial)
 // Nota: se calcula UNA sola vez, antes de cargar futbolistas agregados desde localStorage.
@@ -5954,6 +5954,19 @@ Armenia: "🇦🇲",
 Mexico: "🇲🇽",
 Escocia: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
 Irlanda: "🇮🇪"
+,
+  Bolivia: "🇧🇴",
+  China: "🇨🇳",
+  Irán: "🇮🇷",
+  Iran: "🇮🇷",
+  Qatar: "🇶🇦",
+  "Sudáfrica": "🇿🇦",
+  Sudafrica: "🇿🇦",
+  Túnez: "🇹🇳",
+  Tunez: "🇹🇳",
+  Libia: "🇱🇾",
+  Liberia: "🇱🇷"
+
 }
 
 function obtenerEmoji(nombre) {
@@ -5964,6 +5977,72 @@ function obtenerEmoji(nombre) {
   if (EMOJIS_MAPA[tc]) return EMOJIS_MAPA[tc]
 
   return "🌍"
+}
+
+// =========================
+// Ligas: mostrar NOMBRE de liga (no país) + soportar múltiples ligas (arrays)
+// =========================
+function _ligaToArray(liga) {
+  if (Array.isArray(liga)) {
+    return liga
+      .filter((x) => x !== null && x !== undefined)
+      .map((x) => String(x).trim())
+      .filter((x) => x !== "");
+  }
+  if (liga === null || liga === undefined) return [];
+  const t = String(liga).trim();
+  return t ? [t] : [];
+}
+
+// Mapa: país donde juega -> nombre de la liga
+const LIGA_NOMBRE_POR_PAIS = {
+  Argentina: "Liga Profesional",
+  Brasil: "Brasileirão",
+  "Estados Unidos": "MLS",
+  México: "Liga MX",
+  Mexico: "Liga MX",
+
+  España: "LaLiga",
+  Italia: "Serie A",
+  Inglaterra: "Premier League",
+  Francia: "Ligue 1",
+  Alemania: "Bundesliga",
+  Portugal: "Primeira Liga",
+  "Países Bajos": "Eredivisie",
+
+  Uruguay: "Primera División",
+  Chile: "Primera División",
+  Colombia: "Categoría Primera A",
+  Paraguay: "Primera División",
+
+  Perú: "Liga 1",
+  Peru: "Liga 1",
+
+  "Arabia Saudita": "Saudi Pro League",
+  Qatar: "Qatar Stars League",
+
+  Turquía: "Süper Lig",
+  Turquia: "Süper Lig",
+
+  "Corea del Sur": "K League 1",
+  Japón: "J1 League",
+  Japon: "J1 League",
+
+  "Emiratos Árabes Unidos": "UAE Pro League",
+};
+
+function obtenerNombreLigaDePais(paisLiga) {
+  if (!paisLiga) return "";
+  return LIGA_NOMBRE_POR_PAIS[paisLiga] || paisLiga; // fallback
+}
+
+// Devuelve algo tipo: "🇪🇸 LaLiga / 🇮🇹 Serie A"
+function renderLigasConBanderas(liga) {
+  const arr = _ligaToArray(liga);
+  if (arr.length === 0) return "";
+  return arr
+    .map((paisLiga) => `${obtenerEmoji(paisLiga)} ${obtenerNombreLigaDePais(paisLiga)}`)
+    .join(" / ");
 }
 
 
@@ -7594,7 +7673,8 @@ function _reconstruirSelects() {
     for (const l in ligas) {
       if (conteoLigas[l] >= 15) {
         const emoji = obtenerEmoji(l)
-        selLiga.innerHTML += `<option value="${l}">${emoji} ${l}</option>`
+        const nombreLiga = obtenerNombreLigaDePais(l)
+        selLiga.innerHTML += `<option value="${l}">${emoji} ${nombreLiga}</option>`
       }
     }
     // ✅ Continentes (siempre al final)
@@ -7861,12 +7941,12 @@ function mostrarListaFutbolistas() {
 
     const emojiBandera = obtenerEmoji(fut.pais)
     const ligaTexto = _ligaTexto(fut)
-    const emojiLiga = obtenerEmoji(_ligaPrincipal(fut))
+    const ligasRender = renderLigasConBanderas(fut.liga)
 
     div.innerHTML = `
       <div class="futbolista-info">
         <span class="futbolista-nombre">${fut.nombre}</span>
-        <span class="futbolista-detalles">${emojiBandera} ${fut.pais} | ${emojiLiga} ${ligaTexto}</span>
+        <span class="futbolista-detalles">${emojiBandera} ${fut.pais} | ${ligasRender || ligaTexto}</span>
       </div>
       <span class="futbolista-estado ${fut.activo ? "activo" : "retirado"}">
         ${fut.activo ? "Activo" : "Retirado"}
