@@ -1999,14 +1999,6 @@ const listaMacro = [
     imagen: "media/futbolistas/marcos_senesi.jpg",
   },
   {
-    nombre: "Mariano Andújar",
-    pais: "Argentina",
-    liga: "Argentina",
-    activo: false,
-    status: 1,
-    imagen: "media/futbolistas/mariano_andujar.jpg",
-  },
-  {
     nombre: "Lucas Pratto",
     pais: "Argentina",
     liga: "Argentina",
@@ -5904,6 +5896,38 @@ const listaMacro = [
     activo: true,
     status: 2,
     imagen: "media/futbolistas/joan_garcia_pons.jpg",
+},
+{
+  nombre: "Mariano Andújar",
+  pais: "Argentina",
+  liga: ["Argentina", "Italia"],
+  activo: false,
+  status: 1,
+  imagen: "media/futbolistas/mariano_andujar.jpg",
+},
+{
+  nombre: "Sebastián 'El Loco' Abreu",
+  pais: "Uruguay",
+  liga: ["Uruguay", "Argentina", "España","Brasil","Mexico"],
+  activo: false,
+  status: 1,
+  imagen: "media/futbolistas/loco_abreu.jpg",
+},
+{
+  nombre: "Federico 'Pocho' Insúa",
+  pais: "Argentina",
+  liga: ["Argentina", "Alemania","Mexico"],
+  activo: false,
+  status: 1,
+  imagen: "media/futbolistas/pocho_insua.jpg",
+},
+{
+  nombre: "Kim Vilfort",
+  pais: "Dinamarca",
+  liga: ["Dinamarca"],
+  activo: false,
+  status: 1,
+  imagen: "media/futbolistas/kim_vilfort.jpg",
 },
 
 ]
