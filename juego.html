@@ -114,10 +114,13 @@
       e.preventDefault()
       reiniciarYVolverInicio()
     })
-    document.getElementById('navInicio').addEventListener('click', (e) => {
-      e.preventDefault()
-      reiniciarYVolverInicio()
-    })
-  </script>
+    const navInicio = document.getElementById('navInicio')
+     if (navInicio) {
+       navInicio.addEventListener('click', (e) => {
+         e.preventDefault()
+         reiniciarYVolverInicio()
+       })
+     }
+</script>
 </body>
 </html>
