@@ -6381,7 +6381,7 @@ const listaMacro = [
     nombre: "Ben Yedder",
     pais: "Francia",
     liga: ["España", "Francia"],
-    activo: flase,
+    activo: false,
     status: 2,
     imagen: "media/futbolistas/ben_yedder.jpg",
 },
